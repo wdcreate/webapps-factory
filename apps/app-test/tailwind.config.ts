@@ -1,25 +1,48 @@
 import type { Config } from "tailwindcss";
-import config from "@repo/ui/tailwind.config";
+import baseConfig from "@repo/ui/tailwind.config";
+import uiConfig from "./uiConfig";
 
 const webConfig = {
-  ...config,
-  presets: [config],
+  ...baseConfig,
+  presets: [baseConfig],
   theme: {
     extend: {
+      spacing: {
+        "section-y": uiConfig.spacing.sectionPaddingY.default,
+        "section-x": uiConfig.spacing.sectionPaddingX.default,
+        "hero-y": uiConfig.spacing.heroPaddingY.default,
+      },
+      gridTemplateColumns: {
+        "cards": `repeat(${uiConfig.gridCols.cards.default}, minmax(300px, 1fr))`,
+        "cards-md": `repeat(${uiConfig.gridCols.cards.md},      minmax(300px, 1fr))`,
+        "cards-lg": `repeat(${uiConfig.gridCols.cards.lg},      minmax(300px, 1fr))`,
+      },
       colors: {
-        test: {
-          100: "#f2e8e5",
-          200: "#eaddd7",
-          300: "#e0cec7",
-          400: "#d2bab0",
-          500: "#bfa094",
-          600: "#a18072",
-          700: "#977669",
-          800: "#846358",
-          900: "#43302b",
-        },
+        primary: uiConfig.colors.primary,
+        secondary: uiConfig.colors.secondary,
+        accent: uiConfig.colors.accent,
+        background: uiConfig.colors.background,
+        text: uiConfig.colors.text,
+        muted: uiConfig.colors.muted,
+      },
+      fontFamily: {
+        heading: uiConfig.fonts.heading,
+        body: uiConfig.fonts.body,
+      },
+      borderRadius: {
+        md: uiConfig.radii.md,
+      },
+      boxShadow: {
+        md: uiConfig.shadows.md,
+      },
+      fontSize: {
+        base: uiConfig.fontSizes.base,
+        xl: uiConfig.fontSizes.xl,
+        "2xl": uiConfig.fontSizes["2xl"],
+        "4xl": uiConfig.fontSizes["4xl"],
       },
     },
   },
 } satisfies Config;
+
 export default webConfig;
