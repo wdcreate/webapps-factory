@@ -1,0 +1,15 @@
+--- ImageWithCTAButtonSection
+  bg 
+
+--- common
+
+spacing
+  - section Y: xl, lg, md 
+  - section X: xl, lg, md 
+  - section gap: xl, lg, md 
+
+
+font
+  - size: 4xl, 2xl, xl, lg, md 
+  - color primary or secondary or other color from vars from config
+

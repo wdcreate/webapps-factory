@@ -1,15 +1,9 @@
-import SimpleForm from "@repo/ui/layouts/form/SimpleForm";
-import HeroSection from "@repo/ui/layouts/sections/hero/HeroSection";
-import DemoSection from "@repo/ui/layouts/sections/presentation/DemoSection";
-import FeaturesSection from "@repo/ui/layouts/sections/presentation/FeaturesSection";
-
+import { ImageWithCTAButtonSection } from "@repo/ui/layouts/sections/cta-sections/image-cta-button";
+import { dataConfig } from "./data/dataConfig";
 export default function Home() {
   return (
-    <main className="container">
-      <HeroSection />
-      <FeaturesSection />
-      <DemoSection />
-      <SimpleForm />
+    <main className="">
+      <ImageWithCTAButtonSection data={dataConfig.heroSection}/>
     </main>
   );
 }

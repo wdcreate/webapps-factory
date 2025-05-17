@@ -38,6 +38,16 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+
+@layer components {
+  .grid2-gap {
+    @apply xl:py-16 lg:py-10 md:py-8 py-6 gap-3 md:gap-6 lg:gap-8;
+  }
+  .section {
+    @apply xl:py-16 lg:py-10 md:py-8 py-6;
+  }
+}
+/* 
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -110,4 +120,4 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-}
+} */
