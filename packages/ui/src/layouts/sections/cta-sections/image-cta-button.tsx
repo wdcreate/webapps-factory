@@ -8,24 +8,25 @@ export interface ImageWithCTAProps {
 
 export function ImageWithCTAButtonSection({ data }: ImageWithCTAProps) {
   const {
-    image: { src, alt= "" },
+    image: { src, alt = "" },
     title,
     description,
-    button: { text, variant, size },
+    button: { label, variant, size },
   } = data;
 
-
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-screen-xl items-center md:grid md:grid-cols-2 grid2-gap section">
-        <img src={src} alt={alt} className="w-full" />
+    <section className="bg-background section">
+      <div className="items-center grid2 grid2-gap">
+        <div className={`min-w-[300px] w-[50%] sm:w-[75%] h-auto lg:w-full mx-auto ${data.reverseGrid ? "order-last" : ""}`}>
+          <img src={src} alt={alt} className="w-full" />
+        </div>
 
         <div className="mt-4 md:mt-0">
-          <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-primary">
+          <h2 className="mb-4 text-2xl md:text-4xl font-extrabold tracking-tight text-primary">
             {title}
           </h2>
 
-          <p className="mb-6 text-primary md:text-lg">
+          <p className="mb-6 text-primary text-base md:text-lg">
             {description}
           </p>
 
@@ -34,8 +35,8 @@ export function ImageWithCTAButtonSection({ data }: ImageWithCTAProps) {
             size={size}
             className="w-fit [&>span]:items-center"
           >
-            {text}
-    <ArrowRight/>
+            {label}
+            <ArrowRight />
           </Button>
         </div>
       </div>
