@@ -1,5 +1,3 @@
-
-
 export interface ImageWithCTAData {
   reverseGrid?: boolean;
   image: {

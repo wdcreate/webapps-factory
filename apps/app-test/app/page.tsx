@@ -38,6 +38,39 @@ export default function Home() {
           </div>
         </div>
       </GridSection>
+      <GridSection
+        columns={2}
+        heading="Our Features"
+        wideColumnSpan={9}
+        wideSide="right"
+        reverse={false}
+        text="Everything you need to build custom UIs fast."
+      >
+        <div>
+          <img
+            src="/turborepo-dark.svg"
+            alt="Illustration"
+            className="w-full max-w-sm"
+          />
+        </div>
+        {/* stacking two feature blocks inside one column */}
+        <div className="space-y-6 text-left">
+          <div>
+            <h3 className="text-xl font-semibold">Blazing fast</h3>
+            <p className="mt-2">
+              Components that ship with zero runtime overhead.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold">Rock‑solid</h3>
+            <p className="mt-2">Fully‑typed and tree‑shakable.</p>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold">Rock‑solid</h3>
+            <p className="mt-2">Fully‑typed and tree‑shakable.</p>
+          </div>
+        </div>
+      </GridSection>
 
       <ImageWithCTAButtonSection data={dataConfig.heroSection} />
       <DemoSection data={dataConfig.featuresSection} />
