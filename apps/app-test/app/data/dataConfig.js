@@ -1,7 +1,6 @@
-
 export const dataConfig = {
   heroSection: {
-    reverseGrid: false, 
+    reverseGrid: false,
     image: {
       src: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg",
       alt: "Arrow",
@@ -50,6 +49,47 @@ export const dataConfig = {
         size: "lg",
         iconPosition: null,
         href: "/demo",
+      },
+    ],
+  },
+  defaultCustomerLogos: {
+    heading: "You’ll be in good company",
+    paragraph: "Trusted by thousands of customers worldwide.",
+    logos: [
+      {
+        name: "Airbnb",
+        src: "/turborepo-dark.svg",
+        alt: "Airbnb logo",
+      },
+      {
+        name: "Google",
+        src: "/turborepo-dark.svg",
+        alt: "Google logo",
+      },
+      {
+        name: "Microsoft",
+        src: "/turborepo-dark.svg",
+        alt: "Microsoft logo",
+      },
+      {
+        name: "Spotify",
+        src: "/turborepo-dark.svg",
+        alt: "Spotify logo",
+      },
+      {
+        name: "Airbnb",
+        src: "/turborepo-dark.svg",
+        alt: "Airbnb logo",
+      },
+      {
+        name: "Google",
+        src: "/turborepo-dark.svg",
+        alt: "Google logo",
+      },
+      {
+        name: "Microsoft",
+        src: "/turborepo-dark.svg",
+        alt: "Microsoft logo",
       },
     ],
   },

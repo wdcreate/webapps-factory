@@ -36,3 +36,15 @@ export interface DemoSectionData {
     onClick?: () => void;
   }>;
 }
+
+export interface LogoItem {
+  name: string;
+  src: string;
+  alt: string;
+}
+
+export interface DefaultCustomerLogosSection {
+  heading: string;
+  paragraph?: string;
+  logos: LogoItem[];
+}
