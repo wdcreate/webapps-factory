@@ -45,7 +45,7 @@ export const GridSection: React.FC<GridSectionProps> = ({
   reverse = false,
   sectionId,
   wrapperClassName = '',
-  gridGap = 'gap-4 lg:gap-8',
+  gridGap = 'gap-3 lg:gap-6',
   wideColumnSpan,
   wideSide = 'left',
 }) => {
@@ -100,7 +100,7 @@ export const GridSection: React.FC<GridSectionProps> = ({
           return (
             <div
               key={idx}
-              className={clsx('flex items-center', spanClass)}
+              className={clsx('flex', spanClass)}
             >
               {child}
             </div>

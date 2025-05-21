@@ -1,6 +1,7 @@
 import { Button } from "@repo/ui/components/ui/button";
 import { ImageWithCTAData } from "@repo/ui/types";
 import { ArrowRight } from "lucide-react";
+import GridSection from "../../grid/GridSection";
 
 export interface ImageWithCTAProps {
   data: ImageWithCTAData;
@@ -16,7 +17,7 @@ export function ImageWithCTAButtonSection({ data }: ImageWithCTAProps) {
 
   return (
     <section className="bg-background section">
-      <div className="items-center grid2 grid2-gap">
+      <GridSection gridGap="gap-4 lg:gap-8">
         <div className={`min-w-[300px] w-[50%] sm:w-[75%] h-auto lg:w-full mx-auto ${data.reverseGrid ? "order-last" : ""}`}>
           <img src={src} alt={alt} className="w-full" />
         </div>
@@ -39,7 +40,7 @@ export function ImageWithCTAButtonSection({ data }: ImageWithCTAProps) {
             <ArrowRight />
           </Button>
         </div>
-      </div>
+      </GridSection>
     </section>
   );
 }

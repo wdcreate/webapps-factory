@@ -39,12 +39,12 @@ export default function Home() {
         </div>
       </GridSection>
       <GridSection
-        columns={2}
-        heading="Our Features"
-        wideColumnSpan={9}
-        wideSide="right"
-        reverse={false}
-        text="Everything you need to build custom UIs fast."
+        //columns={2}
+        //heading="Our Features"
+        //wideColumnSpan={9}
+        //wideSide="right"
+        //reverse={false}
+        //text="Everything you need to build custom UIs fast."
       >
         <div>
           <img
