@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@repo/ui/globals.css";
-import { Navbar } from "@repo/ui/layouts/navbar/navbar";
 import { Footer } from "@repo/ui/layouts/footer/footer";
+import Header from "@repo/ui/layouts/header/default";
+import { dataConfig } from "./data/dataConfig";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,11 +24,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headerFixed = true; 
+
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden` }>
-       {/*  <Navbar /> */}
-        <div className="container">{children}</div>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden`}
+      >
+        <Header data={dataConfig.headerData} fixed={headerFixed} />
+
+        <div
+          className={`container ${headerFixed ? "pt-[75px]" : ""}`}
+        >
+          {children}
+        </div>
+
         <Footer />
       </body>
     </html>

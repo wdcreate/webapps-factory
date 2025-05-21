@@ -1,6 +1,9 @@
-import { DefaultCustomerLogosSection, ImageWithCTAData } from "../../../packages/ui/src/types";
+import { HeaderDataType } from "@repo/ui/layouts/header/default";
+import { DefaultCustomerLogosSection, DemoSectionData, ImageWithCTAData } from "../../../packages/ui/src/types";
 
-export interface dataConfig {
-  imageWithCTA: ImageWithCTAData;
-  heroSection: DefaultCustomerLogosSection;
+export interface dataConfigType {
+  headerData: HeaderDataType;
+  heroSection: ImageWithCTAData;
+  featuresSection:DemoSectionData;
+  defaultCustomerLogos: DefaultCustomerLogosSection;
 }

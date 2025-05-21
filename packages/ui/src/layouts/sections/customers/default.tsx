@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const DefaultCustomerLogos: React.FC<Props> = ({ data }) => (
-  <section className="bg-background section">
+  <section  id={data.sectionId} className="bg-background section">
     <h2 className="mb-4 text-center text-3xl font-extrabold leading-tight tracking-tight text-primary md:text-4xl">
       {data.heading}
     </h2>

@@ -13,10 +13,11 @@ export function ImageWithCTAButtonSection({ data }: ImageWithCTAProps) {
     title,
     description,
     button: { label, variant, size },
+    sectionId
   } = data;
 
   return (
-    <section className="bg-background section">
+    <section id={sectionId} className="bg-background section">
       <GridSection gridGap="gap-4 lg:gap-8">
         <div className={`min-w-[300px] w-[50%] sm:w-[75%] h-auto lg:w-full mx-auto ${data.reverseGrid ? "order-last" : ""}`}>
           <img src={src} alt={alt} className="w-full" />

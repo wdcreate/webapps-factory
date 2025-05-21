@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@repo/ui/components/ui/button";
-import { ArrowRight, Check, ChevronLeft, Grid } from "lucide-react";
+import { ArrowRight, Check, ChevronLeft } from "lucide-react";
 import { DemoSectionData } from "@repo/ui/types";
 import GridSection from "../../grid/GridSection";
 
@@ -10,7 +10,7 @@ export interface DemoSectionProps {
 
 export const DemoSection: React.FC<DemoSectionProps> = ({ data }) => {
   return (
-    <section className="bg-background section">
+    <section  id={data.sectionId} className="bg-background section">
       <GridSection columns={2}>
         {data.image && (
           <div className={data.image.showOnMobile ? "min-w-[300px] w-[50%] sm:w-[75%] h-auto lg:w-full mx-auto" : "hidden md:block "}>

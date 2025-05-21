@@ -1,4 +1,5 @@
 export interface ImageWithCTAData {
+  sectionId?: string;
   reverseGrid?: boolean;
   image: {
     src: string;
@@ -8,12 +9,38 @@ export interface ImageWithCTAData {
   description: string;
   button: {
     label: string;
-    variant: "secondary" | "ghost" | "default" | "link" | "destructive" | "outline" | null | undefined;
+    variant:
+      | "secondary"
+      | "ghost"
+      | "default"
+      | "link"
+      | "destructive"
+      | "outline"
+      | null
+      | undefined;
     size: "default" | "sm" | "lg" | "icon" | null | undefined;
   };
 }
+export interface ButtonType {
+   label: string;
+    variant:
+      | "secondary"
+      | "ghost"
+      | "default"
+      | "link"
+      | "destructive"
+      | "outline"
+      | null
+      | undefined;
+    size: "default" | "sm" | "lg" | "icon" | null | undefined;
+    iconPosition?: "before" | "after";
+    // for simplicity, we’ll assume arrow icon for primary, none for secondary
+    href?: string;
+    onClick?: () => void;
+}
 
 export interface DemoSectionData {
+  sectionId?: string;
   reverseGrid?: boolean;
   title: string;
   subtitle?: string;
@@ -24,15 +51,7 @@ export interface DemoSectionData {
     showOnMobile?: boolean;
   };
   features: string[];
-  buttons: Array<{
-    label: string;
-    variant: "secondary" | "ghost" | "default" | "link" | "destructive" | "outline" | null | undefined;
-    size: "default" | "sm" | "lg" | "icon" | null | undefined;
-    iconPosition?: "before" | "after";
-    // for simplicity, we’ll assume arrow icon for primary, none for secondary
-    href?: string;
-    onClick?: () => void;
-  }>;
+  buttons: ButtonType[];
 }
 
 export interface LogoItem {
@@ -42,6 +61,7 @@ export interface LogoItem {
 }
 
 export interface DefaultCustomerLogosSection {
+  sectionId?: string;
   heading: string;
   paragraph?: string;
   logos: LogoItem[];

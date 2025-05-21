@@ -1,4 +1,37 @@
-export const dataConfig = {
+import { ButtonType } from "../../../../packages/ui/src/types";
+import { dataConfigType } from "../types";
+
+export const dataConfig: dataConfigType = {
+  headerData: {
+    logo: {
+      src: "/turborepo-dark.svg",
+      alt: "Logo",
+      href: "/",
+    },
+    links: [
+      { label: "Home", href: "/" },
+      { label: "Company", href: "/company" },
+      { label: "Marketplace", href: "/marketplace" },
+      { label: "Features", href: "/features" },
+      { label: "Team", href: "/team" },
+      { label: "Contact", href: "/contact" },
+    ],
+    buttons: [
+      { label: "Log in", href: "/login", variant: "ghost", size: "lg" },
+      {
+        label: "Get started",
+        href: "/signup",
+        variant: "secondary",
+        size: "lg",
+      },
+    ],
+    mobileContent: {
+      label: "Get a demo",
+      variant: "secondary",
+      size: "sm",
+      href: "/demo",
+    },
+  },
   heroSection: {
     reverseGrid: false,
     image: {
@@ -47,10 +80,9 @@ export const dataConfig = {
         label: "Get a demo",
         variant: "secondary",
         size: "lg",
-        iconPosition: null,
         href: "/demo",
       },
-    ],
+    ] as ButtonType[],
   },
   defaultCustomerLogos: {
     heading: "You’ll be in good company",
