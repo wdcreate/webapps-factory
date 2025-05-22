@@ -64,7 +64,7 @@ const Header: React.FC<HeaderProps> = ({ data, fixed = false }) => {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-gray-600 hover:text-gray-900"
+                className="text-primary hover:text-gray-700"
               >
                 {link.label}
               </a>
@@ -118,8 +118,8 @@ const Header: React.FC<HeaderProps> = ({ data, fixed = false }) => {
 
       {/* Fullscreen mobile menu */}
       {isOpen && (
-        <div className="fixed inset-0 bg-white z-40 flex flex-col">
-          <div className="flex items-center justify-between p-4 border-b border-gray-200">
+        <div className="fixed inset-0 bg-background z-40 flex flex-col">
+          <div className="flex items-center justify-between p-4 border-b border-background">
             <a href={data.logo.href}>
               <img src={data.logo.src} alt={data.logo.alt} className="h-8" />
             </a>
@@ -137,7 +137,7 @@ const Header: React.FC<HeaderProps> = ({ data, fixed = false }) => {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-xl text-gray-700 hover:text-gray-900"
+                className="text-xl text-primary hover:text-gray-700"
               >
                 {link.label}
               </a>

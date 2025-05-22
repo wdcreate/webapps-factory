@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@repo/ui/globals.css";
-import { Footer } from "@repo/ui/layouts/footer/footer";
 import Header from "@repo/ui/layouts/header/default";
 import { dataConfig } from "./data/dataConfig";
+import GridFooter from "@repo/ui/layouts/footer/GridFooter";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -39,7 +39,7 @@ export default function RootLayout({
           {children}
         </div>
 
-        <Footer />
+        <GridFooter data={dataConfig.footer}/>
       </body>
     </html>
   );

@@ -75,6 +75,7 @@ export default function Home() {
       <ImageWithCTAButtonSection data={dataConfig.heroSection} />
       <DemoSection data={dataConfig.featuresSection} />
       <DefaultCustomerLogos data={dataConfig.defaultCustomerLogos} />
+     
     </main>
   );
 }

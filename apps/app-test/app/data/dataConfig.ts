@@ -1,5 +1,13 @@
+
 import { ButtonType } from "../../../../packages/ui/src/types";
 import { dataConfigType } from "../types";
+import {
+  Facebook,
+  Instagram,
+  Twitter,
+  Github,
+  Dribbble
+} from 'lucide-react';
 
 export const dataConfig: dataConfigType = {
   headerData: {
@@ -109,20 +117,54 @@ export const dataConfig: dataConfigType = {
         alt: "Spotify logo",
       },
       {
-        name: "Airbnb",
+        name: "Airbnb1",
         src: "/turborepo-dark.svg",
         alt: "Airbnb logo",
       },
       {
-        name: "Google",
+        name: "Google1",
         src: "/turborepo-dark.svg",
         alt: "Google logo",
       },
       {
-        name: "Microsoft",
+        name: "Microsoft1",
         src: "/turborepo-dark.svg",
         alt: "Microsoft logo",
       },
     ],
   },
+  footer:{
+  logo: { src: '/turborepo-dark.svg', alt: 'Flowbite', href: '/' },
+  columns: [
+    {
+      title: 'RESOURCES',
+      links: [
+        { label: 'Flowbite', href: '/flowbite' },
+        { label: 'Tailwind CSS', href: 'https://tailwindcss.com/' }
+      ]
+    },
+    {
+      title: 'FOLLOW US',
+      links: [
+        { label: 'GitHub', href: 'https://github.com/' },
+        { label: 'Discord', href: 'https://discord.com/' }
+      ]
+    },
+    {
+      title: 'LEGAL',
+      links: [
+        { label: 'Privacy Policy', href: '/privacy' },
+        { label: 'Terms & Conditions', href: '/terms' }
+      ]
+    }
+  ],
+  copyright: '© 2022 Flowbite™. All Rights Reserved.',
+  socialLinks: [
+    { icon: Facebook,   href: '#', label: 'Facebook' },
+    { icon: Instagram,  href: '#', label: 'Instagram' },
+    { icon: Twitter,    href: '#', label: 'Twitter' },
+    { icon: Github,     href: '#', label: 'GitHub' },
+    { icon: Dribbble,   href: '#', label: 'Dribbble' }
+  ] 
+}
 };
