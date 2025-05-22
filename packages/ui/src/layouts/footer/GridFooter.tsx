@@ -12,7 +12,7 @@ export interface FooterLink {
 }
 
 export interface FooterColumn {
-  title: string;
+  title?: string;
   links: FooterLink[];
 }
 
@@ -37,24 +37,26 @@ interface GridFooterProps {
 
 const GridFooter: React.FC<GridFooterProps> = ({ data, className = "" }) => {
   return (
-    <footer className={`bg-white text-gray-600  ${className}`}>
+    <footer className={`bg-background text-primary  ${className}`}>
       <div className="container mx-auto pt-4 lg:pt-12 ">
-        <div className=" gap-4 md:gap-8 flex-wrap flex flex-col md:flex-row justify-between items-start">
+        <div className="gap-4 md:gap-8 flex-wrap flex flex-col md:flex-row justify-between items-start">
           <a href={data.logo.href} className="inline-block mb-4">
             <img src={data.logo.src} alt={data.logo.alt} className="h-8" />
           </a>
           <div className="flex flex-col md:flex-row gap-4 md:gap-12">
             {data.columns.map((col) => (
               <div key={col.title} className="col-span-1">
-                <h5 className="font-semibold text-gray-900 mb-4 uppercase">
-                  {col.title}
-                </h5>
+                {col.title ? (
+                  <h5 className="font-semibold text-primary mb-4 uppercase">
+                    {col.title}
+                  </h5>
+                ) : null}
                 <ul className="space-y-2">
                   {col.links.map((link) => (
                     <li key={link.href}>
                       <a
                         href={link.href}
-                        className="text-gray-600 hover:text-gray-900 text-sm"
+                        className="text-foreground hover:text-primary text-sm"
                       >
                         {link.label}
                       </a>
@@ -73,7 +75,7 @@ const GridFooter: React.FC<GridFooterProps> = ({ data, className = "" }) => {
                     key={i}
                     href={social.href}
                     aria-label={social.label}
-                    className="text-gray-600 hover:text-gray-900"
+                    className="text-secondary hover:text-primary"
                   >
                     <IconComponent />
                   </a>
@@ -82,7 +84,9 @@ const GridFooter: React.FC<GridFooterProps> = ({ data, className = "" }) => {
             </div>
           )}
         </div>
-        <p className="text-sm text-primary text-center my-6 lg:my-12">{data.copyright}</p>{" "}
+        <p className="text-sm text-primary text-center my-6 lg:my-12">
+          {data.copyright}
+        </p>{" "}
       </div>
     </footer>
   );

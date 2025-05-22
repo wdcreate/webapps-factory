@@ -48,7 +48,7 @@ export const DemoSection: React.FC<DemoSectionProps> = ({ data }) => {
             <ul className="space-y-4">
               {data.features.map((feat, i) => (
                 <li key={i} className="flex items-center gap-3">
-                  <div className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-secondary text-primary">
+                  <div className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-accent text-primary">
                     <Check className="w-4 h-4" />
                   </div>
                   <span className="text-base font-medium text-foreground">
