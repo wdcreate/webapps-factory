@@ -1,170 +1,160 @@
-
 import { ButtonType } from "../../../../packages/ui/src/types";
 import { dataConfigType } from "../types";
-import {
-  Facebook,
-  Instagram,
-  Twitter,
-  Github,
-  Dribbble
-} from 'lucide-react';
+import { Facebook, Instagram, Twitter, Github, Youtube } from "lucide-react";
 
 export const dataConfig: dataConfigType = {
   headerData: {
     logo: {
-      src: "/turborepo-dark.svg",
-      alt: "Logo",
+      src: "/logo.png",
+      alt: "EcoTravel Logo",
       href: "/",
     },
     links: [
-      { label: "Home", href: "/" },
-      { label: "Company", href: "/company" },
-      { label: "Marketplace", href: "/marketplace" },
-      { label: "Features", href: "/features" },
-      { label: "Team", href: "/team" },
-      { label: "Contact", href: "/contact" },
+      { label: "Home", href: "#home" },
+      { label: "Destinations", href: "#destinations" },
+      { label: "Stories", href: "#stories" },
+      { label: "Tours", href: "#tours" },
+      { label: "Partners", href: "#partners" },
     ],
     buttons: [
-      { label: "Log in", href: "/login", variant: "ghost", size: "lg" },
-      {
-        label: "Get started",
-        href: "/signup",
-        variant: "secondary",
-        size: "lg",
-      },
+      { label: "Call now", href: "tel:10101010", variant: "ghost", size: "lg" },
+      { label: "Book Now", href: "/book", variant: "secondary", size: "lg" },
     ],
     mobileContent: {
-      label: "Get a demo",
+      label: "Get Quote",
       variant: "secondary",
       size: "sm",
-      href: "/demo",
+      href: "/quote",
     },
   },
   heroSection: {
+    sectionId: "home",
     reverseGrid: false,
     image: {
-      src: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg",
-      alt: "Arrow",
+      src: "/map.avif",
+      alt: "World map illustration",
     },
-    title: "Let’s create more tools and ideas that brings us together.",
+    title: "Explore the World Sustainably with EcoTravel",
     description:
-      "Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.",
+      "Join thousands of eco-conscious travelers on unforgettable journeys that respect our planet. Discover remote destinations, support local communities, and leave only footprints.",
     button: {
-      label: "Get started",
+      label: "Start Your Adventure",
       variant: "secondary",
       size: "lg",
     },
   },
   featuresSection: {
+    sectionId: "tours",
     reverseGrid: false,
-    title: "We invest in the world’s potential",
+    title: "Why Choose EcoTravel",
     subtitle:
-      "Flowbite Budget is a mobile app that helps users easily track their expenses and create a budget.",
+      "Our platform offers tailored eco-tours, carbon offset options, and community-focused experiences.",
     paragraphs: [
-      "With a user-friendly interface, the app allows users to quickly input their income and expenses, and then automatically categorizes them for easy tracking.",
-      "Spend less time on paperwork and more time growing your business.",
+      "Curated tours led by local guides committed to sustainable practices.",
+      "Transparent carbon offset tracking for every trip you take.",
     ],
     image: {
-      src: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-tabs-2.png",
-      alt: "Feature illustration",
+      src: "/tour.avif",
+      alt: "Eco-friendly tour illustration",
       showOnMobile: true,
     },
     features: [
-      "Dynamic reports and dashboards",
-      "Templates for everyone",
-      "Development workflow",
-      "Limitless business automation",
-      "Knowledge management",
+      "Customizable green itineraries",
+      "Verified eco-certified accommodations",
+      "Real-time impact dashboard",
+      "Local community partnerships",
+      "24/7 traveler support",
     ],
     buttons: [
       {
-        label: "Start building",
+        label: "View Tours",
         variant: "primary",
         size: "md",
         iconPosition: "after",
-        href: "/start",
+        href: "/tours",
       },
       {
-        label: "Get a demo",
+        label: "Contact Us",
         variant: "secondary",
         size: "lg",
-        href: "/demo",
+        href: "/contact",
       },
     ] as ButtonType[],
   },
   defaultCustomerLogos: {
-    heading: "You’ll be in good company",
-    paragraph: "Trusted by thousands of customers worldwide.",
+    sectionId: "partners",
+    heading: "Trusted by Conscious Travelers",
+    paragraph:
+      "Our community includes explorers from around the globe who care about the planet.",
     logos: [
+      { name: "GreenPeace", src: "/greenpeace.png", alt: "GreenPeace logo" },
+      { name: "WWF", src: "/wwf.png", alt: "WWF logo" },
+      { name: "UNEP", src: "/unep.png", alt: "UN Environment Programme" },
       {
-        name: "Airbnb",
-        src: "/turborepo-dark.svg",
-        alt: "Airbnb logo",
+        name: "Rainforest Alliance",
+        src: "/ra.png",
+        alt: "Rainforest Alliance logo",
       },
       {
-        name: "Google",
-        src: "/turborepo-dark.svg",
-        alt: "Google logo",
+        name: "National Geographic",
+        src: "/ng.png",
+        alt: "National Geographic logo",
       },
-      {
-        name: "Microsoft",
-        src: "/turborepo-dark.svg",
-        alt: "Microsoft logo",
-      },
-      {
-        name: "Spotify",
-        src: "/turborepo-dark.svg",
-        alt: "Spotify logo",
-      },
-      {
-        name: "Airbnb1",
-        src: "/turborepo-dark.svg",
-        alt: "Airbnb logo",
-      },
-      {
-        name: "Google1",
-        src: "/turborepo-dark.svg",
-        alt: "Google logo",
-      },
-      {
-        name: "Microsoft1",
-        src: "/turborepo-dark.svg",
-        alt: "Microsoft logo",
-      },
+      { name: "Patagonia", src: "/patagonia.svg", alt: "Patagonia logo" },
+      { name: "Earthwatch", src: "/ew.png", alt: "Earthwatch logo" },
     ],
   },
-  footer:{
-  logo: { src: '/turborepo-dark.svg', alt: 'Flowbite', href: '/' },
-  columns: [
-    {
-      title: 'RESOURCES',
-      links: [
-        { label: 'Flowbite', href: '/flowbite' },
-        { label: 'Tailwind CSS', href: 'https://tailwindcss.com/' }
-      ]
-    },
-    {
-      title: 'FOLLOW US',
-      links: [
-        { label: 'GitHub', href: 'https://github.com/' },
-        { label: 'Discord', href: 'https://discord.com/' }
-      ]
-    },
-    {
-      title: 'LEGAL',
-      links: [
-        { label: 'Privacy Policy', href: '/privacy' },
-        { label: 'Terms & Conditions', href: '/terms' }
-      ]
-    }
-  ],
-  copyright: '© 2022 Flowbite™. All Rights Reserved.',
-  socialLinks: [
-    { icon: Facebook,   href: '#', label: 'Facebook' },
-    { icon: Instagram,  href: '#', label: 'Instagram' },
-    { icon: Twitter,    href: '#', label: 'Twitter' },
-    { icon: Github,     href: '#', label: 'GitHub' },
-    { icon: Dribbble,   href: '#', label: 'Dribbble' }
-  ] 
-}
+  footer: {
+    logo: { src: "/logo.png", alt: "EcoTravel", href: "/" },
+    columns: [
+      /* {
+        title: "COMPANY",
+        links: [
+          { label: "About Us", href: "/about" },
+          { label: "Careers", href: "/careers" },
+          { label: "Press", href: "/press" },
+        ],
+      }, */
+      {
+        title: "EXPLORE",
+        links: [
+          { label: "Destinations", href: "#destinations" },
+          { label: "Tours", href: "#tours" },
+          { label: "Partners", href: "#partners" },
+        ],
+      },
+      {
+        title: "LEGAL",
+        links: [
+          { label: "Privacy Policy", href: "/privacy" },
+          { label: "Terms of Service", href: "/terms" },
+          { label: "Cookie Policy", href: "/cookies" },
+        ],
+      },
+    ],
+    copyright: "© 2025 EcoTravel™. All Rights Reserved.",
+    socialLinks: [
+      {
+        icon: Facebook,
+        href: "https://facebook.com/ecotravel",
+        label: "Facebook",
+      },
+      {
+        icon: Instagram,
+        href: "https://instagram.com/ecotravel",
+        label: "Instagram",
+      },
+      {
+        icon: Twitter,
+        href: "https://twitter.com/ecotravel",
+        label: "Twitter",
+      },
+      {
+        icon: Youtube,
+        href: "https://youtube.com/ecotravel",
+        label: "YouTube",
+      },
+      { icon: Github, href: "https://github.com/ecotravel", label: "GitHub" },
+    ],
+  },
 };

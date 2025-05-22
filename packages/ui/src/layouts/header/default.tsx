@@ -15,25 +15,10 @@ export interface NavLink {
   href: string;
 }
 
-export interface ButtonData {
-  label: string;
-  variant?:
-    | "secondary"
-    | "ghost"
-    | "default"
-    | "link"
-    | "destructive"
-    | "outline";
-  size?: "default" | "sm" | "lg" | "icon";
-  iconPosition?: "before" | "after";
-  href?: string;
-  onClick?: () => void;
-}
-
 export interface HeaderDataType {
   logo: LogoData;
   links: NavLink[];
-  buttons?: ButtonData[];
+  buttons?: ButtonType[];
   mobileContent?: ButtonType;
 }
 
@@ -45,17 +30,19 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ data, fixed = false }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const containerClass = fixed
-    ? "fixed inset-x-0 top-0 z-50"
-    : "relative";
+  const containerClass = fixed ? "fixed inset-x-0 top-0 z-50" : "relative";
 
   return (
     <>
-      <header className={`${containerClass} bg-white shadow`}>  
+      <header className={`${containerClass} bg-white shadow`}>
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           {/* Logo */}
           <a href={data.logo.href} className="flex-shrink-0">
-            <img src={data.logo.src} alt={data.logo.alt} className="h-5 sm:h-8" />
+            <img
+              src={data.logo.src}
+              alt={data.logo.alt}
+              className="h-8 md:h-12"
+            />
           </a>
 
           {/* Desktop nav on lg+ */}
@@ -154,11 +141,14 @@ const Header: React.FC<HeaderProps> = ({ data, fixed = false }) => {
                     </Button>
                   </a>
                 ) : (
-                  <button key={btn.label} onClick={btn.onClick}>
-                    <Button variant={btn.variant} size={btn.size}>
-                      {btn.label}
-                    </Button>
-                  </button>
+                  <Button
+                    key={btn.label}
+                    onClick={btn.onClick}
+                    variant={btn.variant}
+                    size={btn.size}
+                  >
+                    {btn.label}
+                  </Button>
                 );
                 return ButtonEl;
               })}

@@ -7,19 +7,7 @@ export interface ImageWithCTAData {
   };
   title: string;
   description: string;
-  button: {
-    label: string;
-    variant:
-      | "secondary"
-      | "ghost"
-      | "default"
-      | "link"
-      | "destructive"
-      | "outline"
-      | null
-      | undefined;
-    size: "default" | "sm" | "lg" | "icon" | null | undefined;
-  };
+  button: ButtonType
 }
 export interface ButtonType {
    label: string;
@@ -33,8 +21,6 @@ export interface ButtonType {
       | null
       | undefined;
     size: "default" | "sm" | "lg" | "icon" | null | undefined;
-    iconPosition?: "before" | "after";
-    // for simplicity, we’ll assume arrow icon for primary, none for secondary
     href?: string;
     onClick?: () => void;
 }

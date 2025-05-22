@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@repo/ui/components/ui/button";
-import { ArrowRight, Check, ChevronLeft } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { DemoSectionData } from "@repo/ui/types";
 import GridSection from "../../grid/GridSection";
 
@@ -10,12 +10,18 @@ export interface DemoSectionProps {
 
 export const DemoSection: React.FC<DemoSectionProps> = ({ data }) => {
   return (
-    <section  id={data.sectionId} className="bg-background section">
+    <section id={data.sectionId} className="bg-background">
       <GridSection columns={2}>
         {data.image && (
-          <div className={data.image.showOnMobile ? "min-w-[300px] w-[50%] sm:w-[75%] h-auto lg:w-full mx-auto" : "hidden md:block "}>
+          <div
+            className={
+              data.image.showOnMobile
+                ? "min-w-[300px] h-auto lg:w-full mx-auto"
+                : "hidden md:block "
+            }
+          >
             <img
-              className="w-full object-cover rounded-[var(--radius)]"
+              className="w-full object-cover h-full rounded-[var(--radius)]"
               src={data.image.src}
               alt={data.image.alt}
             />
@@ -35,10 +41,7 @@ export const DemoSection: React.FC<DemoSectionProps> = ({ data }) => {
             )}
 
             {data.paragraphs.map((p, i) => (
-              <p
-                key={i}
-                className="mt-4 text-base font-normal text-foreground"
-              >
+              <p key={i} className="mt-4 text-base font-normal text-foreground">
                 {p}
               </p>
             ))}
@@ -69,11 +72,8 @@ export const DemoSection: React.FC<DemoSectionProps> = ({ data }) => {
                   onClick={btn.onClick}
                   key={i}
                 >
-                  {btn.iconPosition === "before" && <ChevronLeft />}
                   {btn.label}
-                  {btn.iconPosition === "after" && (
-                    <ArrowRight/>
-                  )}
+                  <ArrowRight />
                 </Button>
               );
 

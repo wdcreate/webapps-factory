@@ -12,14 +12,31 @@ export function ImageWithCTAButtonSection({ data }: ImageWithCTAProps) {
     image: { src, alt = "" },
     title,
     description,
-    button: { label, variant, size },
-    sectionId
+    button: { label, variant, size, href, onClick },
+    sectionId,
+    reverseGrid
   } = data;
 
+  const buttonElement = (
+    <Button
+      variant={variant}
+      size={size}
+      onClick={onClick}
+      className="w-fit [&>span]:items-center"
+    >
+      {label}
+      <ArrowRight />
+    </Button>
+  );
+
   return (
-    <section id={sectionId} className="bg-background section">
+    <section id={sectionId} className="bg-background">
       <GridSection gridGap="gap-4 lg:gap-8">
-        <div className={`min-w-[300px] w-[50%] sm:w-[75%] h-auto lg:w-full mx-auto ${data.reverseGrid ? "order-last" : ""}`}>
+        <div
+          className={`min-w-[300px] w-[50%] sm:w-[75%] h-auto lg:w-full mx-auto ${
+            reverseGrid ? "order-last" : ""
+          }`}
+        >
           <img src={src} alt={alt} className="w-full" />
         </div>
 
@@ -32,14 +49,13 @@ export function ImageWithCTAButtonSection({ data }: ImageWithCTAProps) {
             {description}
           </p>
 
-          <Button
-            variant={variant}
-            size={size}
-            className="w-fit [&>span]:items-center"
-          >
-            {label}
-            <ArrowRight />
-          </Button>
+          {href ? (
+            <a href={href} rel="noopener noreferrer">
+              {buttonElement}
+            </a>
+          ) : (
+            buttonElement
+          )}
         </div>
       </GridSection>
     </section>

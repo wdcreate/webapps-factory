@@ -21,12 +21,12 @@ export const DefaultCustomerLogos: React.FC<Props> = ({ data }) => (
       {data.logos.map((logo) => (
         <div
           key={logo.name}
-          className="flex items-center justify-center min-w-[250px]"
+          className="flex items-center justify-center gap-4 md:gap-12 max-w-[320px]"
         >
           <img
             src={logo.src}
             alt={logo.alt}
-            className="h-9 w-auto hover:opacity-80 transition-opacity"
+            className="h-12 md:h-20 w-auto hover:opacity-80 transition-opacity"
           />
         </div>
       ))}

@@ -7,75 +7,95 @@ import { DefaultCustomerLogos } from "@repo/ui/layouts/sections/customers/defaul
 export default function Home() {
   return (
     <main className="">
+      <ImageWithCTAButtonSection data={dataConfig.heroSection} />
+
       <GridSection
+        sectionId="destinations"
         columns={2}
-        heading="Our Features"
+        heading="Top Eco Destinations"
         reverse={false}
-        //text="Everything you need to build custom UIs fast."
+        wideColumnSpan={7}
+        wideSide="left"
       >
-        <div>
+        <div className="w-full">
           <img
-            src="/turborepo-dark.svg"
-            alt="Illustration"
-            className="w-full max-w-sm"
+            src="/collage.jpg"
+            alt="Collage of eco destinations"
+            className="w-full h-full object-cover rounded-lg"
           />
         </div>
-        {/* stacking two feature blocks inside one column */}
-        <div className="space-y-6 text-left">
+
+        <div className="space-y-6 text-left flex flex-col justify-center">
           <div>
-            <h3 className="text-xl font-semibold">Blazing fast</h3>
+            <h3 className="text-xl font-semibold">Amazon Rainforest</h3>
             <p className="mt-2">
-              Components that ship with zero runtime overhead.
+              Journey deep into lush greenery, stay in eco-lodges, and support
+              reforestation projects.
             </p>
           </div>
           <div>
-            <h3 className="text-xl font-semibold">Rock‑solid</h3>
-            <p className="mt-2">Fully‑typed and tree‑shakable.</p>
+            <h3 className="text-xl font-semibold">Himalayan Village Trek</h3>
+            <p className="mt-2">
+              Trek alongside local Sherpa communities, learn traditional crafts,
+              and reduce your footprint.
+            </p>
           </div>
           <div>
-            <h3 className="text-xl font-semibold">Rock‑solid</h3>
-            <p className="mt-2">Fully‑typed and tree‑shakable.</p>
+            <h3 className="text-xl font-semibold">Coral Reef Conservation</h3>
+            <p className="mt-2">
+              Snorkel in protected marine parks and help fund coral restoration
+              with every dive.
+            </p>
           </div>
         </div>
       </GridSection>
       <GridSection
+        sectionId="stories"
         columns={2}
-        //heading="Our Features"
-        wideColumnSpan={9}
+        heading="Traveler Stories"
+        wideColumnSpan={7}
         wideSide="right"
-        //reverse={false}
-        //text="Everything you need to build custom UIs fast."
+        reverse={false}
       >
-        <div>
-          <img
-            src="/turborepo-dark.svg"
-            alt="Illustration"
-            className="w-full max-w-sm"
-          />
-        </div>
-        {/* stacking two feature blocks inside one column */}
-        <div className="space-y-6 text-left">
+        <div className="space-y-6 text-left flex flex-col justify-center">
           <div>
-            <h3 className="text-xl font-semibold">Blazing fast</h3>
+            <h3 className="text-xl font-semibold">“A Life-Changing Journey”</h3>
             <p className="mt-2">
-              Components that ship with zero runtime overhead.
+              “Our trip to Costa Rica not only thrilled us—it funded a local
+              turtle release program. Truly unforgettable!”
+              <span className="font-medium">– Sarah & Jason</span>
             </p>
           </div>
           <div>
-            <h3 className="text-xl font-semibold">Rock‑solid</h3>
-            <p className="mt-2">Fully‑typed and tree‑shakable.</p>
+            <h3 className="text-xl font-semibold">“Sustainable & Seamless”</h3>
+            <p className="mt-2">
+              “EcoTravel handled every detail, from carbon offsets to zero-waste
+              accommodations. Five stars!”
+              <span className="font-medium">– Marcus L.</span>
+            </p>
           </div>
           <div>
-            <h3 className="text-xl font-semibold">Rock‑solid</h3>
-            <p className="mt-2">Fully‑typed and tree‑shakable.</p>
+            <h3 className="text-xl font-semibold">
+              “Connecting with Communities”
+            </h3>
+            <p className="mt-2">
+              “Staying in a Malagasy homestay was a highlight—authentic,
+              respectful, and life-enriching.”
+              <span className="font-medium">– Amina K.</span>
+            </p>
           </div>
+        </div>
+        <div className="w-full">
+          <img
+            src="/travellers.avif"
+            alt="Happy eco-traveler"
+            className="w-full h-full object-cover rounded-lg"
+          />
         </div>
       </GridSection>
 
-      <ImageWithCTAButtonSection data={dataConfig.heroSection} />
       <DemoSection data={dataConfig.featuresSection} />
       <DefaultCustomerLogos data={dataConfig.defaultCustomerLogos} />
-     
     </main>
   );
 }
