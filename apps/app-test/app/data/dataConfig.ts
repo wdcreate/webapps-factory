@@ -10,21 +10,21 @@ export const dataConfig: dataConfigType = {
       href: "/",
     },
     links: [
-      { label: "Home", href: "#home" },
-      { label: "Destinations", href: "#destinations" },
-      { label: "Stories", href: "#stories" },
-      { label: "Tours", href: "#tours" },
-      { label: "Partners", href: "#partners" },
+      { label: "Home", href: "/#home" },
+      { label: "Destinations", href: "/#destinations" },
+      { label: "Stories", href: "/#stories" },
+      { label: "Tours", href: "/#tours" },
+      { label: "Partners", href: "/#partners" },
     ],
     buttons: [
       { label: "Call now", href: "tel:10101010", variant: "ghost", size: "lg" },
-      { label: "Book Now", href: "#contact-us", variant: "default", size: "lg" },
+      { label: "Book Now", href: "/#contact-us", variant: "default", size: "lg" },
     ],
     mobileContent: {
       label: "Contact Us",
       variant: "default",
       size: "sm",
-      href: "#contact-us",
+      href: "/#contact-us",
     },
   },
   heroSection: {
@@ -194,9 +194,9 @@ export const dataConfig: dataConfigType = {
       {
         title: "EXPLORE",
         links: [
-          { label: "Destinations", href: "#destinations" },
-          { label: "Tours", href: "#tours" },
-          { label: "Partners", href: "#partners" },
+          { label: "Destinations", href: "/#destinations" },
+          { label: "Tours", href: "/#tours" },
+          { label: "Partners", href: "/#partners" },
         ],
       },
       {
