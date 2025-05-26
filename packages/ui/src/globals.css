@@ -48,8 +48,11 @@
   }
   .section {
     @apply xl:py-12 lg:py-10 md:py-8 py-6 overflow-x-hidden;
+    
   }
 }
+
+
 /* 
 .dark {
   --background: oklch(0.145 0 0);
