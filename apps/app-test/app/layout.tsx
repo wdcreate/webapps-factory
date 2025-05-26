@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@repo/ui/globals.css";
+import Header from "@repo/ui/layouts/header/default";
+import { dataConfig } from "./data/dataConfig";
+import GridFooter from "@repo/ui/layouts/footer/GridFooter";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,10 +24,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headerFixed = true; 
+
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+    <html lang="en" className="light scroll-smooth scroll-p-10">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden`}
+      >
+        <Header data={dataConfig.headerData} fixed={headerFixed} />
+
+        <div
+          className={`container ${headerFixed ? "pt-[75px]" : ""}`}
+        >
+          {children}
+        </div>
+
+        <GridFooter data={dataConfig.footer}/>
       </body>
     </html>
   );

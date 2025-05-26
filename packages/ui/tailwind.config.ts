@@ -1,14 +1,17 @@
 import type { Config } from "tailwindcss";
 
 const config = {
+   darkMode: ['class'],
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
+    //"./pages/**/*.{ts,tsx}",
+    //"./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    //"./src/**/*.{ts,tsx}",
     "../../packages/ui/src/**/*.{ts,tsx}",
+    "../../packages/ui/src/**/**/*.{ts,tsx}",
+    //"./src/components/**/*.{ts,tsx}",
+    //"./src/lib/**/*.ts",
   ],
-  prefix: "ui-",
   theme: {
     container: {
       center: true,
@@ -18,9 +21,6 @@ const config = {
       },
     },
     extend: {
-      colors: {
-        myColor: "#a16207",
-      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
