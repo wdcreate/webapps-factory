@@ -18,13 +18,13 @@ export const dataConfig: dataConfigType = {
     ],
     buttons: [
       { label: "Call now", href: "tel:10101010", variant: "ghost", size: "lg" },
-      { label: "Book Now", href: "/book", variant: "default", size: "lg" },
+      { label: "Book Now", href: "#contact-us", variant: "default", size: "lg" },
     ],
     mobileContent: {
-      label: "Get Quote",
+      label: "Contact Us",
       variant: "default",
       size: "sm",
-      href: "/quote",
+      href: "#contact-us",
     },
   },
   heroSection: {
@@ -105,6 +105,7 @@ export const dataConfig: dataConfigType = {
     ],
   },
   mainForm: {
+    sectionId: "contact-us",
     title: "Plan Your Dream Trip",
     description:
       "Tell us about your travel preferences and we'll help you create an amazing experience",

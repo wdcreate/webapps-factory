@@ -80,6 +80,7 @@ export interface FormFieldConfig {
 }
 
 export interface FormConfig {
+  sectionId?: string;
   title?: string;
   description?: string;
   fields: FormFieldConfig[];

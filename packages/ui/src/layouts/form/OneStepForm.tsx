@@ -47,7 +47,7 @@ export const OneStepForm: React.FC<OneStepFormProps> = ({
   };
 
   return (
-    <div className={`section  ${className || ''}`}>
+    <div id={config.sectionId} className={`section  ${className || ''}`}>
       {(config.title || config.description) && (
         <div className="px-6 py-4">
           {config.title && (
