@@ -18,11 +18,11 @@ export const dataConfig: dataConfigType = {
     ],
     buttons: [
       { label: "Call now", href: "tel:10101010", variant: "ghost", size: "lg" },
-      { label: "Book Now", href: "/book", variant: "secondary", size: "lg" },
+      { label: "Book Now", href: "/book", variant: "default", size: "lg" },
     ],
     mobileContent: {
       label: "Get Quote",
-      variant: "secondary",
+      variant: "default",
       size: "sm",
       href: "/quote",
     },
@@ -39,7 +39,7 @@ export const dataConfig: dataConfigType = {
       "Join thousands of eco-conscious travelers on unforgettable journeys that respect our planet. Discover remote destinations, support local communities, and leave only footprints.",
     button: {
       label: "Start Your Adventure",
-      variant: "secondary",
+      variant: "default",
       size: "lg",
     },
   },
@@ -68,14 +68,14 @@ export const dataConfig: dataConfigType = {
     buttons: [
       {
         label: "View Tours",
-        variant: "primary",
-        size: "md",
+        variant: "secondary",
+        size: "default",
         iconPosition: "after",
         href: "/tours",
       },
       {
         label: "Contact Us",
-        variant: "secondary",
+        variant: "default",
         size: "lg",
         href: "/contact",
       },
@@ -103,6 +103,81 @@ export const dataConfig: dataConfigType = {
       { name: "Patagonia", src: "/patagonia.svg", alt: "Patagonia logo" },
       { name: "Earthwatch", src: "/ew.png", alt: "Earthwatch logo" },
     ],
+  },
+  mainForm: {
+    title: "Plan Your Dream Trip",
+    description:
+      "Tell us about your travel preferences and we'll help you create an amazing experience",
+    fields: [
+      {
+        name: "fullName",
+        label: "Full Name",
+        type: "text",
+        placeholder: "Enter your full name",
+        required: true,
+        validation: {
+          minLength: 2,
+          maxLength: 100,
+          pattern: "^[a-zA-Z\\s]+$",
+        },
+        description: "Your name as it appears on your passport",
+      },
+      {
+        name: "email",
+        label: "Email Address",
+        type: "email",
+        placeholder: "your.email@example.com",
+        required: true,
+        description: "We'll send your travel itinerary to this email",
+      },
+      {
+        name: "destination",
+        label: "Preferred Destination",
+        type: "select",
+        required: true,
+        placeholder: "Choose your destination",
+        options: [
+          { label: "Europe (Paris, Rome, Barcelona)", value: "europe" },
+          { label: "Asia (Tokyo, Bangkok, Singapore)", value: "asia" },
+          {
+            label: "North America (New York, Los Angeles, Toronto)",
+            value: "north-america",
+          },
+          {
+            label: "South America (Rio, Buenos Aires, Lima)",
+            value: "south-america",
+          },
+          { label: "Africa (Cape Town, Marrakech, Cairo)", value: "africa" },
+          { label: "Oceania (Sydney, Auckland, Fiji)", value: "oceania" },
+        ],
+      },
+      {
+        name: "travelStyle",
+        label: "Travel Style",
+        type: "radio",
+        required: true,
+        options: [
+          { label: "Budget Backpacker", value: "budget" },
+          { label: "Comfort Traveler", value: "comfort" },
+          { label: "Luxury Explorer", value: "luxury" },
+          { label: "Adventure Seeker", value: "adventure" },
+        ],
+      },
+      {
+        name: "newsletter",
+        label: "Subscribe to travel tips and exclusive deals",
+        type: "checkbox",
+      },
+    ],
+    submitButton: {
+      text: "Start Planning My Trip",
+      className: "w-full sm:w-auto",
+    },
+    resetButton: {
+      text: "Clear Form",
+    },
+    layout: "vertical",
+    className: "max-w-2xl",
   },
   footer: {
     logo: { src: "/logo.png", alt: "EcoTravel", href: "/" },

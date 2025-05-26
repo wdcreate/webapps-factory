@@ -3,8 +3,14 @@ import { dataConfig } from "./data/dataConfig";
 import { GridSection } from "@repo/ui/layouts/grid/GridSection";
 import { DemoSection } from "@repo/ui/layouts/sections/presentation/DemoSection";
 import { DefaultCustomerLogos } from "@repo/ui/layouts/sections/customers/default";
+import { OneStepForm } from "@repo/ui/layouts/form/OneStepForm";
+import MainForm from "./components/MainForm";
 
 export default function Home() {
+  const handleLogin = async (data: FormData) => {
+  console.log('Login data:', data);
+  // Handle login logic
+};
   return (
     <main className="">
       <ImageWithCTAButtonSection data={dataConfig.heroSection} />
@@ -96,6 +102,7 @@ export default function Home() {
 
       <DemoSection data={dataConfig.featuresSection} />
       <DefaultCustomerLogos data={dataConfig.defaultCustomerLogos} />
+      <MainForm/>
     </main>
   );
 }

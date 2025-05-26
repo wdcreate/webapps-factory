@@ -27,7 +27,7 @@ export default function RootLayout({
   const headerFixed = true; 
 
   return (
-    <html lang="en" className="scroll-smooth scroll-p-10">
+    <html lang="en" className="light scroll-smooth scroll-p-10">
       <body
         className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden`}
       >

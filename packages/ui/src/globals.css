@@ -1,8 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+  color-scheme: light !important;
+}
 
-:root {
+html.light,
+html:not(.dark) {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -38,23 +42,19 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-
 @layer components {
   .grid2-gap {
     @apply md:py-8 py-6 gap-3 md:gap-6 lg:gap-8;
   }
-  .grid2{
+  .grid2 {
     @apply grid grid-cols-1 md:grid-cols-2;
   }
   .section {
     @apply xl:py-12 lg:py-10 md:py-8 py-6 overflow-x-hidden;
-    
   }
 }
 
-
-/* 
-.dark {
+html.dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);
@@ -126,4 +126,4 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-} */
+}
