@@ -18,7 +18,12 @@ export const dataConfig: dataConfigType = {
     ],
     buttons: [
       { label: "Call now", href: "tel:10101010", variant: "ghost", size: "lg" },
-      { label: "Book Now", href: "/#contact-us", variant: "default", size: "lg" },
+      {
+        label: "Book Now",
+        href: "/#contact-us",
+        variant: "default",
+        size: "lg",
+      },
     ],
     mobileContent: {
       label: "Contact Us",
@@ -232,5 +237,227 @@ export const dataConfig: dataConfigType = {
       },
       { icon: Github, href: "https://github.com/ecotravel", label: "GitHub" },
     ],
+  },
+  ms_form: {
+    formId: "travel-booking",
+    title: "Plan Your Dream Trip",
+    description:
+      "Complete this form to help us create the perfect travel experience for you",
+
+    steps: [
+      {
+        id: "personal-info",
+        title: "Personal Information",
+        description: "Tell us about yourself",
+        validation: "onNext", // Validate when moving to next step
+        fields: [
+          {
+            name: "fullName",
+            label: "Full Name",
+            type: "text",
+            placeholder: "Enter your full name",
+            required: true,
+            validation: {
+              minLength: 2,
+              maxLength: 100,
+              pattern: "^[a-zA-Z\\s]+$",
+            },
+            description: "Your name as it appears on your passport",
+          },
+          {
+            name: "email",
+            label: "Email Address",
+            type: "email",
+            placeholder: "your.email@example.com",
+            required: true,
+            description: "We'll send your travel itinerary to this email",
+          },
+          {
+            name: "phone",
+            label: "Phone Number",
+            type: "text",
+            placeholder: "+1 (555) 123-4567",
+            required: true,
+            validation: {
+              pattern: "^\\+?[1-9]\\d{1,14}$",
+            },
+          },
+          {
+            name: "dateOfBirth",
+            label: "Date of Birth",
+            type: "date",
+            required: true,
+          },
+        ],
+      },
+
+      {
+        id: "travel-preferences",
+        title: "Travel Preferences",
+        description: "Help us understand what kind of trip you're looking for",
+        validation: "onNext",
+        fields: [
+          {
+            name: "destination",
+            label: "Preferred Destination",
+            type: "select",
+            required: true,
+            placeholder: "Choose your destination",
+            options: [
+              { label: "Europe (Paris, Rome, Barcelona)", value: "europe" },
+              { label: "Asia (Tokyo, Bangkok, Singapore)", value: "asia" },
+              {
+                label: "North America (New York, Los Angeles, Toronto)",
+                value: "north-america",
+              },
+              {
+                label: "South America (Rio, Buenos Aires, Lima)",
+                value: "south-america",
+              },
+              {
+                label: "Africa (Cape Town, Marrakech, Cairo)",
+                value: "africa",
+              },
+              { label: "Oceania (Sydney, Auckland, Fiji)", value: "oceania" },
+            ],
+          },
+          {
+            name: "travelStyle1",
+            label: "Travel Style",
+            type: "radio",
+            required: true,
+            options: [
+              { label: "Budget Backpacker", value: "budget" },
+              { label: "Comfort Traveler", value: "comfort" },
+              { label: "Luxury Explorer", value: "luxury" },
+              { label: "Adventure Seeker", value: "adventure" },
+            ],
+          },
+          {
+            name: "duration",
+            label: "Trip Duration (days)",
+            type: "number",
+            required: true,
+            placeholder: "7",
+            validation: {
+              min: 1,
+              max: 365,
+            },
+          },
+          {
+            name: "groupSize",
+            label: "Group Size",
+            type: "select",
+            required: true,
+            options: [
+              { label: "Solo Traveler", value: "1" },
+              { label: "Couple", value: "2" },
+              { label: "Small Group (3-5)", value: "3-5" },
+              { label: "Large Group (6+)", value: "6+" },
+            ],
+          },
+        ],
+      },
+
+      {
+        id: "accommodation-transport",
+        title: "Accommodation & Transport",
+        description:
+          "Let us know your preferences for stays and getting around",
+        validation: "onNext",
+        fields: [
+          {
+            name: "accommodationType",
+            label: "Preferred Accommodation",
+            type: "radio",
+            required: true,
+            options: [
+              { label: "Hotels", value: "hotel" },
+              { label: "Hostels", value: "hostel" },
+              { label: "Vacation Rentals", value: "rental" },
+              { label: "Mix of Options", value: "mix" },
+            ],
+          },
+          {
+            name: "transportPreference",
+            label: "Transportation Preference",
+            type: "select",
+            required: true,
+            options: [
+              { label: "Public Transportation", value: "public" },
+              { label: "Rental Car", value: "car" },
+              { label: "Private Driver", value: "driver" },
+              { label: "Walking/Cycling", value: "active" },
+              { label: "Mix of Options", value: "mix" },
+            ],
+          },
+          {
+            name: "budget",
+            label: "Budget per Person (USD)",
+            type: "select",
+            required: true,
+            options: [
+              { label: "Under $1,000", value: "under-1000" },
+              { label: "$1,000 - $2,500", value: "1000-2500" },
+              { label: "$2,500 - $5,000", value: "2500-5000" },
+              { label: "$5,000 - $10,000", value: "5000-10000" },
+              { label: "Over $10,000", value: "over-10000" },
+            ],
+          },
+        ],
+      },
+
+      {
+        id: "additional-preferences",
+        title: "Additional Preferences",
+        description: "Any special requirements or preferences?",
+        validation: "onSubmit", // Only validate on final submit
+        fields: [
+          {
+            name: "specialRequirements",
+            label: "Special Requirements",
+            type: "textarea",
+            placeholder:
+              "Any dietary restrictions, accessibility needs, or special occasions?",
+            description:
+              "Let us know about any special needs or occasions we should consider",
+          },
+          {
+            name: "interests",
+            label: "Main Interests",
+            type: "textarea",
+            placeholder:
+              "What activities or experiences are you most excited about?",
+            description: "Help us tailor recommendations to your interests",
+          },
+          {
+            name: "newsletter",
+            label: "Subscribe to travel tips and exclusive deals",
+            type: "checkbox",
+          },
+          {
+            name: "marketingConsent",
+            label: "I agree to receive marketing communications",
+            type: "checkbox",
+          },
+        ],
+      },
+    ],
+
+    submitButton: {
+      text: "Submit Travel Request",
+      className: "bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg",
+    },
+
+    navigation: {
+      showStepNumbers: true,
+      showStepTitles: true,
+      allowSkipSteps: false, // Force users to go through steps in order
+      showProgressBar: true,
+      onlyProgressBar: false, 
+    },
+
+    layout: "vertical", // Horizontal layout for better step visibility
+    className: "bg-gray-50 min-h-screen py-8",
   },
 };

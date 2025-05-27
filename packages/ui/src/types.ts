@@ -52,7 +52,7 @@ export interface DefaultCustomerLogosSection {
   paragraph?: string;
   logos: LogoItem[];
 }
-//form
+//onestepform
 
 export interface FormFieldOption {
   label: string;
@@ -117,4 +117,57 @@ export interface UseFormReturn {
   clearErrors: () => void;
   validateField: (name: string, value: string | number | boolean | File | null) => string | null;
   validateForm: () => boolean;
+}
+//multistepform
+export interface StepConfig {
+  id: string;
+  title: string;
+  description?: string;
+  fields: FormFieldConfig[];
+  validation?: 'onNext' | 'onSubmit' | 'disabled'; // When to validate this step
+}
+
+export interface MultiStepFormConfig {
+  formId?: string;
+  title?: string;
+  description?: string;
+  steps: StepConfig[];
+  submitButton?: {
+    text: string;
+    className?: string;
+    disabled?: boolean;
+  };
+  navigation?: {
+    showStepNumbers?: boolean;
+    showStepTitles?: boolean;
+    allowSkipSteps?: boolean;
+    showProgressBar?: boolean;
+    onlyProgressBar?: boolean; 
+  };
+  layout?: 'vertical' | 'horizontal' | 'grid';
+  gridCols?: 1 | 2 | 3 | 4;
+  className?: string;
+}
+
+export interface UseMultiStepFormReturn extends Omit<UseFormReturn, 'handleSubmit'> {
+  currentStep: number;
+  currentStepConfig: StepConfig;
+  isFirstStep: boolean;
+  isLastStep: boolean;
+  progress: number;
+  nextStep: () => void;
+  prevStep: () => void;
+  goToStep: (step: number) => void;
+  handleStepSubmit: (e: React.FormEvent) => Promise<void>;
+  canGoToStep: (step: number) => boolean;
+  stepErrors: { [stepId: string]: boolean };
+  completedSteps: Set<number>;
+}
+
+export interface MultiStepFormProps {
+  config: MultiStepFormConfig;
+  onSubmit: (data: FormDataType) => Promise<void> | void;
+  onStepChange?: (step: number, stepConfig: StepConfig) => void;
+  initialData?: Partial<FormDataType>;
+  className?: string;
 }

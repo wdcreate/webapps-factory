@@ -49,7 +49,7 @@ export const OneStepForm: React.FC<OneStepFormProps> = ({
   return (
     <div id={config.sectionId} className={`section  ${className || ''}`}>
       {(config.title || config.description) && (
-        <div className="px-6 py-4">
+        <div className="py-4">
           {config.title && (
             <h2 className="mb-4 text-center text-3xl font-extrabold leading-tight tracking-tight text-primary md:text-4xl">{config.title}</h2>
           )}
@@ -59,7 +59,7 @@ export const OneStepForm: React.FC<OneStepFormProps> = ({
         </div>
       )}
       
-      <div className="p-6">
+      <div className="lg:p-6">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className={getLayoutClass()}>
             {config.fields.map(field => (
