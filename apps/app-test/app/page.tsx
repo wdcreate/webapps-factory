@@ -5,6 +5,8 @@ import { DemoSection } from "@repo/ui/layouts/sections/presentation/DemoSection"
 import { DefaultCustomerLogos } from "@repo/ui/layouts/sections/customers/default";
 import { OneStepForm } from "@repo/ui/layouts/form/OneStepForm";
 import MainForm from "./components/MainForm";
+import BookingForm from "./components/BookingForm";
+
 
 export default function Home() {
   const handleLogin = async (data: FormData) => {
@@ -103,6 +105,7 @@ export default function Home() {
       <DemoSection data={dataConfig.featuresSection} />
       <DefaultCustomerLogos data={dataConfig.defaultCustomerLogos} />
       <MainForm/>
+      <BookingForm/>
     </main>
   );
 }
