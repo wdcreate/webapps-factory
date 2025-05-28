@@ -185,59 +185,6 @@ export const dataConfig: dataConfigType = {
     layout: "vertical",
     className: "max-w-2xl",
   },
-  footer: {
-    logo: { src: "/logo.png", alt: "EcoTravel", href: "/" },
-    columns: [
-      /* {
-        title: "COMPANY",
-        links: [
-          { label: "About Us", href: "/about" },
-          { label: "Careers", href: "/careers" },
-          { label: "Press", href: "/press" },
-        ],
-      }, */
-      {
-        title: "EXPLORE",
-        links: [
-          { label: "Destinations", href: "/#destinations" },
-          { label: "Tours", href: "/#tours" },
-          { label: "Partners", href: "/#partners" },
-        ],
-      },
-      {
-        title: "LEGAL",
-        links: [
-          { label: "Privacy Policy", href: "/privacy" },
-          { label: "Terms of Service", href: "/terms" },
-          { label: "Cookie Policy", href: "/cookies" },
-        ],
-      },
-    ],
-    copyright: "© 2025 EcoTravel™. All Rights Reserved.",
-    socialLinks: [
-      {
-        icon: Facebook,
-        href: "https://facebook.com/ecotravel",
-        label: "Facebook",
-      },
-      {
-        icon: Instagram,
-        href: "https://instagram.com/ecotravel",
-        label: "Instagram",
-      },
-      {
-        icon: Twitter,
-        href: "https://twitter.com/ecotravel",
-        label: "Twitter",
-      },
-      {
-        icon: Youtube,
-        href: "https://youtube.com/ecotravel",
-        label: "YouTube",
-      },
-      { icon: Github, href: "https://github.com/ecotravel", label: "GitHub" },
-    ],
-  },
   ms_form: {
     formId: "travel-booking",
     title: "Plan Your Dream Trip",
@@ -454,10 +401,63 @@ export const dataConfig: dataConfigType = {
       showStepTitles: true,
       allowSkipSteps: false, // Force users to go through steps in order
       showProgressBar: true,
-      onlyProgressBar: false, 
+      onlyProgressBar: false,
     },
 
     layout: "vertical", // Horizontal layout for better step visibility
     className: "bg-gray-50 min-h-screen py-8",
+  },
+  footer: {
+    logo: { src: "/logo.png", alt: "EcoTravel", href: "/" },
+    columns: [
+      /* {
+        title: "COMPANY",
+        links: [
+          { label: "About Us", href: "/about" },
+          { label: "Careers", href: "/careers" },
+          { label: "Press", href: "/press" },
+        ],
+      }, */
+      {
+        title: "EXPLORE",
+        links: [
+          { label: "Destinations", href: "/#destinations" },
+          { label: "Tours", href: "/#tours" },
+          { label: "Partners", href: "/#partners" },
+        ],
+      },
+      {
+        title: "LEGAL",
+        links: [
+          { label: "Privacy Policy", href: "/privacy" },
+          { label: "Terms of Service", href: "/terms" },
+          { label: "Cookie Policy", href: "/cookies" },
+        ],
+      },
+    ],
+    copyright: "© 2025 EcoTravel™. All Rights Reserved.",
+    socialLinks: [
+      {
+        icon: Facebook,
+        href: "https://facebook.com/ecotravel",
+        label: "Facebook",
+      },
+      {
+        icon: Instagram,
+        href: "https://instagram.com/ecotravel",
+        label: "Instagram",
+      },
+      {
+        icon: Twitter,
+        href: "https://twitter.com/ecotravel",
+        label: "Twitter",
+      },
+      {
+        icon: Youtube,
+        href: "https://youtube.com/ecotravel",
+        label: "YouTube",
+      },
+      { icon: Github, href: "https://github.com/ecotravel", label: "GitHub" },
+    ],
   },
 };
