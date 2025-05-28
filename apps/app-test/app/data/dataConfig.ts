@@ -305,7 +305,6 @@ export const dataConfig: dataConfigType = {
           },
         ],
       },
-
       {
         id: "accommodation-transport",
         title: "Accommodation & Transport",

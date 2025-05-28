@@ -118,6 +118,7 @@ export interface UseFormReturn {
   validateField: (name: string, value: string | number | boolean | File | null) => string | null;
   validateForm: () => boolean;
 }
+
 //multistepform
 export interface StepConfig {
   id: string;
