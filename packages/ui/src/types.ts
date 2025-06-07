@@ -7,25 +7,27 @@ export interface ImageWithCTAData {
   };
   title: string;
   description: string;
-  button: ButtonType
+  button: ButtonType;
+  backgroundSrc?: string;
 }
 export interface ButtonType {
-   label: string;
-    variant:
-      | "secondary"
-      | "ghost"
-      | "default"
-      | "link"
-      | "destructive"
-      | "outline"
-      | null
-      | undefined;
-    size: "default" | "sm" | "lg" | "icon" | null | undefined;
-    href?: string;
-    onClick?: () => void;
+  label: string;
+  variant:
+    | "secondary"
+    | "ghost"
+    | "default"
+    | "link"
+    | "destructive"
+    | "outline"
+    | null
+    | undefined;
+  size: "default" | "sm" | "lg" | "icon" | null | undefined;
+  href?: string;
+  onClick?: () => void;
 }
 
 export interface DemoSectionData {
+  backgroundSrc?: string;
   sectionId?: string;
   reverseGrid?: boolean;
   title: string;
@@ -47,6 +49,7 @@ export interface LogoItem {
 }
 
 export interface DefaultCustomerLogosSection {
+  backgroundSrc?: string;
   sectionId?: string;
   heading: string;
   paragraph?: string;
@@ -62,7 +65,17 @@ export interface FormFieldOption {
 export interface FormFieldConfig {
   name: string;
   label: string;
-  type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox' | 'radio' | 'date' | 'file';
+  type:
+    | "text"
+    | "email"
+    | "password"
+    | "number"
+    | "select"
+    | "textarea"
+    | "checkbox"
+    | "radio"
+    | "date"
+    | "file";
   placeholder?: string;
   required?: boolean;
   disabled?: boolean;
@@ -80,6 +93,7 @@ export interface FormFieldConfig {
 }
 
 export interface FormConfig {
+  backgroundSrc?: string;
   sectionId?: string;
   title?: string;
   description?: string;
@@ -93,7 +107,7 @@ export interface FormConfig {
     text: string;
     className?: string;
   };
-  layout?: 'vertical' | 'horizontal' | 'grid';
+  layout?: "vertical" | "horizontal" | "grid";
   gridCols?: 1 | 2 | 3 | 4;
   className?: string;
 }
@@ -110,12 +124,18 @@ export interface UseFormReturn {
   data: FormDataType;
   errors: FormErrors;
   isSubmitting: boolean;
-  handleChange: (name: string, value: string | number | boolean | File | null) => void;
+  handleChange: (
+    name: string,
+    value: string | number | boolean | File | null
+  ) => void;
   handleSubmit: (e: React.FormEvent) => Promise<void>;
   handleReset: () => void;
   setErrors: (errors: FormErrors) => void;
   clearErrors: () => void;
-  validateField: (name: string, value: string | number | boolean | File | null) => string | null;
+  validateField: (
+    name: string,
+    value: string | number | boolean | File | null
+  ) => string | null;
   validateForm: () => boolean;
 }
 
@@ -125,11 +145,12 @@ export interface StepConfig {
   title: string;
   description?: string;
   fields: FormFieldConfig[];
-  validation?: 'onNext' | 'onSubmit' | 'disabled'; // When to validate this step
+  validation?: "onNext" | "onSubmit" | "disabled"; // When to validate this step
 }
 
 export interface MultiStepFormConfig {
-  formId?: string;
+  backgroundSrc?: string;
+  sectionId?: string;
   title?: string;
   description?: string;
   steps: StepConfig[];
@@ -143,14 +164,15 @@ export interface MultiStepFormConfig {
     showStepTitles?: boolean;
     allowSkipSteps?: boolean;
     showProgressBar?: boolean;
-    onlyProgressBar?: boolean; 
+    onlyProgressBar?: boolean;
   };
-  layout?: 'vertical' | 'horizontal' | 'grid';
+  layout?: "vertical" | "horizontal" | "grid";
   gridCols?: 1 | 2 | 3 | 4;
   className?: string;
 }
 
-export interface UseMultiStepFormReturn extends Omit<UseFormReturn, 'handleSubmit'> {
+export interface UseMultiStepFormReturn
+  extends Omit<UseFormReturn, "handleSubmit"> {
   currentStep: number;
   currentStepConfig: StepConfig;
   isFirstStep: boolean;
