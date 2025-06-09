@@ -24,6 +24,7 @@ export default function Home() {
         reverse={false}
         wideColumnSpan={7}
         wideSide="left"
+        bgSrc="/hero-bg.jpg"
       >
         <div className="w-full">
           <img

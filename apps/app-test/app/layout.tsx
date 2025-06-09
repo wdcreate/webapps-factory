@@ -34,7 +34,7 @@ export default function RootLayout({
         <Header data={dataConfig.headerData} fixed={headerFixed} />
 
         <div
-          className={`container ${headerFixed ? "pt-[75px]" : ""}`}
+          className={`${headerFixed ? "pt-[75px]" : ""}`}
         >
           {children}
         </div>
