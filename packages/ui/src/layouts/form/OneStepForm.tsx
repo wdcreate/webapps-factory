@@ -67,9 +67,9 @@ export const OneStepForm: React.FC<OneStepFormProps> = ({
             {config.description && (
               <p className="text-center">{config.description}</p>
             )}
+
           </div>
         )}
-
         <div className="lg:p-6">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className={getLayoutClass()}>

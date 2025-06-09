@@ -60,6 +60,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
       goToStep(step);
     }
   };
+
   const sectionStyle = config.backgroundSrc
     ? { backgroundImage: `url(${config.backgroundSrc})` }
     : undefined;

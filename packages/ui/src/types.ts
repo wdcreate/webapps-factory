@@ -194,3 +194,4 @@ export interface MultiStepFormProps {
   initialData?: Partial<FormDataType>;
   className?: string;
 }
+
