@@ -10,12 +10,17 @@ export interface ImageWithCTAProps {
 export function ImageWithCTAButtonSection({ data }: ImageWithCTAProps) {
   const {
     image: { src, alt = "" },
+    backgroundSrc,
     title,
     description,
     button: { label, variant, size, href, onClick },
     sectionId,
-    reverseGrid
+    reverseGrid,
   } = data;
+  
+  const sectionStyle = backgroundSrc
+    ? { backgroundImage: `url(${backgroundSrc})` }
+    : undefined;
 
   const buttonElement = (
     <Button
@@ -30,7 +35,11 @@ export function ImageWithCTAButtonSection({ data }: ImageWithCTAProps) {
   );
 
   return (
-    <section id={sectionId} className="bg-background">
+    <section
+      id={sectionId}
+      className="bg-background bg-cover bg-center"
+      style={sectionStyle}
+    >
       <GridSection gridGap="gap-4 lg:gap-8">
         <div
           className={`min-w-[300px] w-[50%] sm:w-[75%] h-auto lg:w-full mx-auto ${

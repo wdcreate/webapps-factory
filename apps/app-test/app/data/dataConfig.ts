@@ -47,8 +47,10 @@ export const dataConfig: dataConfigType = {
       variant: "default",
       size: "lg",
     },
+    backgroundSrc: "/hero-bg.jpg",
   },
   featuresSection: {
+    backgroundSrc: "/hero-bg.jpg",
     sectionId: "tours",
     reverseGrid: false,
     title: "Why Choose EcoTravel",
@@ -87,6 +89,7 @@ export const dataConfig: dataConfigType = {
     ] as ButtonType[],
   },
   defaultCustomerLogos: {
+     backgroundSrc: "/hero-bg.jpg",
     sectionId: "partners",
     heading: "Trusted by Conscious Travelers",
     paragraph:
@@ -110,6 +113,7 @@ export const dataConfig: dataConfigType = {
     ],
   },
   mainForm: {
+    backgroundSrc: "/hero-bg.jpg",
     sectionId: "contact-us",
     title: "Plan Your Dream Trip",
     description:
@@ -186,7 +190,8 @@ export const dataConfig: dataConfigType = {
     className: "max-w-2xl",
   },
   ms_form: {
-    formId: "travel-booking",
+    backgroundSrc: "/hero-bg.jpg",
+    sectionId: "travel-booking",
     title: "Plan Your Dream Trip",
     description:
       "Complete this form to help us create the perfect travel experience for you",

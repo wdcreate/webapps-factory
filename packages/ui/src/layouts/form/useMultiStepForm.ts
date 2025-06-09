@@ -21,7 +21,7 @@ export const useMultiStepForm = (
   // Create a flattened config for the base useForm hook
   const flattenedConfig = useMemo(() => ({
     fields: allFields,
-    sectionId: config.formId,
+    sectionId: config.sectionId,
     title: config.title ?? '',
     description: config.description,
     submitButton: config.submitButton,
