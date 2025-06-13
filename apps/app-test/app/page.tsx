@@ -3,19 +3,20 @@ import { dataConfig } from "./data/dataConfig";
 import { GridSection } from "@repo/ui/layouts/grid/GridSection";
 import { DemoSection } from "@repo/ui/layouts/sections/presentation/DemoSection";
 import { DefaultCustomerLogos } from "@repo/ui/layouts/sections/customers/default";
-import { OneStepForm } from "@repo/ui/layouts/form/OneStepForm";
 import MainForm from "./components/MainForm";
 import BookingForm from "./components/BookingForm";
-
+import { ProductCarouselSection } from "./components/ProductCarouselSection";
+import { ImagesCarouselSection } from "./components/ImagesCarousel";
 
 export default function Home() {
   const handleLogin = async (data: FormData) => {
-  console.log('Login data:', data);
-  // Handle login logic
-};
+    console.log("Login data:", data);
+    // Handle login logic
+  };
   return (
     <main className="">
       <ImageWithCTAButtonSection data={dataConfig.heroSection} />
+      <ProductCarouselSection data={dataConfig.productsCarousel} />
 
       <GridSection
         sectionId="destinations"
@@ -102,11 +103,12 @@ export default function Home() {
           />
         </div>
       </GridSection>
+      <ImagesCarouselSection data={dataConfig.imagesCarousel} />
 
       <DemoSection data={dataConfig.featuresSection} />
       <DefaultCustomerLogos data={dataConfig.defaultCustomerLogos} />
-      <MainForm/>
-      <BookingForm/>
+      <MainForm />
+      <BookingForm />
     </main>
   );
 }

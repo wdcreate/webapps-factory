@@ -49,6 +49,248 @@ export const dataConfig: dataConfigType = {
     },
     backgroundSrc: "/hero-bg.jpg",
   },
+  productsCarousel: {
+    sectionId: "products",
+    title: "Our Products",
+    subtitle: "Discover our latest and greatest offerings",
+    autoPlay: true,
+    autoPlayDelay: 4000,
+    showDots: true,
+    showArrows: true,
+    slidesToShow: 3,
+    slides: [
+      {
+        id: "slide-1",
+        image: {
+          src: "/travellers.avif",
+          alt: "Product 1",
+        },
+        title: "Amazing Product 1",
+        description:
+          "This is an incredible product that will change your life. Experience the difference with our premium quality.",
+        button: {
+          label: "Learn More",
+          variant: "default",
+          size: "default",
+          href: "/products/1",
+        },
+      },
+      {
+        id: "slide-2",
+        image: {
+          src: "/map.avif",
+          alt: "Product 2",
+        },
+        title: "Innovative Solution",
+        description:
+          "Cutting-edge technology meets elegant design in this revolutionary product.",
+        button: {
+          label: "Explore",
+          variant: "outline",
+          size: "default",
+          href: "/products/2",
+        },
+      },
+      {
+        id: "slide-3",
+        image: {
+          src: "/tour.avif",
+          alt: "Product 3",
+        },
+        title: "Premium Quality",
+        description:
+          "Experience luxury and performance combined in our flagship product.",
+        button: {
+          label: "Shop Now",
+          variant: "default",
+          size: "lg",
+          href: "/products/3",
+        },
+      },
+      {
+        id: "slide-11",
+        image: {
+          src: "/travellers.avif",
+          alt: "Product 1",
+        },
+        title: "Amazing Product 1",
+        description:
+          "This is an incredible product that will change your life. Experience the difference with our premium quality.",
+        button: {
+          label: "Learn More",
+          variant: "default",
+          size: "default",
+          href: "/products/1",
+        },
+      },
+      {
+        id: "slide-12",
+        image: {
+          src: "/map.avif",
+          alt: "Product 2",
+        },
+        title: "Innovative Solution",
+        description:
+          "Cutting-edge technology meets elegant design in this revolutionary product.",
+        button: {
+          label: "Explore",
+          variant: "outline",
+          size: "default",
+          href: "/products/2",
+        },
+      },
+      {
+        id: "slide-13",
+        image: {
+          src: "/tour.avif",
+          alt: "Product 3",
+        },
+        title: "Premium Quality",
+        description:
+          "Experience luxury and performance combined in our flagship product.",
+        button: {
+          label: "Shop Now",
+          variant: "default",
+          size: "lg",
+          href: "/products/3",
+        },
+      },
+      {
+        id: "slide-121",
+        image: {
+          src: "/travellers.avif",
+          alt: "Product 1",
+        },
+        title: "Amazing Product 1",
+        description:
+          "This is an incredible product that will change your life. Experience the difference with our premium quality.",
+        button: {
+          label: "Learn More",
+          variant: "default",
+          size: "default",
+          href: "/products/1",
+        },
+      },
+      {
+        id: "slide-21",
+        image: {
+          src: "/map.avif",
+          alt: "Product 2",
+        },
+        title: "Innovative Solution",
+        description:
+          "Cutting-edge technology meets elegant design in this revolutionary product.",
+        button: {
+          label: "Explore",
+          variant: "outline",
+          size: "default",
+          href: "/products/2",
+        },
+      },
+      {
+        id: "slide-133",
+        image: {
+          src: "/tour.avif",
+          alt: "Product 3",
+        },
+        title: "Premium Quality",
+        description:
+          "Experience luxury and performance combined in our flagship product.",
+        button: {
+          label: "Shop Now",
+          variant: "default",
+          size: "lg",
+          href: "/products/3",
+        },
+      },
+    ],
+    backgroundSrc: "/hero-bg.jpg",
+    className: "bg-gradient-to-r from-blue-50 to-purple-50",
+  },
+  imagesCarousel: {
+    sectionId: "images",
+    title: "Our Images",
+    subtitle: "Discover our latest and greatest images",
+    autoPlay: true,
+    autoPlayDelay: 4000,
+    showDots: true,
+    showArrows: true,
+    slidesToShow: 3,
+    slides: [
+      {
+        id: "im-1",
+        image: {
+          src: "/travellers.avif",
+          alt: "Product 1",
+        }
+      },
+      {
+        id: "im-2",
+        image: {
+          src: "/map.avif",
+          alt: "Product 2",
+        }
+      },
+      {
+        id: "im-3",
+        image: {
+          src: "/tour.avif",
+          alt: "Product 3",
+        },
+       
+      },
+      {
+        id: "im-11",
+        image: {
+          src: "/travellers.avif",
+          alt: "Product 1",
+        },
+        
+      },
+      {
+        id: "im-12",
+        image: {
+          src: "/map.avif",
+          alt: "Product 2",
+        },
+      
+      },
+      {
+        id: "im-13",
+        image: {
+          src: "/tour.avif",
+          alt: "Product 3",
+        },
+      
+      },
+      {
+        id: "im-121",
+        image: {
+          src: "/travellers.avif",
+          alt: "Product 1",
+        },
+       
+      },
+      {
+        id: "im-21",
+        image: {
+          src: "/map.avif",
+          alt: "Product 2",
+        },
+       
+      },
+      {
+        id: "im-133",
+        image: {
+          src: "/tour.avif",
+          alt: "Product 3",
+        },
+       
+      },
+    ],
+    backgroundSrc: "/hero-bg.jpg",
+    className: "bg-gradient-to-r from-blue-50 to-purple-50",
+  },
   featuresSection: {
     backgroundSrc: "/hero-bg.jpg",
     sectionId: "tours",
@@ -89,7 +331,7 @@ export const dataConfig: dataConfigType = {
     ] as ButtonType[],
   },
   defaultCustomerLogos: {
-     backgroundSrc: "/hero-bg.jpg",
+    backgroundSrc: "/hero-bg.jpg",
     sectionId: "partners",
     heading: "Trusted by Conscious Travelers",
     paragraph:
