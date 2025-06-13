@@ -197,7 +197,6 @@ export interface MultiStepFormProps {
 
 // Carousel Section
 
-
 export interface UniversalCarouselData<T = unknown> {
   sectionId?: string;
   title?: string;
@@ -211,3 +210,4 @@ export interface UniversalCarouselData<T = unknown> {
   slidesToShow?: number;
   className?: string;
 }
+
