@@ -1,18 +1,15 @@
-import type { Config } from "tailwindcss";
+const baseConfig = require('../../configs/tailwind.config.ts');
 
-const config = {
-   darkMode: ['class'],
+module.exports = {
+  ...baseConfig,
+  darkMode: ['class'],
   content: [
-    //"./pages/**/*.{ts,tsx}",
-    //"./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    //"./src/**/*.{ts,tsx}",
-    "../../packages/ui/src/**/*.{ts,tsx}",
-    "../../packages/ui/src/**/**/*.{ts,tsx}",
-    //"./src/components/**/*.{ts,tsx}",
-    //"./src/lib/**/*.ts",
+    './app/**/*.{ts,tsx}',
+    '../../packages/ui/src/**/*.{ts,tsx}',
+    '../../packages/ui/src/**/**/*.{ts,tsx}',
   ],
   theme: {
+    ...baseConfig.theme,
     container: {
       center: true,
       padding: "2rem",
@@ -21,7 +18,9 @@ const config = {
       },
     },
     extend: {
+      ...(baseConfig.theme?.extend || {}),
       keyframes: {
+        ...(baseConfig.theme?.extend?.keyframes || {}),
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -32,11 +31,13 @@ const config = {
         },
       },
       animation: {
+        ...(baseConfig.theme?.extend?.animation || {}),
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [],
-} satisfies Config;
-export default config;
+  plugins: [
+    ...(baseConfig.plugins || []),
+  ],
+};
