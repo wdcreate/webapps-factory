@@ -4,8 +4,7 @@
   "private": true,
   "exports": {
     "./globals.css": "./src/globals.css",
-    "./postcss.config": "./postcss.config.mjs",
-    "./tailwind.config": "./tailwind.config.ts",
+    "./types/*": "./src/types/*.ts",
     "./lib/*": "./src/lib/*.ts",
     "./components/*": [
       "./src/components/*.tsx",
@@ -14,25 +13,26 @@
     "./layouts/*": [
       "./src/layouts/*.tsx",
       "./src/layouts/**/*.tsx",
-      "./src/layouts/**/*.tsx",
-      "./src/layouts/**/**/*.ts",
-      "./src/layouts/**/**/*.ts",
-      "./src/components/*.ts"
+      "./src/layouts/**/*.ts"
     ]
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "build": "tsc --build"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
     "@turbo/gen": "^2.5.0",
     "@types/node": "^22.15.3",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",
-    "eslint": "^9.26.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "typescript": "5.8.2"
   },
   "dependencies": {
@@ -45,13 +45,7 @@
     "clsx": "^2.1.1",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
-    "init": "^0.1.2",
-    "lucide-react": "^0.510.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "shadcn-ui": "^0.9.5",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^3.4.7",
     "tailwindcss-animate": "^1.0.7"
   }
 }

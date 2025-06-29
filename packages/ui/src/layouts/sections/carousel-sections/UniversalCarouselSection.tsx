@@ -74,7 +74,7 @@ export function UniversalCarouselSection<T = unknown>({
       className={`bg-background bg-cover bg-center ${className}`}
       style={sectionStyle}
     >
-      <div className={`section container mx-auto ${showArrows ? "md:px-14" : ""}`}>
+      <div className={`section ${showArrows ? "md:px-14" : ""}`}>
         {/* Section Header */}
         {(title || subtitle) && (
           <div className="text-center mb-8 md:mb-12">
