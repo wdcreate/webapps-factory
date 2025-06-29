@@ -1,5 +1,5 @@
 import { HeaderDataType } from "@repo/ui/layouts/header/default";
-import { UniversalCarouselData, DefaultCustomerLogosSection, DemoSectionData, FormConfig, ImageWithCTAData, MultiStepFormConfig } from "../../../packages/ui/src/types";
+import { UniversalCarouselData, DefaultCustomerLogosSection, DemoSectionData, FormConfig, ImageWithCTAData, MultiStepFormConfig } from "@repo/ui/types/index";
 import { FooterDataType } from "@repo/ui/layouts/footer/GridFooter";
 import { ProductSlideType } from "./components/ProductCarouselSection";
 import { ImagesSlideType } from "./components/ImagesCarousel";

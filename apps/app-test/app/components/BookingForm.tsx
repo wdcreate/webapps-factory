@@ -1,6 +1,6 @@
 'use client';
 import { MultiStepForm } from "@repo/ui/layouts/form/MultiStepForm";
-import { FormDataType, StepConfig } from "../../../../packages/ui/src/types";
+import { FormDataType, StepConfig } from "@repo/ui/types/index";
 import { dataConfig } from "../data/dataConfig";
 
 export default function BookingForm() {

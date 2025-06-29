@@ -1,7 +1,5 @@
 "use client";
-import { Button } from "@repo/ui/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { UniversalCarouselData } from "../../../../packages/ui/src/types";
+import { UniversalCarouselData } from "@repo/ui/types/index";
 import { UniversalCarouselSection } from "@repo/ui/layouts/sections/carousel-sections/UniversalCarouselSection";
 
 export interface ImagesSlideType {

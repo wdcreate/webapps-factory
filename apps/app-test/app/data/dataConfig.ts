@@ -1,4 +1,4 @@
-import { ButtonType } from "../../../../packages/ui/src/types";
+import { ButtonType } from "@repo/ui/types/index";
 import { dataConfigType } from "../types";
 import { Facebook, Instagram, Twitter, Github, Youtube } from "lucide-react";
 

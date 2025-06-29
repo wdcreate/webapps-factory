@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react'
-import { FormDataType } from '../../../../packages/ui/src/types';
+import { FormDataType } from '@repo/ui/types/index';
 import { OneStepForm } from '@repo/ui/layouts/form/OneStepForm';
 import { dataConfig } from '../data/dataConfig';
 
