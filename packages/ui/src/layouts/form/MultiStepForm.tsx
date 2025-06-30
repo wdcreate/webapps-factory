@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { Button } from "@repo/ui/components/ui/button";
 import { StepNavigation } from "./StepNavigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useMultiStepForm } from "./useMultiStepForm";
+import { useMultiStepForm } from "@repo/ui/hooks/useMultiStepForm";
 import { FormField } from "./FormFiled";
 import { MultiStepFormProps } from "@repo/ui/types";
 

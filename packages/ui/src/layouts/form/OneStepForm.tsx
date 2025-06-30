@@ -3,7 +3,7 @@ import React from "react";
 import { FormConfig, FormDataType } from "@repo/ui/types";
 import { FormField } from "./FormFiled";
 import { Button } from "@repo/ui/components/ui/button";
-import { useForm } from "./useForm";
+import { useForm } from "@repo/ui/hooks/useForm";
 interface OneStepFormProps {
   config: FormConfig;
   onSubmit: (data: FormDataType) => Promise<void> | void;
