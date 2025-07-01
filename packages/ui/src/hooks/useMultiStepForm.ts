@@ -1,6 +1,6 @@
 "use client"
 import { useState, useCallback, useMemo } from 'react';
-import { FormDataType, MultiStepFormConfig, StepConfig, UseMultiStepFormReturn } from '../../types';
+import { FormDataType, MultiStepFormConfig, StepConfig, UseMultiStepFormReturn } from '../types';
 import { useForm } from './useForm';
 
 
