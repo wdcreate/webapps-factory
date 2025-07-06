@@ -1,14 +1,14 @@
-const baseConfig = require('../../configs/tailwind.config.ts');
-const uiConfig = require('./uiConfig.js');
+import baseConfig, { theme as _theme } from '@repo/configs/tailwind';
+import { fonts, spacing as _spacing } from './uiConfig.js';
 
-module.exports = {
+export default {
   ...baseConfig,
   theme: {
-    ...baseConfig.theme,
+    ..._theme,
     extend: {
-      ...(baseConfig.theme?.extend || {}),
+      ...(_theme?.extend || {}),
       colors: {
-        ...(baseConfig.theme?.extend?.colors || {}),
+        ...(_theme?.extend?.colors || {}),
         background: "var(--background)",
         foreground: "var(--foreground)",
         card: "var(--card)",
@@ -43,24 +43,24 @@ module.exports = {
         "sidebar-ring": "var(--sidebar-ring)",
       },
       fontSize: {
-        ...(baseConfig.theme?.extend?.fontSize || {}),
-        md: uiConfig.fonts.size.md,
-        lg: uiConfig.fonts.size.lg,
-        xl: uiConfig.fonts.size.xl,
-        "2xl": uiConfig.fonts.size["2xl"],
-        "4xl": uiConfig.fonts.size["4xl"],
+        ...(_theme?.extend?.fontSize || {}),
+        md: fonts.size.md,
+        lg: fonts.size.lg,
+        xl: fonts.size.xl,
+        "2xl": fonts.size["2xl"],
+        "4xl": fonts.size["4xl"],
       },
       spacing: {
-        ...(baseConfig.theme?.extend?.spacing || {}),
-        "section-y": uiConfig.spacing.sectionY.default,
-        "section-y-lg": uiConfig.spacing.sectionY.lg,
-        "section-y-xl": uiConfig.spacing.sectionY.xl,
-        "section-x": uiConfig.spacing.sectionX.default,
-        "section-x-lg": uiConfig.spacing.sectionX.lg,
-        "section-x-xl": uiConfig.spacing.sectionX.xl,
-        "section-gap": uiConfig.spacing.sectionGap.default,
-        "section-gap-lg": uiConfig.spacing.sectionGap.lg,
-        "section-gap-xl": uiConfig.spacing.sectionGap.xl,
+        ...(_theme?.extend?.spacing || {}),
+        "section-y": _spacing.sectionY.default,
+        "section-y-lg": _spacing.sectionY.lg,
+        "section-y-xl": _spacing.sectionY.xl,
+        "section-x": _spacing.sectionX.default,
+        "section-x-lg": _spacing.sectionX.lg,
+        "section-x-xl": _spacing.sectionX.xl,
+        "section-gap": _spacing.sectionGap.default,
+        "section-gap-lg": _spacing.sectionGap.lg,
+        "section-gap-xl": _spacing.sectionGap.xl,
       },
     },
   },

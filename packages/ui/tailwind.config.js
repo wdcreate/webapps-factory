@@ -1,6 +1,6 @@
-const baseConfig = require('../../configs/tailwind.config.ts');
+import baseConfig, { theme as _theme, plugins as _plugins } from '@repo/configs/tailwind';
 
-module.exports = {
+export default {
   ...baseConfig,
   darkMode: ['class'],
   content: [
@@ -9,7 +9,7 @@ module.exports = {
     '../../packages/ui/src/**/**/*.{ts,tsx}',
   ],
   theme: {
-    ...baseConfig.theme,
+    ..._theme,
     container: {
       center: true,
       padding: "2rem",
@@ -18,9 +18,9 @@ module.exports = {
       },
     },
     extend: {
-      ...(baseConfig.theme?.extend || {}),
+      ...(_theme?.extend || {}),
       keyframes: {
-        ...(baseConfig.theme?.extend?.keyframes || {}),
+        ...(_theme?.extend?.keyframes || {}),
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -31,13 +31,13 @@ module.exports = {
         },
       },
       animation: {
-        ...(baseConfig.theme?.extend?.animation || {}),
+        ...(_theme?.extend?.animation || {}),
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
   plugins: [
-    ...(baseConfig.plugins || []),
+    ...(_plugins || []),
   ],
 };
