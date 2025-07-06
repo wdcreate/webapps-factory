@@ -1,5 +1,5 @@
 {
- "extends": "../../configs/tsconfig/nextjs.json",
+ "extends": "@repo/configs/ts-nextjs",
    "compilerOptions": {
     "plugins": [
       {
@@ -11,9 +11,9 @@
     "**/*.ts",
     "**/*.tsx",
     "next-env.d.ts",
-    "next.config.js",
+    "next.config.ts",
     ".next/types/**/*.ts"
-, "tailwind.config.cjs"  ],
+, "tailwind.config.js"  ],
   "exclude": [
     "node_modules"
   ]

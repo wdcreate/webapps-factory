@@ -15,15 +15,7 @@
     "start:app-test": "turbo run start --filter=app-test"
   },
   "devDependencies": {
-    "@turbo/gen": "^2.5.0",
-    "@types/node": "^22.15.3",
-    "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.1",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^9.26.0",
-    "postcss": "^8.4.40",
     "prettier": "^3.5.3",
-    "tailwindcss": "^3.4.7",
     "turbo": "^2.5.3",
     "typescript": "5.8.2"
   },
@@ -39,11 +31,5 @@
     "lucide-react": "^0.510.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
-  },
-  "overrides": {
-    "react": "$react",
-    "react-dom": "$react-dom",
-    "@types/react": "$@types/react",
-    "@types/react-dom": "$@types/react-dom"
   }
 }
