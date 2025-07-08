@@ -1,4 +1,4 @@
-import baseConfig, { theme as _theme, plugins as _plugins } from '@repo/configs/tailwind';
+import baseConfig, { theme as _theme } from '@repo/css-config/tailwind';
 
 export default {
   ...baseConfig,

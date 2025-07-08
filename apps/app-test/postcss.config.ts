@@ -1,1 +1,1 @@
-module.exports = require('@repo/configs/postcss')
+module.exports = require('@repo/css-config/postcss');

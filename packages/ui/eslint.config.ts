@@ -1,1 +1,1 @@
-module.exports = require('@repo/configs/eslint-react')
+module.exports = require('@repo/eslint-config/react');
