@@ -1,4 +1,4 @@
-import baseConfig, { theme as _theme } from '@repo/configs/tailwind';
+import baseConfig, { theme as _theme } from '@repo/css-config/tailwind';
 import { fonts, spacing as _spacing } from './uiConfig.js';
 
 export default {
