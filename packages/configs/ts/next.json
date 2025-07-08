@@ -1,8 +1,0 @@
-{
-  "extends": "./base.json",
-  "compilerOptions": {
-    "jsx": "preserve",
-    "moduleResolution": "node"
-  },
-  "include": ["**/*.ts", "**/*.tsx"]
-}
