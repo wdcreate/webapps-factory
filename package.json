@@ -1,7 +1,7 @@
 {
   "name": "webapps-factory",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
@@ -19,6 +19,9 @@
   },
   "devDependencies": {
     "@repo/vitest-config": "*",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "prettier": "^3.5.3",
     "turbo": "^2.5.3",
     "typescript": "5.8.2",

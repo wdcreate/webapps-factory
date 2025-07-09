@@ -2,11 +2,11 @@
 import React from "react";
 import clsx from "clsx";
 import { Button } from "@repo/ui/components/ui/button";
-import { StepNavigation } from "./StepNavigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useMultiStepForm } from "@repo/ui/hooks/useMultiStepForm";
+import { MultiStepFormProps } from "@repo/ui/types/index.js";
+import { StepNavigation } from "./StepNavigation";
 import { FormField } from "./FormFiled";
-import { MultiStepFormProps } from "@repo/ui/types";
 
 export const MultiStepForm: React.FC<MultiStepFormProps> = ({
   config,

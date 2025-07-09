@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { FormConfig, FormDataType } from "@repo/ui/types";
+import { FormConfig, FormDataType } from "@repo/ui/types/index.js";
 import { FormField } from "./FormFiled";
 import { Button } from "@repo/ui/components/ui/button";
 import { useForm } from "@repo/ui/hooks/useForm";
@@ -55,7 +55,7 @@ export const OneStepForm: React.FC<OneStepFormProps> = ({
     : undefined;
 
   return (
-    <div id={config.sectionId} className={`bg-background bg-cover bg-center ${className || ""}`}   style={sectionStyle}>
+    <div id={config.sectionId} className={`bg-background bg-cover bg-center ${config.className || ""}`}   style={sectionStyle}>
       <div className="section">
         {(config.title || config.description) && (
           <div className="py-4">
