@@ -1,17 +1,12 @@
 {
- "extends": "@repo/typescript-config/react",
+  "extends": "@repo/typescript-config/react",
   "compilerOptions": {
     "baseUrl": ".",
-    "rootDir": "./src",
+    "rootDir": ".",
     "paths": {
       "@repo/ui/*": ["./src/*"]
     }
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src/**/*", "tests/**/*.tsx"],
+  "exclude": ["node_modules", "dist"]
 }
