@@ -4,7 +4,7 @@ import { Label } from '@repo/ui/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@repo/ui/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@repo/ui/components/ui/select';
 import { Textarea } from '@repo/ui/components/ui/textarea';
-import { FormFieldConfig } from '@repo/ui/types';
+import { FormFieldConfig } from '@repo/ui/types/index.js';
 import React from 'react';
 
 
