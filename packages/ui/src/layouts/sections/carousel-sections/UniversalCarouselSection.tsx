@@ -121,8 +121,8 @@ export function UniversalCarouselSection<T = unknown>({
           {/* Carousel Navigation */}
           {showArrows && slides.length > 1 && (
             <>
-              <CarouselPrevious className="hidden md:flex text-accent" />
-              <CarouselNext className="hidden md:flex text-accent" />
+              <CarouselPrevious className="hidden md:flex text-primary" />
+              <CarouselNext className="hidden md:flex text-primary" />
             </>
           )}
         </Carousel>
