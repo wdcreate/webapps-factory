@@ -15,6 +15,7 @@ export default function Home() {
   };
   return (
     <main className="">
+
       <ImageWithCTAButtonSection data={dataConfig.heroSection} />
       <ProductCarouselSection data={dataConfig.productsCarousel} />
 

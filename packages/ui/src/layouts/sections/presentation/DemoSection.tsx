@@ -35,7 +35,7 @@ export const DemoSection: React.FC<DemoSectionProps> = ({ data }) => {
             </h2>
 
             {data.subtitle && (
-              <p className="mt-2 text-base md:text-lg font-semibold text-secondary-foreground">
+              <p className="mt-2 text-base md:text-lg font-semibold text-secondary">
                 {data.subtitle}
               </p>
             )}

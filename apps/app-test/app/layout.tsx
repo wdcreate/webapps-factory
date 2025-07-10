@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "@repo/ui/globals.css";
+import "./styles.css";
 import Header from "@repo/ui/layouts/header/default";
 import { dataConfig } from "./data/dataConfig";
 import GridFooter from "@repo/ui/layouts/footer/GridFooter";

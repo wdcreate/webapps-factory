@@ -68,7 +68,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
   return (
     <div
       id={config.sectionId}
-      className={clsx(" bg-background bg-cover bg-center", className)}
+      className={clsx(" bg-background bg-cover bg-center ", className)}
       style={sectionStyle}
     >
       <div className="section">
@@ -114,7 +114,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
 
           {/* Form Content */}
           <div className="lg:col-span-3">
-            <div className="bg-white rounded-lg shadow-sm lg:border lg:p-6">
+            <div className="bg-white rounded-lg shadow-sm lg:border-1 border-transparent lg:p-6">
               {/* Current Step Header */}
               <div className="mb-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">

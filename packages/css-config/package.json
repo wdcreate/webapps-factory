@@ -1,15 +1,12 @@
 {
   "name": "@repo/css-config",
-  "version": "0.0.0",
-  "type": "module",
-  "private": true,
   "exports": {
-    "./tailwind": "./tailwind.config.ts",
-    "./postcss": "./postcss.config.ts"
+    "./postcss": "./postcss.config.mjs",
+    "./styles": "./shared.css"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.40",
-    "tailwindcss": "^3.4.7"
+    "@tailwindcss/postcss": "^4.1.11",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11"
   }
 }
