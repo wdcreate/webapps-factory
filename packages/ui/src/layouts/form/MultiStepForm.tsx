@@ -4,16 +4,21 @@ import clsx from "clsx";
 import { Button } from "@repo/ui/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useMultiStepForm } from "@repo/ui/hooks/useMultiStepForm";
-import { MultiStepFormProps } from "@repo/ui/types/index.js";
 import { StepNavigation } from "./StepNavigation";
 import { FormField } from "./FormFiled";
+import { FormDataType, MultiStepFormConfig, StepConfig } from "@repo/ui/types";
 
+export interface MultiStepFormProps {
+  config: MultiStepFormConfig;
+  onSubmit: (data: FormDataType) => Promise<void> | void;
+  onStepChange?: (step: number, stepConfig: StepConfig) => void;
+  initialData?: Partial<FormDataType>;
+}
 export const MultiStepForm: React.FC<MultiStepFormProps> = ({
   config,
   onSubmit,
   onStepChange,
   initialData,
-  className,
 }) => {
   const {
     data,
@@ -68,7 +73,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
   return (
     <div
       id={config.sectionId}
-      className={clsx(" bg-background bg-cover bg-center ", className)}
+      className={clsx(" bg-background bg-cover bg-center ", config.className)}
       style={sectionStyle}
     >
       <div className="section">
