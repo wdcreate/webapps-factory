@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { FormConfig, FormDataType } from "@repo/ui/types/index.js";
+import { FormConfig, FormDataType } from "@repo/ui/types";
 import { FormField } from "./FormFiled";
 import { Button } from "@repo/ui/components/ui/button";
 import { useForm } from "@repo/ui/hooks/useForm";
@@ -97,7 +97,7 @@ export const OneStepForm: React.FC<OneStepFormProps> = ({
 
               {config.resetButton && (
                 <Button
-                  type="button"
+                  type="reset"
                   variant="outline"
                   onClick={handleReset}
                   className={` ${config.resetButton.className || ""}`}

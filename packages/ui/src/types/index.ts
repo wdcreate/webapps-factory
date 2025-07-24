@@ -187,14 +187,6 @@ export interface UseMultiStepFormReturn
   completedSteps: Set<number>;
 }
 
-export interface MultiStepFormProps {
-  config: MultiStepFormConfig;
-  onSubmit: (data: FormDataType) => Promise<void> | void;
-  onStepChange?: (step: number, stepConfig: StepConfig) => void;
-  initialData?: Partial<FormDataType>;
-  className?: string;
-}
-
 // Carousel Section
 
 export interface UniversalCarouselData<T = unknown> {
