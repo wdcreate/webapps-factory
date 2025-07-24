@@ -184,6 +184,42 @@ You can customize Tailwind or theme tokens by editing the `tailwind.config.js` a
 
 ---
 
+## Using `app-layout` as a Template
+
+The `app-layout` workspace serves as a clean, ready-to-use Next.js starter template. To bootstrap a new application based on it:
+
+```bash
+cp -r apps/app-layout apps/my-new-app
+```
+
+1. **Rename Files & References**
+
+   * In `apps/my-new-app/package.json`, update the `name` field and any script commands.
+   * Adjust `next.config.js`, `tsconfig.json`, and imports in components or layouts to use `my-new-app` instead of `app-layout`.
+
+2. **Add Scripts to Root `package.json`**
+   In the root of the monorepo, under `scripts`, add entries for your new app:
+
+   ```json
+   "dev:my-new-app": "turbo run dev --filter=my-new-app",
+   "build:my-new-app": "turbo run build --filter=my-new-app",
+   "start:my-new-app": "turbo run start --filter=my-new-app",
+   ```
+
+3. **Install Dependencies** (if any new ones were added):
+
+   ```bash
+   npm install
+   ```
+
+4. **Run Your New App**:
+
+   ```bash
+   npm run dev:my-new-app
+   ```
+
+---
+
 ## 📖 Contributing
 
 Contributions are welcome! Please follow these steps:
