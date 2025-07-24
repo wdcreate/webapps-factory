@@ -1,84 +1,203 @@
-# Turborepo starter
+# WebApps Factory Monorepo
 
-This Turborepo starter is maintained by the Turborepo core team.
+A Turborepo-powered monorepository for building and managing multiple web applications and shared packages, including a UI kit, configuration packages, and utilities.
 
-## Using this example
+---
 
-Run the following command:
+## 🚀 Overview
 
-```sh
-npx create-turbo@latest
-```
+`webapps-factory` is a **monorepo** managed with [Turborepo](https://turbo.build/repo) that streamlines development workflows across multiple Next.js applications and shared TypeScript/ESLint/Tailwind/Vitest configurations. This setup promotes code reusability, consistency, and faster builds.
 
-## What's inside?
+### Key Features
 
-This Turborepo includes the following packages/apps:
+* **Apps**: Two Next.js applications (`app-layout` and `app-test`) with Turbopack support.
+* **Packages**:
 
-### Apps and Packages
+  * **Config packages** for TypeScript, ESLint, Tailwind, and Vitest under `packages/*`.
+  * **UI Kit** (`@repo/ui`) providing reusable React components, hooks, layouts, and global styles.
+* **High performance** with Turborepo caching and parallelized tasks.
+* **Type-safe** development with shared TypeScript configurations.
+* **Standardized** code style with Prettier, ESLint, and shared lint configs.
+* **Testing** powered by Vitest and React Testing Library.
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+---
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+## 📁 Repo Structure
 
 ```
-cd my-turborepo
-pnpm build
+webapps-factory/
+├── apps/
+│   ├── app-layout/      # Next.js application with shared UI layout
+│   └── app-test/        # Example Next.js application consuming @repo/ui
+├── packages/
+│   ├── ui/              # Shared UI components, hooks, layouts, globals
+│   ├── typescript-config/ # Shared tsconfig settings
+│   ├── eslint-config/   # Shared ESLint rules and plugins
+│   ├── css-config/      # Tailwind and PostCSS configurations
+│   └── vitest-config/   # Shared Vitest setup
+├── package.json         # Root workspace definition and scripts
+└── turbo.json           # Turborepo configuration
 ```
 
-### Develop
+---
 
-To develop all apps and packages, run the following command:
+## 🛠️ Prerequisites
 
+* **Node.js** >= 18
+* **npm** >= 10.2.4 (as defined in `packageManager`)
+
+---
+
+## ⚡ Getting Started
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/your-org/webapps-factory.git
+   cd webapps-factory
+   ```
+
+2. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+3. **Run all apps in development mode**:
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Run a single app** (e.g., `app-test`):
+
+   ```bash
+   npm run dev:app-test
+   ```
+
+5. **Build all projects**:
+
+   ```bash
+   npm run build
+   ```
+
+6. **Run tests**:
+
+   ```bash
+   npm test
+   ```
+
+---
+
+## 📜 Available Scripts
+
+Root-level scripts (in `package.json`):
+
+| Command                    | Description                          |
+| -------------------------- | ------------------------------------ |
+| `npm run dev`              | Start all apps in development mode   |
+| `npm run dev:app-layout`   | Start `app-layout` only              |
+| `npm run dev:app-test`     | Start `app-test` only                |
+| `npm run build`            | Build all apps and packages          |
+| `npm run build:app-layout` | Build `app-layout` only              |
+| `npm run build:app-test`   | Build `app-test` only                |
+| `npm run lint`             | Run ESLint across the monorepo       |
+| `npm run format`           | Format code with Prettier            |
+| `npm run check-types`      | Type-check all packages and apps     |
+| `npm run test`             | Run Vitest for all packages and apps |
+| `npm run test:watch`       | Run Vitest in watch mode             |
+
+---
+
+## 📦 Workspace Packages
+
+### `@repo/ui`
+
+A React UI kit with:
+
+* **Components**: Buttons, forms, modals, cards, etc.
+* **Layouts**: Common page layouts and templates.
+* **Global styles**: Tailwind CSS globals and utility classes.
+* **Hooks & utilities**: Custom hooks and helper functions.
+
+#### Usage in an app:
+
+```tsx
+import { Button } from '@repo/ui/components/Button';
+
+export default function HomePage() {
+  return <Button>Click me</Button>;
+}
 ```
-cd my-turborepo
-pnpm dev
+
+Other packages under `packages/` provide shared ESLint, TypeScript, and Vitest configurations to ensure consistency across all workspaces.
+
+---
+
+## Working with the Repository
+
+This section explains how to install and manage UI components using the `shadcn/ui` toolkit within our monorepo.
+
+---
+
+### Prerequisites
+
+* Node.js and npm installed
+* Navigate to the root of the project
+
+---
+
+### Installing UI Components (shadcn/ui)
+
+```bash
+cd packages/ui
+npx shadcn@latest add <component-name>
 ```
 
-### Remote Caching
+### Useful Commands & Tips
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+* **List Installed Components**:
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+  ```bash
+  cd packages/ui
+  npx shadcn@latest list
+  ```
+* **Remove a Component**:
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+  ```bash
+  cd packages/ui
+  npx shadcn@latest remove <component-name>
+  ```
+* **Generate Component with Options**:
 
-```
-cd my-turborepo
-npx turbo login
-```
+  ```bash
+  cd packages/ui
+  npx shadcn@latest add <component-name> --typescript --theme
+  ```
+* **Sync UI Kit Across Apps** (after adding/removing components):
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+  ```bash
+  npm run build:ui && npm install
+  ```
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+You can customize Tailwind or theme tokens by editing the `tailwind.config.js` and referencing them in your components.
 
-```
-npx turbo link
-```
+---
 
-## Useful Links
+## 📖 Contributing
 
-Learn more about the power of Turborepo:
+Contributions are welcome! Please follow these steps:
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/your-feature`.
+3. Commit your changes: `git commit -m 'Add some feature'`.
+4. Push to the branch: `git push origin feature/your-feature`.
+5. Open a Pull Request describing your changes.
+
+Please ensure tests pass and linting checks are green before requesting a review.
+
+---
+
+## ⚖️ License
+
+This project is licensed under the [MIT License](LICENSE).
