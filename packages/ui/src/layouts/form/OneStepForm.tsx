@@ -55,7 +55,7 @@ export const OneStepForm: React.FC<OneStepFormProps> = ({
     : undefined;
 
   return (
-    <div id={config.sectionId} className={`bg-background bg-cover bg-center ${className || ""}`}   style={sectionStyle}>
+    <div id={config.sectionId} className={`bg-background bg-cover bg-center ${config.className || ""}`}   style={sectionStyle}>
       <div className="section">
         {(config.title || config.description) && (
           <div className="py-4">
@@ -97,7 +97,7 @@ export const OneStepForm: React.FC<OneStepFormProps> = ({
 
               {config.resetButton && (
                 <Button
-                  type="button"
+                  type="reset"
                   variant="outline"
                   onClick={handleReset}
                   className={` ${config.resetButton.className || ""}`}

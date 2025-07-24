@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { CheckCircle, Circle, AlertCircle } from "lucide-react";
-import { StepConfig } from "@repo/ui/types";
+import { StepConfig } from "@repo/ui/types/index.js";
 
 interface StepNavigationProps {
   steps: StepConfig[];
@@ -58,18 +58,15 @@ export const StepNavigation: React.FC<StepNavigationProps> = ({
     const hasError = stepErrors[id];
     const clickable = canGoToStep(index);
 
-    return clsx(
-      "flex items-center gap-2 p-2 rounded-lg transition-colors",
-      {
-        "w-full": showStepTitles,
-        "cursor-not-allowed opacity-50": !clickable,
-        "cursor-pointer hover:bg-gray-50": clickable,
-        "bg-blue-50 border-2 border-blue-200": isCurrent,
-        "bg-green-50": isCompleted && !isCurrent,
-        "bg-red-50": hasError && !isCurrent,
-        "bg-gray-50": !isCurrent && !isCompleted && !hasError,
-      }
-    );
+    return clsx("flex items-center gap-2 p-2 rounded-lg transition-colors", {
+      "w-full": showStepTitles,
+      "cursor-not-allowed opacity-50": !clickable,
+      "cursor-pointer hover:bg-gray-50": clickable,
+      "bg-blue-50 border-2 border-blue-200": isCurrent,
+      "bg-green-50": isCompleted && !isCurrent,
+      "bg-red-50": hasError && !isCurrent,
+      "bg-gray-50": !isCurrent && !isCompleted && !hasError,
+    });
   };
 
   return (
@@ -84,6 +81,7 @@ export const StepNavigation: React.FC<StepNavigationProps> = ({
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div
+              role="progressbar"
               className="bg-blue-500 h-2 rounded-full transition-all duration-300 ease-in-out"
               style={{ width: `${progress}%` }}
             />
@@ -112,7 +110,9 @@ export const StepNavigation: React.FC<StepNavigationProps> = ({
                         "bg-green-500 text-white": completedSteps.has(idx),
                         "bg-red-500 text-white": stepErrors[step.id],
                         "bg-gray-300 text-gray-700":
-                          !completedSteps.has(idx) && !stepErrors[step.id] && idx !== currentStep,
+                          !completedSteps.has(idx) &&
+                          !stepErrors[step.id] &&
+                          idx !== currentStep,
                       }
                     )}
                   >

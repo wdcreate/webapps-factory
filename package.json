@@ -12,12 +12,19 @@
     "start:app-layout": "turbo run start --filter=app-layout",
     "dev:app-test": "turbo run dev --filter=app-test",
     "build:app-test": "turbo run build --filter=app-test",
-    "start:app-test": "turbo run start --filter=app-test"
+    "start:app-test": "turbo run start --filter=app-test",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch"
   },
   "devDependencies": {
+    "@repo/vitest-config": "*",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "prettier": "^3.5.3",
     "turbo": "^2.5.3",
-    "typescript": "5.8.2"
+    "typescript": "5.8.2",
+    "vitest": "^3.0.7"
   },
   "engines": {
     "node": ">=18"

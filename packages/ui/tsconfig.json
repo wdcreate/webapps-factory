@@ -1,17 +1,15 @@
 {
- "extends": "@repo/typescript-config/react",
+  "extends": "@repo/typescript-config/react",
   "compilerOptions": {
     "baseUrl": ".",
-    "rootDir": "./src",
+    "rootDir": ".",
     "paths": {
       "@repo/ui/*": ["./src/*"]
-    }
+    },
+     "types": [
+      "vitest/globals",
+    ]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src/**/*", "tests/**/*.tsx", "tests/hooks/useForm.test.ts", "tests/hooks/useMultiStepForm.test.ts"],
+  "exclude": ["node_modules", "dist"]
 }

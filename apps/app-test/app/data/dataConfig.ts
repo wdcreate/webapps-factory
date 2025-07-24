@@ -429,7 +429,7 @@ export const dataConfig: dataConfigType = {
       text: "Clear Form",
     },
     layout: "vertical",
-    className: "max-w-2xl",
+    className: "custom-form",
   },
   ms_form: {
     backgroundSrc: "/hero-bg.jpg",
