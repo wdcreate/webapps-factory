@@ -5,8 +5,11 @@
     "rootDir": ".",
     "paths": {
       "@repo/ui/*": ["./src/*"]
-    }
+    },
+     "types": [
+      "vitest/globals",
+    ]
   },
-  "include": ["src/**/*", "tests/**/*.tsx"],
+  "include": ["src/**/*", "tests/**/*.tsx", "tests/hooks/useForm.test.ts", "tests/hooks/useMultiStepForm.test.ts"],
   "exclude": ["node_modules", "dist"]
 }

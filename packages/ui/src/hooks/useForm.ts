@@ -37,36 +37,42 @@ export const useForm = (
 
     // Required validation
     if (field.required) {
-      if (value === null || value === undefined || value === '' || 
-          (typeof value === 'string' && value.trim() === '')) {
-        return `${field.label} is required`;
+      if (field.type === 'checkbox') {
+        if (value !== true) {
+          return `${field.label} is required`;
+        }
+      } else {
+        if (value === null || value === undefined || value === '' || 
+            (typeof value === 'string' && value.trim() === '')) {
+          return `${field.label} is required`;
+        }
       }
     }
 
     // Skip other validations if value is empty and not required
-    if (!field.required && (value === '' || value === null || value === undefined)) {
-      return null;
+    if (!field.required) {
+      if (value === '' || value === null || value === undefined) {
+        return null;
+      }
+      if (field.type === 'number' && value === 0) {
+        return null;
+      }
     }
 
     // Type-specific validations
     if (typeof value === 'string') {
-      // Min/Max length validation
       if (field.validation?.minLength && value.length < field.validation.minLength) {
         return `${field.label} must be at least ${field.validation.minLength} characters`;
       }
       if (field.validation?.maxLength && value.length > field.validation.maxLength) {
         return `${field.label} must be no more than ${field.validation.maxLength} characters`;
       }
-
-      // Pattern validation
       if (field.validation?.pattern) {
         const regex = new RegExp(field.validation.pattern);
         if (!regex.test(value)) {
           return `${field.label} format is invalid`;
         }
       }
-
-      // Email validation
       if (field.type === 'email') {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(value)) {
@@ -75,7 +81,6 @@ export const useForm = (
       }
     }
 
-    // Number validations
     if (typeof value === 'number') {
       if (field.validation?.min !== undefined && value < field.validation.min) {
         return `${field.label} must be at least ${field.validation.min}`;
@@ -85,19 +90,11 @@ export const useForm = (
       }
     }
 
-   /*  // Custom validation
-    if (field.validation?.custom && value !== null && value !== undefined) {
-      const customError = field.validation.custom(value);
-      if (customError) return customError;
-    } */
-
     return null;
   }, [config.fields]);
 
   const handleChange = useCallback((name: string, value: string | number | boolean | File | null) => {
     setData(prev => ({ ...prev, [name]: value }));
-    
-    // Clear error for this field when user starts typing
     if (errors[name]) {
       setErrors(prev => {
         const newErrors = { ...prev };
@@ -110,7 +107,6 @@ export const useForm = (
   const validateForm = useCallback((): boolean => {
     const newErrors: FormErrors = {};
     let isValid = true;
-
     config.fields.forEach(field => {
       const fieldValue = data[field.name];
       if (fieldValue !== undefined) {
@@ -121,19 +117,19 @@ export const useForm = (
         }
       }
     });
-
     setErrors(newErrors);
     return isValid;
   }, [config.fields, data, validateField]);
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!validateForm()) {
+    // Start submitting immediately
+    setIsSubmitting(true);
+    const isValid = validateForm();
+    if (!isValid) {
+      setIsSubmitting(false);
       return;
     }
-
-    setIsSubmitting(true);
     try {
       await onSubmit(data);
     } catch (error) {
