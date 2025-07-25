@@ -1,0 +1,10 @@
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+if [ "$branch" = "main" ]; then
+  echo "⏳ Running pre-commit checks on branch 'main'..."
+  npm run lint
+  npm run chack-types
+else
+  echo "⚠️ Skipping pre-commit checks on branch '$branch'"
+  exit 0
+fi

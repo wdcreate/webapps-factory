@@ -14,14 +14,19 @@
     "build:app-test": "turbo run build --filter=app-test",
     "start:app-test": "turbo run start --filter=app-test",
     "test": "turbo run test",
-    "test:watch": "turbo run test:watch"
+    "test:watch": "turbo run test:watch",
+    "prepare": "husky",
+        "validate": "npm run format && npm run lint && npm run check-types && npm run test"
+
   },
   "devDependencies": {
     "@repo/vitest-config": "*",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "husky": "^9.1.7",
     "jiti": "^2.5.1",
+    "lint-staged": "^16.1.2",
     "prettier": "^3.5.3",
     "turbo": "^2.5.3",
     "typescript": "5.8.2",
@@ -39,5 +44,14 @@
     "lucide-react": "^0.510.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
   }
 }

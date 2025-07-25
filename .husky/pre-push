@@ -1,0 +1,9 @@
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+if [ "$branch" = "main" ]; then
+  echo "⏳ Running pre-push checks on branch 'main'..."
+  npm run validate
+else
+  echo "⚠️ Skipping pre-push checks on branch '$branch'"
+  exit 0
+fi
