@@ -1,7 +1,10 @@
-import "@testing-library/jest-dom";
-import { afterEach } from "vitest";
-import { cleanup } from "@testing-library/react";
+export async function setup() {
+  const { afterEach } = await import("vitest");
+  const { cleanup } = await import("@testing-library/react");
+  
+  afterEach(() => {
+    cleanup();
+  });
+}
 
-afterEach(() => {
-  cleanup();
-});
+import "@testing-library/jest-dom";
