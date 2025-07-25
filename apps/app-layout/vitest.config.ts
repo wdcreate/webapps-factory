@@ -4,5 +4,6 @@ export default {
   test: {
     ...uiConfig.test,
     setupFiles: "@repo/vitest-config/setupTests",
+     passWithNoTests: true,
   },
 };
