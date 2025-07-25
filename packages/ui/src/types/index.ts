@@ -126,7 +126,7 @@ export interface UseFormReturn {
   isSubmitting: boolean;
   handleChange: (
     name: string,
-    value: string | number | boolean | File | null
+    value: string | number | boolean | File | null,
   ) => void;
   handleSubmit: (e: React.FormEvent) => Promise<void>;
   handleReset: () => void;
@@ -134,7 +134,7 @@ export interface UseFormReturn {
   clearErrors: () => void;
   validateField: (
     name: string,
-    value: string | number | boolean | File | null
+    value: string | number | boolean | File | null,
   ) => string | null;
   validateForm: () => boolean;
 }
@@ -202,4 +202,3 @@ export interface UniversalCarouselData<T = unknown> {
   slidesToShow?: number;
   className?: string;
 }
-

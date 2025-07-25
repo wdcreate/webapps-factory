@@ -97,7 +97,7 @@ describe("GridFooter", () => {
         "font-semibold",
         "text-primary",
         "mb-4",
-        "uppercase"
+        "uppercase",
       );
     });
 
@@ -118,7 +118,7 @@ describe("GridFooter", () => {
       expect(webAppLink).toHaveClass(
         "text-foreground",
         "hover:text-primary",
-        "text-sm"
+        "text-sm",
       );
 
       const aboutLink = screen.getByRole("link", { name: "About" });
@@ -150,14 +150,14 @@ describe("GridFooter", () => {
       const twitterLink = screen.getByRole("link", { name: "Twitter" });
       expect(twitterLink).toHaveAttribute(
         "href",
-        "https://twitter.com/company"
+        "https://twitter.com/company",
       );
       expect(twitterLink).toHaveAttribute("aria-label", "Twitter");
 
       const linkedinLink = screen.getByRole("link", { name: "LinkedIn" });
       expect(linkedinLink).toHaveAttribute(
         "href",
-        "https://linkedin.com/company"
+        "https://linkedin.com/company",
       );
     });
 
@@ -185,10 +185,10 @@ describe("GridFooter", () => {
 
       // Should not find any social links
       expect(
-        screen.queryByRole("link", { name: "Twitter" })
+        screen.queryByRole("link", { name: "Twitter" }),
       ).not.toBeInTheDocument();
       expect(
-        screen.queryByRole("link", { name: "LinkedIn" })
+        screen.queryByRole("link", { name: "LinkedIn" }),
       ).not.toBeInTheDocument();
     });
   });
@@ -198,7 +198,7 @@ describe("GridFooter", () => {
       render(<GridFooter data={mockFooterData} />);
 
       expect(
-        screen.getByText("© 2025 My Company. All rights reserved.")
+        screen.getByText("© 2025 My Company. All rights reserved."),
       ).toBeInTheDocument();
     });
 
@@ -206,14 +206,14 @@ describe("GridFooter", () => {
       render(<GridFooter data={mockFooterData} />);
 
       const copyright = screen.getByText(
-        "© 2025 My Company. All rights reserved."
+        "© 2025 My Company. All rights reserved.",
       );
       expect(copyright).toHaveClass(
         "text-sm",
         "text-primary",
         "text-center",
         "my-6",
-        "lg:my-12"
+        "lg:my-12",
       );
     });
   });
@@ -249,7 +249,7 @@ describe("GridFooter", () => {
       // Should still render logo and copyright
       expect(screen.getByAltText("Company Logo")).toBeInTheDocument();
       expect(
-        screen.getByText("© 2025 My Company. All rights reserved.")
+        screen.getByText("© 2025 My Company. All rights reserved."),
       ).toBeInTheDocument();
     });
 
@@ -283,7 +283,7 @@ describe("GridFooter", () => {
       // Find all links and filter by href
       const allLinks = screen.getAllByRole("link");
       const socialLink = allLinks.find(
-        (link) => link.getAttribute("href") === "https://twitter.com/company"
+        (link) => link.getAttribute("href") === "https://twitter.com/company",
       );
 
       expect(socialLink).toBeDefined();

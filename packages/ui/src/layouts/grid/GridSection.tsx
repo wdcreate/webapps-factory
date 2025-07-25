@@ -48,7 +48,8 @@ export const GridSection: React.FC<GridSectionProps> = ({
   wrapperClassName = "",
   gridGap = "gap-3 lg:gap-6",
   wideColumnSpan,
-  wideSide = "left", bgSrc
+  wideSide = "left",
+  bgSrc,
 }) => {
   let items = React.Children.toArray(children);
   if (reverse) items = items.reverse();
@@ -61,8 +62,11 @@ export const GridSection: React.FC<GridSectionProps> = ({
   const narrowSpan = useWide ? total - wideSpan! : undefined;
 
   return (
-    <div id={sectionId}   className="bg-cover bg-center"
-  style={{ backgroundImage: `url(${bgSrc})` }}>
+    <div
+      id={sectionId}
+      className="bg-cover bg-center"
+      style={{ backgroundImage: `url(${bgSrc})` }}
+    >
       <div className={clsx("section", wrapperClassName)}>
         {(heading || text) && (
           <div className="text-center mb-8">
@@ -81,7 +85,7 @@ export const GridSection: React.FC<GridSectionProps> = ({
             useWide
               ? "grid-cols-12"
               : clsx("grid-cols-1", colClassMap[columns]),
-            gridGap
+            gridGap,
           )}
         >
           {items.map((child, idx) => {
@@ -95,7 +99,7 @@ export const GridSection: React.FC<GridSectionProps> = ({
                     (wideSide === "right" && idx === 1)
                       ? wideSpan!
                       : narrowSpan!
-                  ]
+                  ],
                 )
               : undefined;
 

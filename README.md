@@ -10,15 +10,15 @@ A Turborepo-powered monorepository for building and managing multiple web applic
 
 ### Key Features
 
-* **Apps**: Two Next.js applications (`app-layout` and `app-test`) with Turbopack support.
-* **Packages**:
+- **Apps**: Two Next.js applications (`app-layout` and `app-test`) with Turbopack support.
+- **Packages**:
+  - **Config packages** for TypeScript, ESLint, Tailwind, and Vitest under `packages/*`.
+  - **UI Kit** (`@repo/ui`) providing reusable React components, hooks, layouts, and global styles.
 
-  * **Config packages** for TypeScript, ESLint, Tailwind, and Vitest under `packages/*`.
-  * **UI Kit** (`@repo/ui`) providing reusable React components, hooks, layouts, and global styles.
-* **High performance** with Turborepo caching and parallelized tasks.
-* **Type-safe** development with shared TypeScript configurations.
-* **Standardized** code style with Prettier, ESLint, and shared lint configs.
-* **Testing** powered by Vitest and React Testing Library.
+- **High performance** with Turborepo caching and parallelized tasks.
+- **Type-safe** development with shared TypeScript configurations.
+- **Standardized** code style with Prettier, ESLint, and shared lint configs.
+- **Testing** powered by Vitest and React Testing Library.
 
 ---
 
@@ -43,8 +43,8 @@ webapps-factory/
 
 ## 🛠️ Prerequisites
 
-* **Node.js** >= 18
-* **npm** >= 10.2.4 (as defined in `packageManager`)
+- **Node.js** >= 18
+- **npm** >= 10.2.4 (as defined in `packageManager`)
 
 ---
 
@@ -115,15 +115,15 @@ Root-level scripts (in `package.json`):
 
 A React UI kit with:
 
-* **Components**: Buttons, forms, modals, cards, etc.
-* **Layouts**: Common page layouts and templates.
-* **Global styles**: Tailwind CSS globals and utility classes.
-* **Hooks & utilities**: Custom hooks and helper functions.
+- **Components**: Buttons, forms, modals, cards, etc.
+- **Layouts**: Common page layouts and templates.
+- **Global styles**: Tailwind CSS globals and utility classes.
+- **Hooks & utilities**: Custom hooks and helper functions.
 
 #### Usage in an app:
 
 ```tsx
-import { Button } from '@repo/ui/components/Button';
+import { Button } from "@repo/ui/components/Button";
 
 export default function HomePage() {
   return <Button>Click me</Button>;
@@ -142,8 +142,8 @@ This section explains how to install and manage UI components using the `shadcn/
 
 ### Prerequisites
 
-* Node.js and npm installed
-* Navigate to the root of the project
+- Node.js and npm installed
+- Navigate to the root of the project
 
 ---
 
@@ -156,25 +156,28 @@ npx shadcn@latest add <component-name>
 
 ### Useful Commands & Tips
 
-* **List Installed Components**:
+- **List Installed Components**:
 
   ```bash
   cd packages/ui
   npx shadcn@latest list
   ```
-* **Remove a Component**:
+
+- **Remove a Component**:
 
   ```bash
   cd packages/ui
   npx shadcn@latest remove <component-name>
   ```
-* **Generate Component with Options**:
+
+- **Generate Component with Options**:
 
   ```bash
   cd packages/ui
   npx shadcn@latest add <component-name> --typescript --theme
   ```
-* **Sync UI Kit Across Apps** (after adding/removing components):
+
+- **Sync UI Kit Across Apps** (after adding/removing components):
 
   ```bash
   npm run build:ui && npm install
@@ -193,9 +196,8 @@ cp -r apps/app-layout apps/my-new-app
 ```
 
 1. **Rename Files & References**
-
-   * In `apps/my-new-app/package.json`, update the `name` field and any script commands.
-   * Adjust `next.config.js`, `tsconfig.json`, and imports in components or layouts to use `my-new-app` instead of `app-layout`.
+   - In `apps/my-new-app/package.json`, update the `name` field and any script commands.
+   - Adjust `next.config.js`, `tsconfig.json`, and imports in components or layouts to use `my-new-app` instead of `app-layout`.
 
 2. **Add Scripts to Root `package.json`**
    In the root of the monorepo, under `scripts`, add entries for your new app:

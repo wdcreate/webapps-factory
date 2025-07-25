@@ -173,7 +173,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
                         disabled={isSubmitting || config.submitButton?.disabled}
                         className={clsx(
                           "flex items-center gap-2",
-                          config.submitButton?.className
+                          config.submitButton?.className,
                         )}
                       >
                         {isSubmitting

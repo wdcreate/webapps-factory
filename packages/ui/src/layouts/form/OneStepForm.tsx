@@ -50,12 +50,16 @@ export const OneStepForm: React.FC<OneStepFormProps> = ({
         return "space-y-4";
     }
   };
-    const sectionStyle = config.backgroundSrc
+  const sectionStyle = config.backgroundSrc
     ? { backgroundImage: `url(${config.backgroundSrc})` }
     : undefined;
 
   return (
-    <div id={config.sectionId} className={`bg-background bg-cover bg-center ${config.className || ""}`}   style={sectionStyle}>
+    <div
+      id={config.sectionId}
+      className={`bg-background bg-cover bg-center ${config.className || ""}`}
+      style={sectionStyle}
+    >
       <div className="section">
         {(config.title || config.description) && (
           <div className="py-4">
@@ -67,7 +71,6 @@ export const OneStepForm: React.FC<OneStepFormProps> = ({
             {config.description && (
               <p className="text-center">{config.description}</p>
             )}
-
           </div>
         )}
         <div className="lg:p-6">

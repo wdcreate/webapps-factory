@@ -222,14 +222,14 @@ export const dataConfig: dataConfigType = {
         image: {
           src: "/travellers.avif",
           alt: "Product 1",
-        }
+        },
       },
       {
         id: "im-2",
         image: {
           src: "/map.avif",
           alt: "Product 2",
-        }
+        },
       },
       {
         id: "im-3",
@@ -237,7 +237,6 @@ export const dataConfig: dataConfigType = {
           src: "/tour.avif",
           alt: "Product 3",
         },
-       
       },
       {
         id: "im-11",
@@ -245,7 +244,6 @@ export const dataConfig: dataConfigType = {
           src: "/travellers.avif",
           alt: "Product 1",
         },
-        
       },
       {
         id: "im-12",
@@ -253,7 +251,6 @@ export const dataConfig: dataConfigType = {
           src: "/map.avif",
           alt: "Product 2",
         },
-      
       },
       {
         id: "im-13",
@@ -261,7 +258,6 @@ export const dataConfig: dataConfigType = {
           src: "/tour.avif",
           alt: "Product 3",
         },
-      
       },
       {
         id: "im-121",
@@ -269,7 +265,6 @@ export const dataConfig: dataConfigType = {
           src: "/travellers.avif",
           alt: "Product 1",
         },
-       
       },
       {
         id: "im-21",
@@ -277,7 +272,6 @@ export const dataConfig: dataConfigType = {
           src: "/map.avif",
           alt: "Product 2",
         },
-       
       },
       {
         id: "im-133",
@@ -285,7 +279,6 @@ export const dataConfig: dataConfigType = {
           src: "/tour.avif",
           alt: "Product 3",
         },
-       
       },
     ],
     backgroundSrc: "/hero-bg.jpg",

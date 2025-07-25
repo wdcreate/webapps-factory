@@ -1,10 +1,13 @@
 // MultiStepForm.test.tsx
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
-import {userEvent} from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import { vi, describe, it, beforeEach, expect, MockedFunction } from "vitest";
 
-import { MultiStepForm, MultiStepFormProps } from "@repo/ui/layouts/form/MultiStepForm";
+import {
+  MultiStepForm,
+  MultiStepFormProps,
+} from "@repo/ui/layouts/form/MultiStepForm";
 import { useMultiStepForm } from "@repo/ui/hooks/useMultiStepForm";
 import type {
   MultiStepFormConfig,
@@ -99,14 +102,12 @@ describe("MultiStepForm", () => {
     };
 
     // Cast through unknown to skip extra fields
-    mockUse.mockReturnValue(
-      baseHook as unknown as UseMultiStepFormReturn
-    );
+    mockUse.mockReturnValue(baseHook as unknown as UseMultiStepFormReturn);
   });
 
   function renderForm(
     cfgOverride: Partial<MultiStepFormConfig> = {},
-    propsOverride: Partial<MultiStepFormProps> = {}
+    propsOverride: Partial<MultiStepFormProps> = {},
   ) {
     const config: MultiStepFormConfig = {
       sectionId: "my-section",
@@ -123,7 +124,11 @@ describe("MultiStepForm", () => {
         allowSkipSteps: false,
         onlyProgressBar: false,
       },
-      submitButton: { text: "Finish", className: "btn-primary", disabled: false },
+      submitButton: {
+        text: "Finish",
+        className: "btn-primary",
+        disabled: false,
+      },
       steps: [step1, step2],
       ...cfgOverride,
     };
@@ -140,25 +145,24 @@ describe("MultiStepForm", () => {
     expect(root).toHaveStyle(`background-image: url(${config.backgroundSrc})`);
   });
 
-// it("shows only first step field (via its label) and Next button", () => {
-//   renderForm();
+  // it("shows only first step field (via its label) and Next button", () => {
+  //   renderForm();
 
-//   const firstLabel = screen.getByText(/first name/i, { selector: "label" });
-//   expect(firstLabel).toBeInTheDocument();
-//   expect(firstLabel).toHaveAttribute("for", "firstName");
+  //   const firstLabel = screen.getByText(/first name/i, { selector: "label" });
+  //   expect(firstLabel).toBeInTheDocument();
+  //   expect(firstLabel).toHaveAttribute("for", "firstName");
 
-//   const firstInput = screen.getByLabelText(/first name/i);
-//   expect(firstInput).toBeInTheDocument();
+  //   const firstInput = screen.getByLabelText(/first name/i);
+  //   expect(firstInput).toBeInTheDocument();
 
-//   expect(screen.queryByLabelText(/last name/i)).toBeNull();
+  //   expect(screen.queryByLabelText(/last name/i)).toBeNull();
 
-//   const next = screen.getByRole("button", { name: /next/i });
-//   expect(next).toBeEnabled();
+  //   const next = screen.getByRole("button", { name: /next/i });
+  //   expect(next).toBeEnabled();
 
-//   userEvent.click(next);
-//   expect(baseHook.handleStepSubmit).toHaveBeenCalled();
-// });
-
+  //   userEvent.click(next);
+  //   expect(baseHook.handleStepSubmit).toHaveBeenCalled();
+  // });
 
   it("does not render Previous on first step", () => {
     renderForm();
@@ -221,7 +225,7 @@ describe("MultiStepForm", () => {
       "gap-4",
       "grid-cols-1",
       "md:grid-cols-2",
-      "lg:grid-cols-3"
+      "lg:grid-cols-3",
     );
   });
 

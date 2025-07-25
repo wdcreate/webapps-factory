@@ -17,7 +17,7 @@ export function ImageWithCTAButtonSection({ data }: ImageWithCTAProps) {
     sectionId,
     reverseGrid,
   } = data;
-  
+
   const sectionStyle = backgroundSrc
     ? { backgroundImage: `url(${backgroundSrc})` }
     : undefined;

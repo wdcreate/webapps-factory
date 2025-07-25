@@ -113,7 +113,7 @@ export const StepNavigation: React.FC<StepNavigationProps> = ({
                           !completedSteps.has(idx) &&
                           !stepErrors[step.id] &&
                           idx !== currentStep,
-                      }
+                      },
                     )}
                   >
                     {idx + 1}

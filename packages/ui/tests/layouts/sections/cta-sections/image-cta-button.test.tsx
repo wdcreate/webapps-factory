@@ -34,13 +34,13 @@ describe("<ImageWithCTAButtonSection />", () => {
     expect(sec).toHaveClass("bg-background", "bg-cover", "bg-center");
     // inline style
     expect(sec.style.backgroundImage).toBe(
-      'url("https://bg.example.com/bg.jpg")'
+      'url("https://bg.example.com/bg.jpg")',
     );
   });
 
   it("omits inline style when backgroundSrc is falsy", () => {
     render(
-      <ImageWithCTAButtonSection data={makeData({ backgroundSrc: "" })} />
+      <ImageWithCTAButtonSection data={makeData({ backgroundSrc: "" })} />,
     );
     const sec = document.getElementById("cta")!;
     expect(sec.style.backgroundImage).toBe("");
@@ -59,14 +59,14 @@ describe("<ImageWithCTAButtonSection />", () => {
         "sm:w-[75%]",
         "h-auto",
         "lg:w-full",
-        "mx-auto"
+        "mx-auto",
       );
       expect(wrapper).not.toHaveClass("order-last");
     });
 
     it('adds "order-last" class when reverseGrid is true', () => {
       render(
-        <ImageWithCTAButtonSection data={makeData({ reverseGrid: true })} />
+        <ImageWithCTAButtonSection data={makeData({ reverseGrid: true })} />,
       );
       const wrapper = screen.getByAltText("Foo image").parentElement!;
       expect(wrapper).toHaveClass("order-last");
@@ -76,7 +76,7 @@ describe("<ImageWithCTAButtonSection />", () => {
       render(
         <ImageWithCTAButtonSection
           data={makeData({ image: { src: "/no-alt.png" } as any })}
-        />
+        />,
       );
       const img = screen.getByRole("presentation") as HTMLImageElement;
       expect(img).toHaveAttribute("src", "/no-alt.png");
@@ -87,7 +87,7 @@ describe("<ImageWithCTAButtonSection />", () => {
   describe("Text content", () => {
     it("renders the title in an h2 with expected text", () => {
       render(
-        <ImageWithCTAButtonSection data={makeData({ title: "Hello World" })} />
+        <ImageWithCTAButtonSection data={makeData({ title: "Hello World" })} />,
       );
       const h2 = screen.getByRole("heading", { level: 2, name: "Hello World" });
       expect(h2).toBeInTheDocument();
@@ -97,16 +97,16 @@ describe("<ImageWithCTAButtonSection />", () => {
       render(
         <ImageWithCTAButtonSection
           data={makeData({ description: "XYZ description" })}
-        />
+        />,
       );
       expect(screen.getByText("XYZ description")).toBeInstanceOf(
-        HTMLParagraphElement
+        HTMLParagraphElement,
       );
     });
 
     it("handles empty description gracefully", () => {
       render(
-        <ImageWithCTAButtonSection data={makeData({ description: "" })} />
+        <ImageWithCTAButtonSection data={makeData({ description: "" })} />,
       );
       // Still renders a <p> but with empty text
       const p = screen.getByText("", { selector: "p" });
@@ -127,7 +127,7 @@ describe("<ImageWithCTAButtonSection />", () => {
               onClick,
             },
           } as any)}
-        />
+        />,
       );
       const btn = screen.getByRole("button", { name: /ClickMe/ });
       expect(btn).toBeInTheDocument();
@@ -149,7 +149,7 @@ describe("<ImageWithCTAButtonSection />", () => {
               onClick: vi.fn(),
             },
           } as any)}
-        />
+        />,
       );
       const link = screen.getByRole("link", { name: /LinkBtn/ });
       expect(link).toHaveAttribute("href", "/xyz");
@@ -163,7 +163,7 @@ describe("<ImageWithCTAButtonSection />", () => {
       const bad = makeData();
       delete (bad as any).button;
       expect(() =>
-        render(<ImageWithCTAButtonSection data={bad as any} />)
+        render(<ImageWithCTAButtonSection data={bad as any} />),
       ).toThrow();
     });
   });
@@ -173,7 +173,7 @@ describe("<ImageWithCTAButtonSection />", () => {
       const bad = makeData();
       delete (bad as any).image;
       expect(() =>
-        render(<ImageWithCTAButtonSection data={bad as any} />)
+        render(<ImageWithCTAButtonSection data={bad as any} />),
       ).toThrow();
     });
   });

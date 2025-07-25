@@ -5,9 +5,13 @@ import { UniversalCarouselSection } from "@repo/ui/layouts/sections/carousel-sec
 export interface ImagesSlideType {
   id: string;
   image: { src: string; alt: string };
- }
+}
 
-export function ImagesCarouselSection({ data }: { data: UniversalCarouselData<ImagesSlideType> }) {
+export function ImagesCarouselSection({
+  data,
+}: {
+  data: UniversalCarouselData<ImagesSlideType>;
+}) {
   return (
     <UniversalCarouselSection
       data={data}

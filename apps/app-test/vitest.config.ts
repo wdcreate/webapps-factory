@@ -3,6 +3,6 @@ export default {
   ...uiConfig,
   test: {
     ...uiConfig.test,
-    setupFiles: "@repo/vitest-config/setupTests",   
-  }
+    setupFiles: "@repo/vitest-config/setupTests",
+  },
 };

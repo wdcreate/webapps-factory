@@ -12,7 +12,11 @@ export interface ProductSlideType {
   button: { label: string; variant: string; size: string; href: string };
 }
 
-export function ProductCarouselSection({ data }: { data: UniversalCarouselData<ProductSlideType> }) {
+export function ProductCarouselSection({
+  data,
+}: {
+  data: UniversalCarouselData<ProductSlideType>;
+}) {
   return (
     <UniversalCarouselSection
       data={data}
