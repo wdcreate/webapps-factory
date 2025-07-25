@@ -1,4 +1,3 @@
-# .github/workflows/ci.yml
 name: CI
 
 on:
@@ -9,19 +8,21 @@ on:
     branches: [ main, dev ]
 
 jobs:
-  build_and_test:
-    name: Build, Test & Lint
+  # 1. Setup & Build Dependencies
+  setup:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-
     steps:
-      # 1. Checkout code
-      - name: Check out repository
+      - name: Check out code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # 2. Cache Turborepo build outputs
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
       - name: Cache Turborepo
         uses: actions/cache@v4
         with:
@@ -30,29 +31,133 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
-      # 3. Setup Node.js & cache npm
+      - name: Install dependencies
+        run: npm ci
+
+      # КРИТИЧЕСКИ ВАЖНО: Собираем пакеты первыми
+      - name: Build internal packages
+        run: npm run build
+
+      # Кешируем node_modules и собранные пакеты для других джобов
+      - name: Cache build artifacts
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            node_modules
+            apps/*/node_modules
+            packages/*/node_modules
+            packages/*/dist
+            .turbo
+          key: build-${{ runner.os }}-${{ github.sha }}
+
+  # 2. Lint (параллельно после setup)
+  lint:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
 
-      # 4. Install all dependencies
-      - name: Install dependencies
-        run: npm ci
+      - name: Restore build artifacts
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            node_modules
+            apps/*/node_modules
+            packages/*/node_modules
+            packages/*/dist
+            .turbo
+          key: build-${{ runner.os }}-${{ github.sha }}
 
-      # 5. Lint
       - name: ESLint
         run: npm run lint
 
-      # 6. Type Check
+  # 3. Type Check (параллельно после setup)
+  typecheck:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Restore build artifacts
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            node_modules
+            apps/*/node_modules
+            packages/*/node_modules
+            packages/*/dist
+            .turbo
+          key: build-${{ runner.os }}-${{ github.sha }}
+
       - name: Type-Check
         run: npm run check-types
 
-      # 7. Run tests
-      - name: Test (Vitest)
+  # 4. Test (параллельно после setup)
+  test:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Restore build artifacts
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            node_modules
+            apps/*/node_modules
+            packages/*/node_modules
+            packages/*/dist
+            .turbo
+          key: build-${{ runner.os }}-${{ github.sha }}
+
+      - name: Run Vitest
         run: npm test
 
-      # 8. Build (Turborepo)
-      - name: Build all workspaces
+  # 5. Final Build Check (только если все остальное прошло)
+  build-check:
+    needs: [ lint, typecheck, test ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Restore build artifacts
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            node_modules
+            apps/*/node_modules
+            packages/*/node_modules
+            packages/*/dist
+            .turbo
+          key: build-${{ runner.os }}-${{ github.sha }}
+
+      - name: Verify Build
         run: npm run build
