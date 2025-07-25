@@ -7,7 +7,7 @@ export const uiConfig = mergeConfig(
     test: {
       environment: "jsdom",
       globals: true,
-      setupFiles: "@repo/vitest-config/ui/setupTests",
+      setupFiles: "@repo/vitest-config/setupTests",
     },
   }),
 );
