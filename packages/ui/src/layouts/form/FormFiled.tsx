@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from "@repo/ui/components/ui/select";
 import { Textarea } from "@repo/ui/components/ui/textarea";
-import { FormFieldConfig } from "@repo/ui/types/index.js";
+import { FormFieldConfig } from "@repo/ui/types";
 import React from "react";
 
 interface FormFieldProps {

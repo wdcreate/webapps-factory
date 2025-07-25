@@ -24,7 +24,6 @@ export default function BookingForm() {
       config={dataConfig.ms_form}
       onSubmit={handleSubmit}
       onStepChange={handleStepChange}
-      className=""
     />
   );
 }

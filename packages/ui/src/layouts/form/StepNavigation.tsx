@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { CheckCircle, Circle, AlertCircle } from "lucide-react";
-import { StepConfig } from "@repo/ui/types/index.js";
+import { StepConfig } from "@repo/ui/types";
 
 interface StepNavigationProps {
   steps: StepConfig[];
