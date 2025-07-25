@@ -1,8 +1,10 @@
 // src/components/GridSection.test.tsx
-import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
-import React from 'react';
-import GridSection, { GridSectionProps } from '@repo/ui/layouts/grid/GridSection';
+import { render, screen } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
+import React from "react";
+import GridSection, {
+  GridSectionProps,
+} from "@repo/ui/layouts/grid/GridSection";
 
 // Test utilities
 const TestChild = ({ children }: { children: React.ReactNode }) => (
@@ -17,499 +19,410 @@ const renderGridSection = (props: Partial<GridSectionProps> = {}) => {
   return render(<GridSection {...defaultProps} />);
 };
 
-const createMultipleChildren = (count: number) => 
+const createMultipleChildren = (count: number) =>
   Array.from({ length: count }, (_, i) => (
     <TestChild key={i}>Child {i + 1}</TestChild>
   ));
 
-describe('GridSection', () => {
-  describe('Basic Rendering', () => {
-    it('renders with default props', () => {
+describe("GridSection", () => {
+  describe("Basic Rendering", () => {
+    it("renders with default props", () => {
       renderGridSection();
-      expect(screen.getByTestId('test-child')).toBeInTheDocument();
+      expect(screen.getByTestId("test-child")).toBeInTheDocument();
     });
 
-    it('renders with single child', () => {
+    it("renders with single child", () => {
       renderGridSection({
-        children: <TestChild>Single Child</TestChild>
+        children: <TestChild>Single Child</TestChild>,
       });
-      expect(screen.getByText('Single Child')).toBeInTheDocument();
+      expect(screen.getByText("Single Child")).toBeInTheDocument();
     });
 
-    it('renders with multiple children', () => {
+    it("renders with multiple children", () => {
       renderGridSection({
-        children: createMultipleChildren(3)
+        children: createMultipleChildren(3),
       });
-      expect(screen.getByText('Child 1')).toBeInTheDocument();
-      expect(screen.getByText('Child 2')).toBeInTheDocument();
-      expect(screen.getByText('Child 3')).toBeInTheDocument();
+      expect(screen.getByText("Child 1")).toBeInTheDocument();
+      expect(screen.getByText("Child 2")).toBeInTheDocument();
+      expect(screen.getByText("Child 3")).toBeInTheDocument();
     });
 
-    it('renders with React fragments and nested elements', () => {
+    it("renders with React fragments and nested elements", () => {
       renderGridSection({
         children: (
           <React.Fragment>
             <TestChild>Fragment Child 1</TestChild>
             <TestChild>Fragment Child 2</TestChild>
           </React.Fragment>
-        )
+        ),
       });
-      expect(screen.getByText('Fragment Child 1')).toBeInTheDocument();
-      expect(screen.getByText('Fragment Child 2')).toBeInTheDocument();
+      expect(screen.getByText("Fragment Child 1")).toBeInTheDocument();
+      expect(screen.getByText("Fragment Child 2")).toBeInTheDocument();
     });
   });
 
-  describe('Column Configuration', () => {
-    it('applies correct CSS classes for 2 columns (default)', () => {
+  describe("Column Configuration", () => {
+    it("applies correct CSS classes for 2 columns (default)", () => {
       const { container } = renderGridSection();
-      const gridElement = container.querySelector('.grid');
-      expect(gridElement).toHaveClass('grid-cols-1', 'md:grid-cols-2');
+      const gridElement = container.querySelector(".grid");
+      expect(gridElement).toHaveClass("grid-cols-1", "md:grid-cols-2");
     });
 
-    it('applies correct CSS classes for 3 columns', () => {
+    it("applies correct CSS classes for 3 columns", () => {
       const { container } = renderGridSection({ columns: 3 });
-      const gridElement = container.querySelector('.grid');
-      expect(gridElement).toHaveClass('grid-cols-1', 'md:grid-cols-3');
+      const gridElement = container.querySelector(".grid");
+      expect(gridElement).toHaveClass("grid-cols-1", "md:grid-cols-3");
     });
 
-    it('applies correct CSS classes for 4 columns', () => {
+    it("applies correct CSS classes for 4 columns", () => {
       const { container } = renderGridSection({ columns: 4 });
-      const gridElement = container.querySelector('.grid');
-      expect(gridElement).toHaveClass('grid-cols-1', 'md:grid-cols-4');
+      const gridElement = container.querySelector(".grid");
+      expect(gridElement).toHaveClass("grid-cols-1", "md:grid-cols-4");
     });
 
-    it('handles invalid column values gracefully', () => {
-      // TypeScript should prevent this, but testing runtime behavior
-      const { container } = renderGridSection({ columns: 5 as any });
-      const gridElement = container.querySelector('.grid');
-      // Should fallback to default behavior or handle gracefully
-      expect(gridElement).toHaveClass('grid');
-    });
-  });
-
-  describe('Heading and Text', () => {
-    it('renders heading when provided', () => {
-      renderGridSection({
-        heading: 'Test Heading'
-      });
-      const heading = screen.getByRole('heading', { level: 2 });
-      expect(heading).toBeInTheDocument();
-      expect(heading).toHaveTextContent('Test Heading');
-      expect(heading).toHaveClass('text-2xl', 'md:text-4xl', 'font-extrabold', 'tracking-tight');
-    });
-
-    it('renders text when provided', () => {
-      renderGridSection({
-        text: 'Test description text'
-      });
-      const text = screen.getByText('Test description text');
-      expect(text).toBeInTheDocument();
-      expect(text).toHaveClass('mt-2', 'text-base', 'md:text-lg');
-    });
-
-    it('renders both heading and text', () => {
-      renderGridSection({
-        heading: 'Test Heading',
-        text: 'Test description'
-      });
-      expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument();
-      expect(screen.getByText('Test description')).toBeInTheDocument();
-    });
-
-    it('does not render header section when neither heading nor text provided', () => {
-      const { container } = renderGridSection();
-      const headerSection = container.querySelector('.text-center.mb-8');
-      expect(headerSection).not.toBeInTheDocument();
-    });
-
-    it('renders empty heading and text gracefully', () => {
-      renderGridSection({
-        heading: '',
-        text: ''
-      });
-      // Should not render header section for empty strings
-      const { container } = renderGridSection();
-      const headerSection = container.querySelector('.text-center.mb-8');
-      expect(headerSection).not.toBeInTheDocument();
+    it("handles invalid column values gracefully", () => {
+      // @ts-expect-error testing runtime fallback for invalid column
+      const { container } = renderGridSection({ columns: 5 });
+      const gridElement = container.querySelector(".grid");
+      expect(gridElement).toHaveClass("grid");
     });
   });
 
-  describe('Reverse Functionality', () => {
-    it('renders children in normal order by default', () => {
+  describe("Heading and Text", () => {
+    it("renders heading when provided", () => {
       renderGridSection({
-        children: createMultipleChildren(3)
+        heading: "Test Heading",
       });
-      const children = screen.getAllByTestId('test-child');
-      expect(children[0]).toHaveTextContent('Child 1');
-      expect(children[1]).toHaveTextContent('Child 2');
-      expect(children[2]).toHaveTextContent('Child 3');
+      const heading = screen.getByRole("heading", { level: 2 });
+      expect(heading).toHaveTextContent("Test Heading");
+      expect(heading).toHaveClass(
+        "text-2xl",
+        "md:text-4xl",
+        "font-extrabold",
+        "tracking-tight",
+      );
     });
 
-    it('reverses children order when reverse is true', () => {
+    it("renders text when provided", () => {
       renderGridSection({
-        children: createMultipleChildren(3),
-        reverse: true
+        text: "Test description text",
       });
-      const children = screen.getAllByTestId('test-child');
-      expect(children[0]).toHaveTextContent('Child 3');
-      expect(children[1]).toHaveTextContent('Child 2');
-      expect(children[2]).toHaveTextContent('Child 1');
+      const text = screen.getByText("Test description text");
+      expect(text).toHaveClass("mt-2", "text-base", "md:text-lg");
     });
 
-    it('handles single child with reverse enabled', () => {
+    it("renders both heading and text", () => {
+      renderGridSection({
+        heading: "Test Heading",
+        text: "Test description",
+      });
+      expect(screen.getByRole("heading", { level: 2 })).toBeInTheDocument();
+      expect(screen.getByText("Test description")).toBeInTheDocument();
+    });
+
+    it("does not render header section when neither heading nor text provided", () => {
+      const { container } = renderGridSection();
+      const headerSection = container.querySelector(".text-center.mb-8");
+      expect(headerSection).toBeNull();
+    });
+
+    it("renders empty heading and text gracefully", () => {
+      renderGridSection({ heading: "", text: "" });
+      const { container } = renderGridSection();
+      const headerSection = container.querySelector(".text-center.mb-8");
+      expect(headerSection).toBeNull();
+    });
+  });
+
+  describe("Reverse Functionality", () => {
+    it("renders children in normal order by default", () => {
+      renderGridSection({ children: createMultipleChildren(3) });
+      const children = screen.getAllByTestId("test-child");
+      expect(children[0]).toHaveTextContent("Child 1");
+      expect(children[1]).toHaveTextContent("Child 2");
+      expect(children[2]).toHaveTextContent("Child 3");
+    });
+
+    it("reverses children order when reverse is true", () => {
+      renderGridSection({ children: createMultipleChildren(3), reverse: true });
+      const children = screen.getAllByTestId("test-child");
+      expect(children[0]).toHaveTextContent("Child 3");
+      expect(children[1]).toHaveTextContent("Child 2");
+      expect(children[2]).toHaveTextContent("Child 1");
+    });
+
+    it("handles single child with reverse enabled", () => {
       renderGridSection({
         children: <TestChild>Single Child</TestChild>,
-        reverse: true
+        reverse: true,
       });
-      expect(screen.getByText('Single Child')).toBeInTheDocument();
+      expect(screen.getByText("Single Child")).toBeInTheDocument();
     });
 
-    it('handles empty children array with reverse enabled', () => {
+    it("handles empty children array with reverse enabled", () => {
       renderGridSection({
         children: [],
-        reverse: true
+        reverse: true,
       });
-      const children = screen.queryAllByTestId('test-child');
-      expect(children).toHaveLength(0);
+      expect(screen.queryAllByTestId("test-child")).toHaveLength(0);
     });
   });
 
-  describe('Section ID', () => {
-    it('applies section ID to outer container', () => {
-      const { container } = renderGridSection({
-        sectionId: 'test-section'
-      });
-      const sectionElement = container.querySelector('#test-section');
-      expect(sectionElement).toBeInTheDocument();
+  describe("Section ID", () => {
+    it("applies section ID to outer container", () => {
+      const { container } = renderGridSection({ sectionId: "test-section" });
+      expect(container.querySelector("#test-section")).toBeInTheDocument();
     });
 
-    it('handles special characters in section ID', () => {
-      const { container } = renderGridSection({
-        sectionId: 'test-section_123-abc'
-      });
-      const sectionElement = container.querySelector('#test-section_123-abc');
-      expect(sectionElement).toBeInTheDocument();
+    it("handles special characters in section ID", () => {
+      const special = "test-section_123-abc";
+      const { container } = renderGridSection({ sectionId: special });
+      expect(container.querySelector(`#${special}`)).toBeInTheDocument();
     });
 
-    it('works without section ID', () => {
+    it("works without section ID", () => {
       const { container } = renderGridSection();
       const outerDiv = container.firstChild as HTMLElement;
-      expect(outerDiv.id).toBe('');
+      expect(outerDiv.id).toBe("");
     });
   });
 
-  describe('Wrapper Class Name', () => {
-    it('applies default wrapper class', () => {
+  describe("Wrapper Class Name", () => {
+    it("applies default wrapper class", () => {
       const { container } = renderGridSection();
-      const wrapperElement = container.querySelector('.section');
-      expect(wrapperElement).toBeInTheDocument();
+      expect(container.querySelector(".section")).toBeInTheDocument();
     });
 
-    it('applies custom wrapper class names', () => {
+    it("applies custom wrapper class names", () => {
       const { container } = renderGridSection({
-        wrapperClassName: 'custom-wrapper another-class'
+        wrapperClassName: "custom-wrapper another-class",
       });
-      const wrapperElement = container.querySelector('.section');
-      expect(wrapperElement).toHaveClass('section', 'custom-wrapper', 'another-class');
+      expect(container.querySelector(".section")).toHaveClass(
+        "custom-wrapper",
+        "another-class",
+      );
     });
 
-    it('handles empty wrapper class name', () => {
-      const { container } = renderGridSection({
-        wrapperClassName: ''
-      });
-      const wrapperElement = container.querySelector('.section');
-      expect(wrapperElement).toHaveClass('section');
+    it("handles empty wrapper class name", () => {
+      const { container } = renderGridSection({ wrapperClassName: "" });
+      expect(container.querySelector(".section")).toHaveClass("section");
     });
   });
 
-  describe('Grid Gap', () => {
-    it('applies default grid gap', () => {
+  describe("Grid Gap", () => {
+    it("applies default grid gap", () => {
       const { container } = renderGridSection();
-      const gridElement = container.querySelector('.grid');
-      expect(gridElement).toHaveClass('gap-3', 'lg:gap-6');
+      expect(container.querySelector(".grid")).toHaveClass("gap-3", "lg:gap-6");
     });
 
-    it('applies custom grid gap', () => {
+    it("applies custom grid gap", () => {
       const { container } = renderGridSection({
-        gridGap: 'gap-8 xl:gap-12'
+        gridGap: "gap-8 xl:gap-12",
       });
-      const gridElement = container.querySelector('.grid');
-      expect(gridElement).toHaveClass('gap-8', 'xl:gap-12');
+      expect(container.querySelector(".grid")).toHaveClass(
+        "gap-8",
+        "xl:gap-12",
+      );
     });
 
-    it('handles empty grid gap', () => {
-      const { container } = renderGridSection({
-        gridGap: ''
-      });
-      const gridElement = container.querySelector('.grid');
-      expect(gridElement).toHaveClass('grid');
-      expect(gridElement).not.toHaveClass('gap-3', 'lg:gap-6');
+    it("handles empty grid gap", () => {
+      const { container } = renderGridSection({ gridGap: "" });
+      const grid = container.querySelector(".grid");
+      expect(grid).toHaveClass("grid");
+      expect(grid).not.toHaveClass("gap-3", "lg:gap-6");
     });
   });
 
-  describe('Wide Column Configuration', () => {
-    it('uses wide column layout for 2 columns with wideColumnSpan', () => {
+  describe("Wide Column Configuration", () => {
+    it("uses wide column layout for 2 columns with wideColumnSpan", () => {
       const { container } = renderGridSection({
         columns: 2,
         wideColumnSpan: 8,
-        children: createMultipleChildren(2)
+        children: createMultipleChildren(2),
       });
-      const gridElement = container.querySelector('.grid');
-      expect(gridElement).toHaveClass('grid-cols-12');
+      expect(container.querySelector(".grid")).toHaveClass("grid-cols-12");
     });
 
-    it('ignores wide column for non-2 column layouts', () => {
+    it("ignores wide column for non-2 column layouts", () => {
       const { container } = renderGridSection({
         columns: 3,
         wideColumnSpan: 8,
-        children: createMultipleChildren(3)
+        children: createMultipleChildren(3),
       });
-      const gridElement = container.querySelector('.grid');
-      expect(gridElement).toHaveClass('md:grid-cols-3');
-      expect(gridElement).not.toHaveClass('grid-cols-12');
+      const grid = container.querySelector(".grid");
+      expect(grid).toHaveClass("md:grid-cols-3");
+      expect(grid).not.toHaveClass("grid-cols-12");
     });
 
-    it('clamps wide column span to valid range (1 to 11)', () => {
+    it("clamps wide column span to valid range (1 to 11)", () => {
       const { container } = renderGridSection({
         columns: 2,
-        wideColumnSpan: 15, // Should be clamped to 11
-        children: createMultipleChildren(2)
+        wideColumnSpan: 15,
+        children: createMultipleChildren(2),
       });
-      const gridElement = container.querySelector('.grid');
-      expect(gridElement).toHaveClass('grid-cols-12');
+      expect(container.querySelector(".grid")).toHaveClass("grid-cols-12");
     });
 
-    it('handles minimum wide column span', () => {
+    it("handles minimum wide column span", () => {
       const { container } = renderGridSection({
         columns: 2,
-        wideColumnSpan: 0, // Should be clamped to 1
-        children: createMultipleChildren(2)
+        wideColumnSpan: 0,
+        children: createMultipleChildren(2),
       });
-      const gridElement = container.querySelector('.grid');
-      expect(gridElement).toHaveClass('grid-cols-12');
+      expect(container.querySelector(".grid")).toHaveClass("grid-cols-12");
     });
 
-    it('applies wide column to left side by default', () => {
-      const { container } = renderGridSection({
-        columns: 2,
-        wideColumnSpan: 8,
-        children: createMultipleChildren(2)
-      });
-      const childElements = container.querySelectorAll('.flex');
-      expect(childElements[0]).toHaveClass('lg:col-span-8');
-      expect(childElements[1]).toHaveClass('lg:col-span-4');
-    });
-
-    it('applies wide column to right side when specified', () => {
+    it("applies wide column to left side by default", () => {
       const { container } = renderGridSection({
         columns: 2,
         wideColumnSpan: 8,
-        wideSide: 'right',
-        children: createMultipleChildren(2)
+        children: createMultipleChildren(2),
       });
-      const childElements = container.querySelectorAll('.flex');
-      expect(childElements[0]).toHaveClass('lg:col-span-4');
-      expect(childElements[1]).toHaveClass('lg:col-span-8');
+      const [first, second] = container.querySelectorAll(".flex");
+      expect(first).toHaveClass("lg:col-span-8");
+      expect(second).toHaveClass("lg:col-span-4");
+    });
+
+    it("applies wide column to right side when specified", () => {
+      const { container } = renderGridSection({
+        columns: 2,
+        wideColumnSpan: 8,
+        wideSide: "right",
+        children: createMultipleChildren(2),
+      });
+      const [first, second] = container.querySelectorAll(".flex");
+      expect(first).toHaveClass("lg:col-span-4");
+      expect(second).toHaveClass("lg:col-span-8");
     });
   });
 
-  describe('Background Image', () => {
-    it('applies background image when bgSrc is provided', () => {
-      const { container } = renderGridSection({
-        bgSrc: '/test-image.jpg'
-      });
-      const outerDiv = container.firstChild as HTMLElement;
-      expect(outerDiv).toHaveClass('bg-cover', 'bg-center');
-      expect(outerDiv).toHaveStyle('background-image: url(/test-image.jpg)');
+  describe("Background Image", () => {
+    it("applies background image when bgSrc is provided", () => {
+      const { container } = renderGridSection({ bgSrc: "/test.jpg" });
+      const outer = container.firstChild as HTMLElement;
+      expect(outer).toHaveClass("bg-cover", "bg-center");
+      expect(outer).toHaveStyle("background-image: url(/test.jpg)");
     });
 
-    it('handles empty background image source', () => {
-      const { container } = renderGridSection({
-        bgSrc: ''
-      });
-      const outerDiv = container.firstChild as HTMLElement;
-      expect(outerDiv).toHaveStyle('background-image: url()');
+    it("handles empty background image source", () => {
+      const { container } = renderGridSection({ bgSrc: "" });
+      expect((container.firstChild as HTMLElement)).toHaveStyle(
+        "background-image: url()",
+      );
     });
 
-    it('works without background image', () => {
+    it("works without background image", () => {
       const { container } = renderGridSection();
-      const outerDiv = container.firstChild as HTMLElement;
-      expect(outerDiv).toHaveClass('bg-cover', 'bg-center');
-      expect(outerDiv).toHaveStyle('background-image: url(undefined)');
+      expect((container.firstChild as HTMLElement)).toHaveStyle(
+        "background-image: url(undefined)",
+      );
     });
   });
 
-  describe('Edge Cases', () => {
-    it('handles null children gracefully', () => {
-      renderGridSection({
-        children: null as any
-      });
-      const children = screen.queryAllByTestId('test-child');
-      expect(children).toHaveLength(0);
+  describe("Edge Cases", () => {
+    it("handles null children gracefully", () => {
+      renderGridSection({ children: null });
+      expect(screen.queryAllByTestId("test-child")).toHaveLength(0);
     });
 
-    it('handles undefined children gracefully', () => {
-      renderGridSection({
-        children: undefined as any
-      });
-      const children = screen.queryAllByTestId('test-child');
-      expect(children).toHaveLength(0);
+    it("handles undefined children gracefully", () => {
+      renderGridSection({ children: undefined });
+      expect(screen.queryAllByTestId("test-child")).toHaveLength(0);
     });
 
-    it('handles mixed valid and invalid children', () => {
+    it("handles mixed valid and invalid children", () => {
       renderGridSection({
         children: [
-          <TestChild key="1">Valid Child 1</TestChild>,
+          <TestChild key="1">Valid 1</TestChild>,
           null,
-          <TestChild key="2">Valid Child 2</TestChild>,
+          <TestChild key="2">Valid 2</TestChild>,
           undefined,
-          <TestChild key="3">Valid Child 3</TestChild>
-        ]
+        ],
       });
-      expect(screen.getByText('Valid Child 1')).toBeInTheDocument();
-      expect(screen.getByText('Valid Child 2')).toBeInTheDocument();
-      expect(screen.getByText('Valid Child 3')).toBeInTheDocument();
+      expect(screen.getByText("Valid 1")).toBeInTheDocument();
+      expect(screen.getByText("Valid 2")).toBeInTheDocument();
     });
 
-    it('handles boolean children', () => {
+    it("handles boolean children", () => {
       renderGridSection({
         children: [
-          <TestChild key="1">Valid Child</TestChild>,
+          <TestChild key="1">Valid</TestChild>,
           false,
           true,
-          <TestChild key="2">Another Valid Child</TestChild>
-        ]
+          <TestChild key="2">Valid 2</TestChild>,
+        ],
       });
-      expect(screen.getByText('Valid Child')).toBeInTheDocument();
-      expect(screen.getByText('Another Valid Child')).toBeInTheDocument();
+      expect(screen.getByText("Valid")).toBeInTheDocument();
+      expect(screen.getByText("Valid 2")).toBeInTheDocument();
     });
 
-    it('handles very large number of children', () => {
-      const manyChildren = createMultipleChildren(50);
-      renderGridSection({
-        children: manyChildren
-      });
-      expect(screen.getAllByTestId('test-child')).toHaveLength(50);
+    it("handles very large number of children", () => {
+      renderGridSection({ children: createMultipleChildren(50) });
+      expect(screen.getAllByTestId("test-child")).toHaveLength(50);
     });
   });
 
-describe('Negative Test Cases', () => {
-    it('handles invalid column numbers gracefully', () => {
-      // Passing columns: -1 should fall back to the component's minimum (1 col)
-      const { container } = renderGridSection({
-        columns: -1 as any
-      });
-      const gridElement = container.querySelector('.grid');
-      expect(gridElement).toBeInTheDocument();
-      expect(gridElement).toHaveClass('grid');             // grid container still present
-      expect(gridElement).toHaveClass('grid-cols-1');      // fallback to 1 column
+  describe("Negative Test Cases", () => {
+    it("handles invalid column numbers gracefully", () => {
+      // @ts-expect-error invalid column
+      const { container } = renderGridSection({ columns: -1 });
+      const grid = container.querySelector(".grid");
+      expect(grid).toHaveClass("grid-cols-1");
     });
 
-    it('handles invalid wideColumnSpan values', () => {
-      // wideColumnSpan: -5 should be ignored, so it stays at full-width (12)
+    it("handles invalid wideColumnSpan values", () => {
       const { container } = renderGridSection({
         columns: 2,
-        wideColumnSpan: -5 as any,
+        wideColumnSpan: -5,
         children: createMultipleChildren(2),
       });
-      const gridElement = container.querySelector('.grid');
-      expect(gridElement).toHaveClass('grid-cols-12');
+      expect(container.querySelector(".grid")).toHaveClass("grid-cols-12");
     });
 
-    it('handles invalid wideSide values', () => {
-      // wideSide invalid => defaults to left, but implementation distributes spans evenly
-      const { container } = renderGridSection({
-        columns: 2,
-        wideColumnSpan: 8,
-        wideSide: 'invalid' as any,
-        children: createMultipleChildren(2),
-      });
-      const childElements = container.querySelectorAll('.flex');
-
-      // With 2 children and no valid wideSide, each child ends up col-span-4 at lg breakpoint
-      expect(childElements.length).toBe(2);
-      expect(childElements[0]).toHaveClass('lg:col-span-4');
-      expect(childElements[1]).toHaveClass('lg:col-span-4');
-    });
-
-    it('handles extremely long strings in props', () => {
-      const longString = 'a'.repeat(1000);
-      renderGridSection({
-        heading: longString,
-        text: longString,
-        sectionId: longString,
-        wrapperClassName: longString,
-      });
-
-      // Should render the same text twice: once in <h2>, once in <p>
-      const matches = screen.getAllByText(longString);
+    it("handles extremely long strings in props", () => {
+      const long = "a".repeat(1000);
+      renderGridSection({ heading: long, text: long, sectionId: long, wrapperClassName: long });
+      const matches = screen.getAllByText(long);
       expect(matches).toHaveLength(2);
-      matches.forEach(node => expect(node).toBeInTheDocument());
     });
 
-    it('handles special characters in text props', () => {
-      const specialChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
-      renderGridSection({
-        heading: specialChars,
-        text: specialChars,
-      });
-
-      // Should render twice
-      const matches = screen.getAllByText(specialChars);
+    it("handles special characters in text props", () => {
+      const special = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+      renderGridSection({ heading: special, text: special });
+      const matches = screen.getAllByText(special);
       expect(matches).toHaveLength(2);
-      matches.forEach(node => expect(node).toBeInTheDocument());
     });
   });
 
-  describe('Accessibility', () => {
-    it('maintains proper heading hierarchy', () => {
-      renderGridSection({
-        heading: 'Test Heading'
-      });
-      const heading = screen.getByRole('heading', { level: 2 });
-      expect(heading).toBeInTheDocument();
+  describe("Accessibility", () => {
+    it("maintains proper heading hierarchy", () => {
+      renderGridSection({ heading: "Heading" });
+      expect(screen.getByRole("heading", { level: 2 })).toBeInTheDocument();
     });
 
-    it('maintains semantic structure with section ID', () => {
-      const { container } = renderGridSection({
-        sectionId: 'main-content'
-      });
-      const section = container.querySelector('#main-content');
-      expect(section).toBeInTheDocument();
-    });
-
-    it('preserves child accessibility attributes', () => {
+    it("preserves child accessibility attributes", () => {
       renderGridSection({
-        children: <button aria-label="Test button">Click me</button>
+        children: <button aria-label="Test button">Click</button>,
       });
-      const button = screen.getByRole('button', { name: 'Test button' });
-      expect(button).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "Test button" })).toBeInTheDocument();
     });
   });
 
-  describe('Performance Considerations', () => {
-    it('handles frequent re-renders efficiently', () => {
-      const { rerender } = renderGridSection({
-        children: createMultipleChildren(10)
-      });
-      
-      // Simulate multiple re-renders
+  describe("Performance Considerations", () => {
+    it("handles frequent re-renders efficiently", () => {
+      const { rerender } = renderGridSection({ children: createMultipleChildren(10) });
       for (let i = 0; i < 5; i++) {
         rerender(
           <GridSection columns={2} reverse={i % 2 === 0}>
             {createMultipleChildren(10)}
-          </GridSection>
+          </GridSection>,
         );
       }
-      
-      expect(screen.getAllByTestId('test-child')).toHaveLength(10);
+      expect(screen.getAllByTestId("test-child")).toHaveLength(10);
     });
 
-    it('handles component unmounting gracefully', () => {
-      const { unmount } = renderGridSection({
-        children: createMultipleChildren(5)
-      });
-      
+    it("handles component unmounting gracefully", () => {
+      const { unmount } = renderGridSection({ children: createMultipleChildren(5) });
       expect(() => unmount()).not.toThrow();
     });
   });

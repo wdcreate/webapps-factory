@@ -41,7 +41,11 @@ const GridFooter: React.FC<GridFooterProps> = ({ data, className = "" }) => {
       <div className="container mx-auto pt-4 lg:pt-12 ">
         <div className="gap-8 md:gap-12 flex-wrap flex justify-between items-start">
           <a href={data.logo.href} className="inline-block mb-4">
-            <img src={data.logo.src} alt={data.logo.alt} className="h-[55px] md:h-[100px]" />
+            <img
+              src={data.logo.src}
+              alt={data.logo.alt}
+              className="h-[55px] md:h-[100px]"
+            />
           </a>
           <div className="flex flex-wrap gap-4 md:gap-12">
             {data.columns.map((col) => (

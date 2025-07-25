@@ -16,9 +16,9 @@ export interface UniversalCarouselSectionProps<T = unknown> {
   renderSlide: (slide: T, index: number) => React.ReactNode;
 }
 
-export function UniversalCarouselSection<T = unknown>({ 
-  data, 
-  renderSlide 
+export function UniversalCarouselSection<T = unknown>({
+  data,
+  renderSlide,
 }: UniversalCarouselSectionProps<T>) {
   const {
     sectionId,
@@ -39,7 +39,7 @@ export function UniversalCarouselSection<T = unknown>({
   const [count, setCount] = useState(0);
 
   const plugin = useRef(
-    autoPlay ? Autoplay({ delay: autoPlayDelay }) : undefined
+    autoPlay ? Autoplay({ delay: autoPlayDelay }) : undefined,
   );
 
   const sectionStyle = backgroundSrc
@@ -65,7 +65,7 @@ export function UniversalCarouselSection<T = unknown>({
         api.scrollTo(index);
       }
     },
-    [api]
+    [api],
   );
 
   return (
@@ -107,10 +107,10 @@ export function UniversalCarouselSection<T = unknown>({
                   slidesToShow === 2
                     ? "md:basis-1/2"
                     : slidesToShow === 3
-                    ? "md:basis-1/2 lg:basis-1/3"
-                    : slidesToShow === 4
-                    ? "md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
-                    : "md:basis-full"
+                      ? "md:basis-1/2 lg:basis-1/3"
+                      : slidesToShow === 4
+                        ? "md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                        : "md:basis-full"
                 }`}
               >
                 {renderSlide(slide, index)}

@@ -66,13 +66,13 @@ describe("OneStepForm", () => {
 
     expect(screen.getByText("Sample Form")).toBeInTheDocument();
     expect(
-      screen.getByText("This is a sample form for testing.")
+      screen.getByText("This is a sample form for testing."),
     ).toBeInTheDocument();
     expect(screen.getByLabelText("Username")).toBeInTheDocument();
     expect(screen.getByLabelText("Email")).toBeInTheDocument();
     expect(screen.getByLabelText("Age")).toBeInTheDocument();
     expect(
-      screen.getByLabelText("Subscribe to newsletter")
+      screen.getByLabelText("Subscribe to newsletter"),
     ).toBeInTheDocument();
     expect(screen.getByLabelText("Country")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Submit" })).toBeInTheDocument();
@@ -86,7 +86,10 @@ describe("OneStepForm", () => {
     expect(screen.getByLabelText("Username")).toHaveAttribute("type", "text");
     expect(screen.getByLabelText("Email")).toHaveAttribute("type", "email");
     expect(screen.getByLabelText("Age")).toHaveAttribute("type", "number");
-    expect(screen.getByLabelText("Subscribe to newsletter")).toHaveAttribute("role", "checkbox");
+    expect(screen.getByLabelText("Subscribe to newsletter")).toHaveAttribute(
+      "role",
+      "checkbox",
+    );
     // Fix: Check for the trigger button which should have combobox role
     const countryField = screen.getByLabelText("Country");
     expect(countryField.closest('[role="combobox"]')).toBeInTheDocument();
@@ -129,7 +132,7 @@ describe("OneStepForm", () => {
   //   });
   //   fireEvent.change(screen.getByLabelText("Age"), { target: { value: "30" } });
   //   fireEvent.click(screen.getByLabelText("Subscribe to newsletter"));
-    
+
   //   // Fix: Better way to handle Select component
   //   const countrySelect = screen.getByLabelText("Country");
   //   fireEvent.mouseDown(countrySelect);
@@ -156,7 +159,7 @@ describe("OneStepForm", () => {
     fireEvent.click(screen.getByRole("button", { name: "Submit" }));
 
     expect(
-      await screen.findByText(/username is required/i)
+      await screen.findByText(/username is required/i),
     ).toBeInTheDocument();
     expect(await screen.findByText(/email is required/i)).toBeInTheDocument();
     expect(onSubmit).not.toHaveBeenCalled();
@@ -176,7 +179,7 @@ describe("OneStepForm", () => {
     fireEvent.click(screen.getByRole("button", { name: "Submit" }));
 
     expect(
-      await screen.findByText(/username must be at least 3 characters/i)
+      await screen.findByText(/username must be at least 3 characters/i),
     ).toBeInTheDocument();
     expect(onSubmit).not.toHaveBeenCalled();
   });
@@ -234,7 +237,7 @@ describe("OneStepForm", () => {
     const onSubmit = vi
       .fn()
       .mockImplementation(
-        () => new Promise((resolve) => setTimeout(resolve, 100))
+        () => new Promise((resolve) => setTimeout(resolve, 100)),
       );
     render(<OneStepForm config={sampleConfig} onSubmit={onSubmit} />);
 
@@ -249,12 +252,12 @@ describe("OneStepForm", () => {
 
     await waitFor(() =>
       expect(
-        screen.getByRole("button", { name: "Submitting..." })
-      ).toBeDisabled()
+        screen.getByRole("button", { name: "Submitting..." }),
+      ).toBeDisabled(),
     );
     await waitFor(() => expect(onSubmit).toHaveBeenCalled());
     await waitFor(() =>
-      expect(screen.getByRole("button", { name: "Submit" })).not.toBeDisabled()
+      expect(screen.getByRole("button", { name: "Submit" })).not.toBeDisabled(),
     );
   });
 
@@ -268,7 +271,7 @@ describe("OneStepForm", () => {
       },
     };
     render(
-      <OneStepForm config={configWithDisabledSubmit} onSubmit={onSubmit} />
+      <OneStepForm config={configWithDisabledSubmit} onSubmit={onSubmit} />,
     );
 
     expect(screen.getByRole("button", { name: "Submit" })).toBeDisabled();
@@ -282,12 +285,12 @@ describe("OneStepForm", () => {
       backgroundSrc: "/path/to/image.jpg",
     };
     const { container } = render(
-      <OneStepForm config={configWithStyles} onSubmit={onSubmit} />
+      <OneStepForm config={configWithStyles} onSubmit={onSubmit} />,
     );
 
     const formContainer = container.querySelector(".bg-background");
-    expect(formContainer).toHaveClass("custom-form"); 
-    expect(formContainer).toHaveClass("bg-background"); 
+    expect(formContainer).toHaveClass("custom-form");
+    expect(formContainer).toHaveClass("bg-background");
     expect(formContainer).toHaveStyle({
       backgroundImage: "url(/path/to/image.jpg)",
     });
@@ -303,7 +306,7 @@ describe("OneStepForm", () => {
     render(<OneStepForm config={configWithGrid} onSubmit={onSubmit} />);
 
     const { container } = render(
-      <OneStepForm config={configWithGrid} onSubmit={onSubmit} />
+      <OneStepForm config={configWithGrid} onSubmit={onSubmit} />,
     );
     const fieldsContainer = container.querySelector(".grid");
     expect(fieldsContainer).toHaveClass("grid");

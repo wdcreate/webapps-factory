@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import type { ImageWithCTAData } from "@repo/ui/types";
@@ -25,7 +24,7 @@ const makeData = (overrides: PartialData = {}): ImageWithCTAData =>
     },
     reverseGrid: false,
     ...overrides,
-  }) as any;
+  }) as ImageWithCTAData;
 
 describe("<ImageWithCTAButtonSection />", () => {
   it("renders a <section> with id, default classes, and backgroundImage style", () => {
@@ -34,13 +33,13 @@ describe("<ImageWithCTAButtonSection />", () => {
     expect(sec).toHaveClass("bg-background", "bg-cover", "bg-center");
     // inline style
     expect(sec.style.backgroundImage).toBe(
-      'url("https://bg.example.com/bg.jpg")'
+      'url("https://bg.example.com/bg.jpg")',
     );
   });
 
   it("omits inline style when backgroundSrc is falsy", () => {
     render(
-      <ImageWithCTAButtonSection data={makeData({ backgroundSrc: "" })} />
+      <ImageWithCTAButtonSection data={makeData({ backgroundSrc: "" })} />,
     );
     const sec = document.getElementById("cta")!;
     expect(sec.style.backgroundImage).toBe("");
@@ -59,14 +58,14 @@ describe("<ImageWithCTAButtonSection />", () => {
         "sm:w-[75%]",
         "h-auto",
         "lg:w-full",
-        "mx-auto"
+        "mx-auto",
       );
       expect(wrapper).not.toHaveClass("order-last");
     });
 
     it('adds "order-last" class when reverseGrid is true', () => {
       render(
-        <ImageWithCTAButtonSection data={makeData({ reverseGrid: true })} />
+        <ImageWithCTAButtonSection data={makeData({ reverseGrid: true })} />,
       );
       const wrapper = screen.getByAltText("Foo image").parentElement!;
       expect(wrapper).toHaveClass("order-last");
@@ -75,8 +74,8 @@ describe("<ImageWithCTAButtonSection />", () => {
     it("renders empty alt & decorative image role when alt is omitted", () => {
       render(
         <ImageWithCTAButtonSection
-          data={makeData({ image: { src: "/no-alt.png" } as any })}
-        />
+          data={makeData({ image: { src: "/no-alt.png" } as ImageWithCTAData["image"] })}
+        />,
       );
       const img = screen.getByRole("presentation") as HTMLImageElement;
       expect(img).toHaveAttribute("src", "/no-alt.png");
@@ -87,7 +86,7 @@ describe("<ImageWithCTAButtonSection />", () => {
   describe("Text content", () => {
     it("renders the title in an h2 with expected text", () => {
       render(
-        <ImageWithCTAButtonSection data={makeData({ title: "Hello World" })} />
+        <ImageWithCTAButtonSection data={makeData({ title: "Hello World" })} />,
       );
       const h2 = screen.getByRole("heading", { level: 2, name: "Hello World" });
       expect(h2).toBeInTheDocument();
@@ -97,16 +96,16 @@ describe("<ImageWithCTAButtonSection />", () => {
       render(
         <ImageWithCTAButtonSection
           data={makeData({ description: "XYZ description" })}
-        />
+        />,
       );
       expect(screen.getByText("XYZ description")).toBeInstanceOf(
-        HTMLParagraphElement
+        HTMLParagraphElement,
       );
     });
 
     it("handles empty description gracefully", () => {
       render(
-        <ImageWithCTAButtonSection data={makeData({ description: "" })} />
+        <ImageWithCTAButtonSection data={makeData({ description: "" })} />,
       );
       // Still renders a <p> but with empty text
       const p = screen.getByText("", { selector: "p" });
@@ -122,12 +121,12 @@ describe("<ImageWithCTAButtonSection />", () => {
           data={makeData({
             button: {
               label: "ClickMe",
-              variant: "primary",
-              size: "md",
+              variant: "ghost",
+              size: "sm",
               onClick,
             },
-          } as any)}
-        />
+          })}
+        />,
       );
       const btn = screen.getByRole("button", { name: /ClickMe/ });
       expect(btn).toBeInTheDocument();
@@ -148,8 +147,8 @@ describe("<ImageWithCTAButtonSection />", () => {
               href: "/xyz",
               onClick: vi.fn(),
             },
-          } as any)}
-        />
+          })}
+        />,
       );
       const link = screen.getByRole("link", { name: /LinkBtn/ });
       expect(link).toHaveAttribute("href", "/xyz");
@@ -159,22 +158,26 @@ describe("<ImageWithCTAButtonSection />", () => {
       expect(link.querySelector("button")).toBeInTheDocument();
     });
 
-    it("throws if button prop is missing", () => {
-      const bad = makeData();
-      delete (bad as any).button;
-      expect(() =>
-        render(<ImageWithCTAButtonSection data={bad as any} />)
-      ).toThrow();
-    });
+it("throws if button prop is missing", () => {
+    const bad: Partial<ImageWithCTAData> = makeData();
+    delete bad.button;
+    const badData = bad as ImageWithCTAData;
+    expect(() =>
+      render(<ImageWithCTAButtonSection data={badData} />),
+    ).toThrow();
+  });
   });
 
-  describe("Invalid/missing required fields", () => {
-    it("throws if image is missing", () => {
-      const bad = makeData();
-      delete (bad as any).image;
-      expect(() =>
-        render(<ImageWithCTAButtonSection data={bad as any} />)
-      ).toThrow();
-    });
+ describe("Invalid/missing required fields", () => {
+  it("throws if image is missing", () => {
+    const bad: Partial<ImageWithCTAData> = makeData();
+    delete bad.image;
+
+    const badData = bad as ImageWithCTAData;
+
+    expect(() =>
+      render(<ImageWithCTAButtonSection data={badData} />),
+    ).toThrow();
   });
+});
 });

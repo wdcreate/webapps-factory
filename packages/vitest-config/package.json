@@ -1,13 +1,13 @@
 {
   "name": "@repo/vitest-config",
-  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
+     ".": "./dist/index.js",
     "./base": "./dist/configs/base.js",
-    "./ui": "./dist/configs/ui-config.js", 
-    "./setupTests": "./dist/configs/setupTests.js" 
+    "./ui": "./dist/configs/ui-config.js",
+    "./ui/setupTests": "./dist/configs/setupTests.js",
+    "./setupTests": "./dist/configs/setupTests.js"
   },
   "scripts": {
     "build": "tsc",

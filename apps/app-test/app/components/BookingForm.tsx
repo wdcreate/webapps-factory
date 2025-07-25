@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { MultiStepForm } from "@repo/ui/layouts/form/MultiStepForm";
 import { FormDataType, StepConfig } from "@repo/ui/types/index";
 import { dataConfig } from "../data/dataConfig";
@@ -24,7 +24,6 @@ export default function BookingForm() {
       config={dataConfig.ms_form}
       onSubmit={handleSubmit}
       onStepChange={handleStepChange}
-      className=""
     />
   );
 }

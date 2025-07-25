@@ -24,7 +24,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headerFixed = true; 
+  const headerFixed = true;
 
   return (
     <html lang="en" className="light scroll-smooth scroll-p-10">
@@ -33,13 +33,9 @@ export default function RootLayout({
       >
         <Header data={dataConfig.headerData} fixed={headerFixed} />
 
-        <div
-          className={`${headerFixed ? "pt-[75px]" : ""}`}
-        >
-          {children}
-        </div>
+        <div className={`${headerFixed ? "pt-[75px]" : ""}`}>{children}</div>
 
-        <GridFooter data={dataConfig.footer}/>
+        <GridFooter data={dataConfig.footer} />
       </body>
     </html>
   );
