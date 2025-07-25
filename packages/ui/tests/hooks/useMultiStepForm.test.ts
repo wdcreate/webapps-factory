@@ -1,5 +1,3 @@
-/// <reference types="vitest" />
-
 import { describe, it, expect, beforeEach, vi, Mock } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import type { FormEvent } from "react";

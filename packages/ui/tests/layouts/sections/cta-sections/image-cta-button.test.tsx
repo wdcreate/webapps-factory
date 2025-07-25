@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import type { ImageWithCTAData } from "@repo/ui/types";
@@ -25,7 +24,7 @@ const makeData = (overrides: PartialData = {}): ImageWithCTAData =>
     },
     reverseGrid: false,
     ...overrides,
-  }) as any;
+  }) as ImageWithCTAData;
 
 describe("<ImageWithCTAButtonSection />", () => {
   it("renders a <section> with id, default classes, and backgroundImage style", () => {
@@ -75,7 +74,7 @@ describe("<ImageWithCTAButtonSection />", () => {
     it("renders empty alt & decorative image role when alt is omitted", () => {
       render(
         <ImageWithCTAButtonSection
-          data={makeData({ image: { src: "/no-alt.png" } as any })}
+          data={makeData({ image: { src: "/no-alt.png" } as ImageWithCTAData["image"] })}
         />,
       );
       const img = screen.getByRole("presentation") as HTMLImageElement;
@@ -122,11 +121,11 @@ describe("<ImageWithCTAButtonSection />", () => {
           data={makeData({
             button: {
               label: "ClickMe",
-              variant: "primary",
-              size: "md",
+              variant: "ghost",
+              size: "sm",
               onClick,
             },
-          } as any)}
+          })}
         />,
       );
       const btn = screen.getByRole("button", { name: /ClickMe/ });
@@ -148,7 +147,7 @@ describe("<ImageWithCTAButtonSection />", () => {
               href: "/xyz",
               onClick: vi.fn(),
             },
-          } as any)}
+          })}
         />,
       );
       const link = screen.getByRole("link", { name: /LinkBtn/ });
@@ -159,22 +158,26 @@ describe("<ImageWithCTAButtonSection />", () => {
       expect(link.querySelector("button")).toBeInTheDocument();
     });
 
-    it("throws if button prop is missing", () => {
-      const bad = makeData();
-      delete (bad as any).button;
-      expect(() =>
-        render(<ImageWithCTAButtonSection data={bad as any} />),
-      ).toThrow();
-    });
+it("throws if button prop is missing", () => {
+    const bad: Partial<ImageWithCTAData> = makeData();
+    delete bad.button;
+    const badData = bad as ImageWithCTAData;
+    expect(() =>
+      render(<ImageWithCTAButtonSection data={badData} />),
+    ).toThrow();
+  });
   });
 
-  describe("Invalid/missing required fields", () => {
-    it("throws if image is missing", () => {
-      const bad = makeData();
-      delete (bad as any).image;
-      expect(() =>
-        render(<ImageWithCTAButtonSection data={bad as any} />),
-      ).toThrow();
-    });
+ describe("Invalid/missing required fields", () => {
+  it("throws if image is missing", () => {
+    const bad: Partial<ImageWithCTAData> = makeData();
+    delete bad.image;
+
+    const badData = bad as ImageWithCTAData;
+
+    expect(() =>
+      render(<ImageWithCTAButtonSection data={badData} />),
+    ).toThrow();
   });
+});
 });

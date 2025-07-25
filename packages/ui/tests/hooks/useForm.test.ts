@@ -1,6 +1,8 @@
-import type { FormConfig, FormDataType, FormErrors } from "@repo/ui/types";
+import type { FormConfig, FormDataType } from "@repo/ui/types";
 import { useForm } from "@repo/ui/hooks/useForm";
 import { renderHook, act } from "@testing-library/react";
+import type React from "react";
+import { vi } from "vitest"; // if you aren’t already importing vi
 
 describe("useForm Hook", () => {
   const config: FormConfig = {
@@ -94,7 +96,7 @@ describe("useForm Hook", () => {
       expect(result.current.validateField("username", "valid")).toBeNull();
       expect(result.current.validateField("age", 25)).toBeNull();
       expect(
-        result.current.validateField("email", "test@example.com"),
+        result.current.validateField("email", "test@example.com")
       ).toBeNull();
       expect(result.current.validateField("agree", true)).toBeNull();
     });
@@ -128,7 +130,7 @@ describe("useForm Hook", () => {
         expect(valid).toBe(false);
       });
       expect(Object.keys(result.current.errors)).toEqual(
-        expect.arrayContaining(["username", "email", "agree"]),
+        expect.arrayContaining(["username", "email", "agree"])
       );
 
       // Fill valid data
@@ -150,8 +152,13 @@ describe("useForm Hook", () => {
       const onSubmit = vi.fn().mockResolvedValue(undefined);
       const { result } = renderHook(() => useForm(config, onSubmit));
 
+      // create a properly typed fake event
+      const fakeEvent = {
+        preventDefault: () => {},
+      } as React.FormEvent<HTMLFormElement>;
+
       await act(async () => {
-        await result.current.handleSubmit({ preventDefault: () => {} } as any);
+        await result.current.handleSubmit(fakeEvent);
       });
 
       expect(onSubmit).not.toHaveBeenCalled();
@@ -171,14 +178,22 @@ describe("useForm Hook", () => {
         result.current.handleChange("agree", true);
       });
 
-      await act(async () => {
-        const promise = result.current.handleSubmit({
-          preventDefault: () => {},
-        } as any);
-        expect(result.current.isSubmitting).toBe(false);
-        await promise;
+      const fakeEvent = {
+        preventDefault: () => {},
+      } as React.FormEvent<HTMLFormElement>;
+
+      let submitPromise: Promise<void>;
+      act(() => {
+        submitPromise = result.current.handleSubmit(fakeEvent);
       });
 
+      expect(result.current.isSubmitting).toBe(true);
+
+      await act(async () => {
+        await submitPromise!;
+      });
+
+      // 4) After it resolves, isSubmitting goes back to false
       expect(onSubmit).toHaveBeenCalledWith(result.current.data);
       expect(result.current.isSubmitting).toBe(false);
     });

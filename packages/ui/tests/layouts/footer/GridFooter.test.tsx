@@ -1,6 +1,6 @@
 import GridFooter, { FooterDataType } from "@repo/ui/layouts/footer/GridFooter";
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 
 // Mock icon component for testing
 const MockIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (

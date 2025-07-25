@@ -1,7 +1,6 @@
 // MultiStepForm.test.tsx
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
-import { userEvent } from "@testing-library/user-event";
+import { render, screen } from "@testing-library/react";
 import { vi, describe, it, beforeEach, expect, MockedFunction } from "vitest";
 
 import {
@@ -244,9 +243,9 @@ describe("MultiStepForm", () => {
       isFirstStep: false,
       isLastStep: true,
     });
-    const { config } = renderForm({
-      submitButton: { text: "Go", className: "", disabled: true },
-    });
+    // const { config } = renderForm({
+    //   submitButton: { text: "Go", className: "", disabled: true },
+    // });
     const btn = screen.getByRole("button", { name: /go/i });
     expect(btn).toBeDisabled();
   });

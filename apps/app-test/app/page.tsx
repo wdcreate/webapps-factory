@@ -9,10 +9,10 @@ import { ProductCarouselSection } from "./components/ProductCarouselSection";
 import { ImagesCarouselSection } from "./components/ImagesCarousel";
 
 export default function Home() {
-  const handleLogin = async (data: FormData) => {
-    console.log("Login data:", data);
-    // Handle login logic
-  };
+  // const handleLogin = async (data: FormData) => {
+  //   console.log("Login data:", data);
+  //   // Handle login logic
+  // };
   return (
     <main className="">
       <ImageWithCTAButtonSection data={dataConfig.heroSection} />

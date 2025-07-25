@@ -4,17 +4,16 @@ import { FormConfig, FormDataType } from "@repo/ui/types";
 import { FormField } from "./FormFiled";
 import { Button } from "@repo/ui/components/ui/button";
 import { useForm } from "@repo/ui/hooks/useForm";
+
 interface OneStepFormProps {
   config: FormConfig;
   onSubmit: (data: FormDataType) => Promise<void> | void;
   initialData?: Partial<FormDataType>;
-  className?: string;
 }
 export const OneStepForm: React.FC<OneStepFormProps> = ({
   config,
   onSubmit,
   initialData,
-  className,
 }) => {
   const {
     data,

@@ -71,7 +71,7 @@ describe("<DemoSection />", () => {
 
     it('adds "order-first" to content wrapper when reverseGrid=true', () => {
       const { container } = render(
-        <DemoSection data={makeData({ reverseGrid: true })} />,
+        <DemoSection data={makeData({ reverseGrid: true })} />
       );
       const wrapper = container.querySelector(".space-y-6")!;
       expect(wrapper).toHaveClass("order-first");
@@ -130,7 +130,9 @@ describe("<DemoSection />", () => {
     it("throws if features is missing", () => {
       const bad = makeData();
       delete (bad as PartialDemo).features;
-      expect(() => render(<DemoSection data={bad as any} />)).toThrow();
+      expect(() =>
+        render(<DemoSection data={bad as DemoSectionData} />)
+      ).toThrow();
     });
   });
 
@@ -163,7 +165,7 @@ describe("<DemoSection />", () => {
       const data = makeData({
         buttons: [
           { label: "X", variant: "ghost", size: "lg", onClick: spy },
-        ] as any,
+        ] as DemoSectionData["buttons"],
       });
       render(<DemoSection data={data} />);
       fireEvent.click(screen.getByRole("button", { name: "X" }));
@@ -171,9 +173,12 @@ describe("<DemoSection />", () => {
     });
 
     it("throws if buttons prop is missing", () => {
-      const bad = makeData();
-      delete (bad as any).buttons;
-      expect(() => render(<DemoSection data={bad as any} />)).toThrow();
+      const bad: PartialDemo = makeData();
+      delete bad.buttons;
+
+      const invalid = bad as DemoSectionData;
+
+      expect(() => render(<DemoSection data={invalid} />)).toThrow();
     });
 
     it("renders no buttons when buttons array is empty", () => {
@@ -184,7 +189,9 @@ describe("<DemoSection />", () => {
     it("throws if buttons prop is missing", () => {
       const bad = makeData();
       delete (bad as PartialDemo).buttons;
-      expect(() => render(<DemoSection data={bad as any} />)).toThrow();
+      expect(() =>
+        render(<DemoSection data={bad as DemoSectionData} />)
+      ).toThrow();
     });
   });
 });

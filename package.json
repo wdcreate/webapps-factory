@@ -4,7 +4,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "eslint . --ext .js,.ts,.tsx",
+    "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
     "dev:app-layout": "turbo run dev --filter=app-layout",
@@ -21,6 +21,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "jiti": "^2.5.1",
     "prettier": "^3.5.3",
     "turbo": "^2.5.3",
     "typescript": "5.8.2",

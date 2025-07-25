@@ -1,3 +1,4 @@
+import { ButtonProps } from "@repo/ui/components/ui/button";
 import Header, { HeaderDataType } from "@repo/ui/layouts/header/default";
 import {
   render,
@@ -10,7 +11,7 @@ import { describe, it, expect, vi, afterEach } from "vitest";
 
 // Mock the Button component
 vi.mock("@repo/ui/components/ui/button", () => ({
-  Button: ({ children, variant, size, ...props }: any) => (
+  Button: ({ children, variant, size, ...props }: ButtonProps) => (
     <button data-variant={variant} data-size={size} {...props}>
       {children}
     </button>
@@ -19,11 +20,13 @@ vi.mock("@repo/ui/components/ui/button", () => ({
 
 // Mock lucide-react icons
 vi.mock("lucide-react", () => ({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Menu: ({ size, ...props }: any) => (
     <svg data-testid="menu-icon" width={size} height={size} {...props}>
       <path d="M3 12h18M3 6h18M3 18h18" />
     </svg>
   ),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   X: ({ size, ...props }: any) => (
     <svg data-testid="x-icon" width={size} height={size} {...props}>
       <path d="M18 6L6 18M6 6l12 12" />
@@ -77,7 +80,7 @@ describe("Header", () => {
     render(<Header data={mockHeaderData} />);
     expect(screen.getByRole("link", { name: "Company Logo" })).toHaveAttribute(
       "href",
-      "/",
+      "/"
     );
   });
 
@@ -90,7 +93,7 @@ describe("Header", () => {
       const desktopNav = navs[0];
       for (const { label, href } of mockHeaderData.links) {
         expect(
-          within(desktopNav!).getByRole("link", { name: label }),
+          within(desktopNav!).getByRole("link", { name: label })
         ).toHaveAttribute("href", href);
       }
     });
@@ -149,7 +152,7 @@ describe("Header", () => {
       const mobileNav = within(panel).getByRole("navigation");
       for (const { label, href } of mockHeaderData.links) {
         expect(
-          within(mobileNav).getByRole("link", { name: label }),
+          within(mobileNav).getByRole("link", { name: label })
         ).toHaveAttribute("href", href);
       }
 
@@ -226,7 +229,7 @@ describe("Header", () => {
         "fixed",
         "inset-x-0",
         "top-0",
-        "z-50",
+        "z-50"
       );
     });
 

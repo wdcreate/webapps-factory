@@ -22,6 +22,7 @@ vi.mock("@repo/ui/components/ui/carousel", () => {
       onMouseEnter,
       onMouseLeave,
       ...props
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     }: any) => {
       const mockApi = {
         scrollSnapList: () => [0, 1, 2],
@@ -35,6 +36,7 @@ vi.mock("@repo/ui/components/ui/carousel", () => {
         if (setApi) {
           setApi(mockApi);
         }
+        //eslint-disable-next-line react-hooks/exhaustive-deps
       }, [setApi]);
 
       return React.createElement(
@@ -45,9 +47,9 @@ vi.mock("@repo/ui/components/ui/carousel", () => {
           onMouseLeave,
           ...props,
         },
-        children,
+        children
       );
-    },
+    }, // eslint-disable-next-line @typescript-eslint/no-explicit-any
     CarouselContent: ({ children, ...props }: any) =>
       React.createElement(
         "div",
@@ -55,8 +57,8 @@ vi.mock("@repo/ui/components/ui/carousel", () => {
           "data-testid": "carousel-content",
           ...props,
         },
-        children,
-      ),
+        children
+      ), // eslint-disable-next-line @typescript-eslint/no-explicit-any
     CarouselItem: ({ children, ...props }: any) =>
       React.createElement(
         "div",
@@ -64,8 +66,8 @@ vi.mock("@repo/ui/components/ui/carousel", () => {
           "data-testid": "carousel-item",
           ...props,
         },
-        children,
-      ),
+        children
+      ), // eslint-disable-next-line @typescript-eslint/no-explicit-any
     CarouselNext: (props: any) =>
       React.createElement(
         "button",
@@ -73,8 +75,8 @@ vi.mock("@repo/ui/components/ui/carousel", () => {
           "data-testid": "carousel-next",
           ...props,
         },
-        "Next",
-      ),
+        "Next"
+      ), // eslint-disable-next-line @typescript-eslint/no-explicit-any
     CarouselPrevious: (props: any) =>
       React.createElement(
         "button",
@@ -82,7 +84,7 @@ vi.mock("@repo/ui/components/ui/carousel", () => {
           "data-testid": "carousel-previous",
           ...props,
         },
-        "Previous",
+        "Previous"
       ),
   };
 });
@@ -95,7 +97,7 @@ interface TestSlide {
 }
 
 const createMockData = (
-  overrides: Partial<UniversalCarouselData<TestSlide>> = {},
+  overrides: Partial<UniversalCarouselData<TestSlide>> = {}
 ): UniversalCarouselData<TestSlide> => ({
   sectionId: "test-carousel",
   title: "Test Carousel",
@@ -135,7 +137,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData();
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       expect(screen.getByText("Test Carousel")).toBeInTheDocument();
@@ -147,12 +149,12 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ title: undefined, subtitle: undefined });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       expect(screen.queryByText("Test Carousel")).not.toBeInTheDocument();
       expect(
-        screen.queryByText("This is a test carousel"),
+        screen.queryByText("This is a test carousel")
       ).not.toBeInTheDocument();
       expect(screen.getByTestId("carousel")).toBeInTheDocument();
     });
@@ -161,7 +163,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ className: "custom-class" });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       const section = document.getElementById("test-carousel");
@@ -172,7 +174,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ sectionId: "custom-section-id" });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       expect(document.getElementById("custom-section-id")).toBeInTheDocument();
@@ -186,7 +188,7 @@ describe("UniversalCarouselSection", () => {
       });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       const section = document.getElementById("test-carousel");
@@ -201,7 +203,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData();
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       expect(screen.getByTestId("slide-0")).toBeInTheDocument();
@@ -228,10 +230,7 @@ describe("UniversalCarouselSection", () => {
         const data = createMockData({ slidesToShow });
 
         const { unmount } = render(
-          <UniversalCarouselSection
-            data={data}
-            renderSlide={mockRenderSlide}
-          />,
+          <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
         );
 
         const carouselItems = screen.getAllByTestId("carousel-item");
@@ -249,7 +248,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ showArrows: true });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       expect(screen.getByTestId("carousel-previous")).toBeInTheDocument();
@@ -260,7 +259,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ showArrows: false });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       expect(screen.queryByTestId("carousel-previous")).not.toBeInTheDocument();
@@ -274,7 +273,7 @@ describe("UniversalCarouselSection", () => {
       });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       expect(screen.queryByTestId("carousel-previous")).not.toBeInTheDocument();
@@ -287,7 +286,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ showDots: true });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       await waitFor(() => {
@@ -300,7 +299,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ showDots: false });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       expect(screen.queryByLabelText(/Go to slide/)).not.toBeInTheDocument();
@@ -313,7 +312,7 @@ describe("UniversalCarouselSection", () => {
       });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       expect(screen.queryByLabelText(/Go to slide/)).not.toBeInTheDocument();
@@ -323,7 +322,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ showDots: true });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       await waitFor(() => {
@@ -351,7 +350,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ autoPlay: true, autoPlayDelay: 2000 });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       expect(mockAutoplay).toHaveBeenCalledWith({ delay: 2000 });
@@ -362,7 +361,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ autoPlay: false });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       expect(mockAutoplay).not.toHaveBeenCalled();
@@ -373,7 +372,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ autoPlay: true });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       expect(mockAutoplay).toHaveBeenCalledWith({ delay: 3000 });
@@ -389,7 +388,7 @@ describe("UniversalCarouselSection", () => {
       const { default: mockAutoplay } = await import("embla-carousel-autoplay");
       const mockStop = vi.fn();
       const mockReset = vi.fn();
-
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (mockAutoplay as any).mockReturnValue({
         stop: mockStop,
         reset: mockReset,
@@ -398,7 +397,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ autoPlay: true });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       const carousel = screen.getByTestId("carousel");
@@ -414,7 +413,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ autoPlay: false });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       const carousel = screen.getByTestId("carousel");
@@ -431,7 +430,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ showArrows: true });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       const sectionDiv = screen.getByTestId("carousel").closest(".section");
@@ -442,7 +441,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ showArrows: false });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       const sectionDiv = screen.getByTestId("carousel").closest(".section");
@@ -455,7 +454,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ slides: [] });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       expect(screen.queryByTestId("carousel-item")).not.toBeInTheDocument();
@@ -469,7 +468,7 @@ describe("UniversalCarouselSection", () => {
       const nullRenderSlide = () => null;
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={nullRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={nullRenderSlide} />
       );
 
       const carouselItems = screen.getAllByTestId("carousel-item");
@@ -485,7 +484,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ showDots: true });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       await waitFor(() => {
@@ -499,7 +498,7 @@ describe("UniversalCarouselSection", () => {
       const data = createMockData({ sectionId: "accessibility-test" });
 
       render(
-        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />,
+        <UniversalCarouselSection data={data} renderSlide={mockRenderSlide} />
       );
 
       const section = document.getElementById("accessibility-test");
